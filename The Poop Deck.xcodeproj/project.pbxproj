@@ -13,6 +13,14 @@
 		141232791B0E85810045E7AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141232781B0E85810045E7AA /* Images.xcassets */; };
 		1412327C1B0E85810045E7AA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1412327A1B0E85810045E7AA /* LaunchScreen.xib */; };
 		141232881B0E85810045E7AA /* The_Poop_DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232871B0E85810045E7AA /* The_Poop_DeckTests.swift */; };
+		1412329B1B0E85BD0045E7AA /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412329A1B0E85BD0045E7AA /* InterfaceController.swift */; };
+		1412329D1B0E85BD0045E7AA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412329C1B0E85BD0045E7AA /* NotificationController.swift */; };
+		1412329F1B0E85BD0045E7AA /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412329E1B0E85BD0045E7AA /* GlanceController.swift */; };
+		141232A11B0E85BD0045E7AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141232A01B0E85BD0045E7AA /* Images.xcassets */; };
+		141232A51B0E85BD0045E7AA /* The Poop Deck WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 141232A41B0E85BD0045E7AA /* The Poop Deck WatchKit App.app */; };
+		141232AD1B0E85BD0045E7AA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232AB1B0E85BD0045E7AA /* Interface.storyboard */; };
+		141232AF1B0E85BD0045E7AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141232AE1B0E85BD0045E7AA /* Images.xcassets */; };
+		141232B21B0E85BD0045E7AA /* The Poop Deck WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 141232951B0E85BD0045E7AA /* The Poop Deck WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +31,35 @@
 			remoteGlobalIDString = 1412326B1B0E85810045E7AA;
 			remoteInfo = "The Poop Deck";
 		};
+		141232A61B0E85BD0045E7AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 141232641B0E85810045E7AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 141232A31B0E85BD0045E7AA;
+			remoteInfo = "The Poop Deck WatchKit App";
+		};
+		141232B01B0E85BD0045E7AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 141232641B0E85810045E7AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 141232941B0E85BD0045E7AA;
+			remoteInfo = "The Poop Deck WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		141232B91B0E85BD0045E7AA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				141232B21B0E85BD0045E7AA /* The Poop Deck WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1412326C1B0E85810045E7AA /* The Poop Deck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Poop Deck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +72,17 @@
 		141232811B0E85810045E7AA /* The Poop DeckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Poop DeckTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		141232861B0E85810045E7AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		141232871B0E85810045E7AA /* The_Poop_DeckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Poop_DeckTests.swift; sourceTree = "<group>"; };
+		141232951B0E85BD0045E7AA /* The Poop Deck WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "The Poop Deck WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		141232981B0E85BD0045E7AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		141232991B0E85BD0045E7AA /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		1412329A1B0E85BD0045E7AA /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		1412329C1B0E85BD0045E7AA /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		1412329E1B0E85BD0045E7AA /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		141232A01B0E85BD0045E7AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		141232A41B0E85BD0045E7AA /* The Poop Deck WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Poop Deck WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		141232AA1B0E85BD0045E7AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		141232AC1B0E85BD0045E7AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		141232AE1B0E85BD0045E7AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +100,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		141232921B0E85BD0045E7AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +115,8 @@
 			children = (
 				1412326E1B0E85810045E7AA /* The Poop Deck */,
 				141232841B0E85810045E7AA /* The Poop DeckTests */,
+				141232961B0E85BD0045E7AA /* The Poop Deck WatchKit Extension */,
+				141232A81B0E85BD0045E7AA /* The Poop Deck WatchKit App */,
 				1412326D1B0E85810045E7AA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +126,8 @@
 			children = (
 				1412326C1B0E85810045E7AA /* The Poop Deck.app */,
 				141232811B0E85810045E7AA /* The Poop DeckTests.xctest */,
+				141232951B0E85BD0045E7AA /* The Poop Deck WatchKit Extension.appex */,
+				141232A41B0E85BD0045E7AA /* The Poop Deck WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +170,45 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		141232961B0E85BD0045E7AA /* The Poop Deck WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1412329A1B0E85BD0045E7AA /* InterfaceController.swift */,
+				1412329C1B0E85BD0045E7AA /* NotificationController.swift */,
+				1412329E1B0E85BD0045E7AA /* GlanceController.swift */,
+				141232A01B0E85BD0045E7AA /* Images.xcassets */,
+				141232971B0E85BD0045E7AA /* Supporting Files */,
+			);
+			path = "The Poop Deck WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		141232971B0E85BD0045E7AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				141232981B0E85BD0045E7AA /* Info.plist */,
+				141232991B0E85BD0045E7AA /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		141232A81B0E85BD0045E7AA /* The Poop Deck WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				141232AB1B0E85BD0045E7AA /* Interface.storyboard */,
+				141232AE1B0E85BD0045E7AA /* Images.xcassets */,
+				141232A91B0E85BD0045E7AA /* Supporting Files */,
+			);
+			path = "The Poop Deck WatchKit App";
+			sourceTree = "<group>";
+		};
+		141232A91B0E85BD0045E7AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				141232AA1B0E85BD0045E7AA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +219,12 @@
 				141232681B0E85810045E7AA /* Sources */,
 				141232691B0E85810045E7AA /* Frameworks */,
 				1412326A1B0E85810045E7AA /* Resources */,
+				141232B91B0E85BD0045E7AA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				141232B11B0E85BD0045E7AA /* PBXTargetDependency */,
 			);
 			name = "The Poop Deck";
 			productName = "The Poop Deck";
@@ -150,6 +249,39 @@
 			productReference = 141232811B0E85810045E7AA /* The Poop DeckTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		141232941B0E85BD0045E7AA /* The Poop Deck WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 141232B61B0E85BD0045E7AA /* Build configuration list for PBXNativeTarget "The Poop Deck WatchKit Extension" */;
+			buildPhases = (
+				141232911B0E85BD0045E7AA /* Sources */,
+				141232921B0E85BD0045E7AA /* Frameworks */,
+				141232931B0E85BD0045E7AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				141232A71B0E85BD0045E7AA /* PBXTargetDependency */,
+			);
+			name = "The Poop Deck WatchKit Extension";
+			productName = "The Poop Deck WatchKit Extension";
+			productReference = 141232951B0E85BD0045E7AA /* The Poop Deck WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		141232A31B0E85BD0045E7AA /* The Poop Deck WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 141232B31B0E85BD0045E7AA /* Build configuration list for PBXNativeTarget "The Poop Deck WatchKit App" */;
+			buildPhases = (
+				141232A21B0E85BD0045E7AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The Poop Deck WatchKit App";
+			productName = "The Poop Deck WatchKit App";
+			productReference = 141232A41B0E85BD0045E7AA /* The Poop Deck WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,6 +297,12 @@
 					141232801B0E85810045E7AA = {
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 1412326B1B0E85810045E7AA;
+					};
+					141232941B0E85BD0045E7AA = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					141232A31B0E85BD0045E7AA = {
+						CreatedOnToolsVersion = 6.3.1;
 					};
 				};
 			};
@@ -183,6 +321,8 @@
 			targets = (
 				1412326B1B0E85810045E7AA /* The Poop Deck */,
 				141232801B0E85810045E7AA /* The Poop DeckTests */,
+				141232941B0E85BD0045E7AA /* The Poop Deck WatchKit Extension */,
+				141232A31B0E85BD0045E7AA /* The Poop Deck WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -202,6 +342,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		141232931B0E85BD0045E7AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141232A11B0E85BD0045E7AA /* Images.xcassets in Resources */,
+				141232A51B0E85BD0045E7AA /* The Poop Deck WatchKit App.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		141232A21B0E85BD0045E7AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141232AD1B0E85BD0045E7AA /* Interface.storyboard in Resources */,
+				141232AF1B0E85BD0045E7AA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +383,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		141232911B0E85BD0045E7AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1412329D1B0E85BD0045E7AA /* NotificationController.swift in Sources */,
+				1412329B1B0E85BD0045E7AA /* InterfaceController.swift in Sources */,
+				1412329F1B0E85BD0045E7AA /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +400,16 @@
 			isa = PBXTargetDependency;
 			target = 1412326B1B0E85810045E7AA /* The Poop Deck */;
 			targetProxy = 141232821B0E85810045E7AA /* PBXContainerItemProxy */;
+		};
+		141232A71B0E85BD0045E7AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 141232A31B0E85BD0045E7AA /* The Poop Deck WatchKit App */;
+			targetProxy = 141232A61B0E85BD0045E7AA /* PBXContainerItemProxy */;
+		};
+		141232B11B0E85BD0045E7AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 141232941B0E85BD0045E7AA /* The Poop Deck WatchKit Extension */;
+			targetProxy = 141232B01B0E85BD0045E7AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -250,6 +428,14 @@
 				1412327B1B0E85810045E7AA /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		141232AB1B0E85BD0045E7AA /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				141232AC1B0E85BD0045E7AA /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -392,6 +578,62 @@
 			};
 			name = Release;
 		};
+		141232B41B0E85BD0045E7AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = The_Poop_Deck_WatchKit_Extension;
+				INFOPLIST_FILE = "The Poop Deck WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		141232B51B0E85BD0045E7AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = The_Poop_Deck_WatchKit_Extension;
+				INFOPLIST_FILE = "The Poop Deck WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		141232B71B0E85BD0045E7AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "The Poop Deck WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		141232B81B0E85BD0045E7AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "The Poop Deck WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -417,6 +659,22 @@
 			buildConfigurations = (
 				1412328F1B0E85810045E7AA /* Debug */,
 				141232901B0E85810045E7AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		141232B31B0E85BD0045E7AA /* Build configuration list for PBXNativeTarget "The Poop Deck WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				141232B41B0E85BD0045E7AA /* Debug */,
+				141232B51B0E85BD0045E7AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		141232B61B0E85BD0045E7AA /* Build configuration list for PBXNativeTarget "The Poop Deck WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				141232B71B0E85BD0045E7AA /* Debug */,
+				141232B81B0E85BD0045E7AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
