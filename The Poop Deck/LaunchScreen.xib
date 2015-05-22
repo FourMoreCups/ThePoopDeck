@@ -6,33 +6,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="zcR-M3-iwH">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="207-Mh-2yO">
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URR-ah-MJV">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                    <items>
+                        <navigationItem id="2OL-5w-oES"/>
+                    </items>
+                </navigationBar>
+                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6E-iY-zqE">
                     <rect key="frame" x="0.0" y="431" width="480" height="49"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem title="Days" image="calendar70.png" id="eHu-IG-cpm"/>
-                        <tabBarItem title="Meals" image="plate7.png" id="TAF-oD-RI1"/>
+                        <tabBarItem title="Days" image="calendar70.png" id="dvu-KX-uTn"/>
+                        <tabBarItem title="Meals" image="plate7.png" id="tZ9-NN-G0u"/>
                     </items>
                 </tabBar>
-                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsF-jp-Y4f">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
-                    <items>
-                        <navigationItem id="pUw-Er-Zch"/>
-                    </items>
-                </navigationBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="207-Mh-2yO" firstAttribute="leading" secondItem="zcR-M3-iwH" secondAttribute="leading" id="64a-Ja-Vio"/>
-                <constraint firstAttribute="trailing" secondItem="207-Mh-2yO" secondAttribute="trailing" id="Lto-oZ-PiH"/>
-                <constraint firstAttribute="trailing" secondItem="fsF-jp-Y4f" secondAttribute="trailing" id="NHF-yc-mM6"/>
-                <constraint firstItem="fsF-jp-Y4f" firstAttribute="leading" secondItem="zcR-M3-iwH" secondAttribute="leading" id="W5Q-kU-WbN"/>
-                <constraint firstItem="fsF-jp-Y4f" firstAttribute="top" secondItem="zcR-M3-iwH" secondAttribute="top" id="WtD-f3-2yY"/>
-                <constraint firstAttribute="bottom" secondItem="207-Mh-2yO" secondAttribute="bottom" id="dDt-yy-DQX"/>
+                <constraint firstAttribute="trailing" secondItem="URR-ah-MJV" secondAttribute="trailing" id="5iK-FS-sUf"/>
+                <constraint firstItem="l6E-iY-zqE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tbv-mw-MUs"/>
+                <constraint firstAttribute="trailing" secondItem="l6E-iY-zqE" secondAttribute="trailing" id="XQc-RN-F7j"/>
+                <constraint firstItem="URR-ah-MJV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cTk-kh-b20"/>
+                <constraint firstItem="URR-ah-MJV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="s4C-OZ-1eO"/>
+                <constraint firstAttribute="bottom" secondItem="l6E-iY-zqE" secondAttribute="bottom" id="y7h-8r-jh8"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
