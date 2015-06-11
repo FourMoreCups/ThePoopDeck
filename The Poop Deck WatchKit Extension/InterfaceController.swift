@@ -12,6 +12,11 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var mealLabel: WKInterfaceLabel!
+    @IBAction func refreshButton() {
+        updateMeals()
+    }
+ 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
@@ -21,11 +26,48 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        updateMeals()
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
+    func updateMeals() {
+        let defaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
+        var displayString: String
+        var currentHours = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitHour, fromDate: NSDate())
+        
+        if currentHours > 19 || currentHours < 8 {
+            if (defaults!.stringForKey("MealBreakfast") != nil){
+                displayString = defaults!.stringForKey("MealBreakfast")!
+                mealLabel.setText(String(displayString))
+            }
+            else{
+            mealLabel.setText(String("Open The Meals on iPhone"))
+            }
+        }
+        else if currentHours < 13 && currentHours > 8{
+            if (defaults!.stringForKey("MealLunch") != nil){
+                displayString = defaults!.stringForKey("MealLunch")!
+                mealLabel.setText(String(displayString))
+            }
+            else{
+                mealLabel.setText("Open The Meals on iPhone")
+            }
+        }
+        else {
+            if (defaults!.stringForKey("MealDinner") != nil){
+                displayString = defaults!.stringForKey("MealDinner")!
+                mealLabel.setText(String(displayString))
+            }
+            else{
+                mealLabel.setText("Open The Meals on iPhone")
+            }
+        }
+    }
+
 
 }
+

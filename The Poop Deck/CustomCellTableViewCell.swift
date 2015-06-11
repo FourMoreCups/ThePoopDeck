@@ -89,7 +89,7 @@ class CustomMealCellTableViewCell: UITableViewCell {
     @IBOutlet weak var breakfastLabel: UILabel!
     @IBOutlet weak var lunchLabel: UILabel!
     @IBOutlet weak var dinnerLabel: UILabel!
-    @IBOutlet weak var randomImage: UIImageView!
+    //@IBOutlet weak var randomImage: UIImageView!
     
     
     override func awakeFromNib() {
@@ -109,9 +109,8 @@ class CustomMealCellTableViewCell: UITableViewCell {
         self.dinnerLabel.text = dinnerLabel
         
         var dayComponent = dayComponentFromString(dateString)
-        //println(dayComponent)
         
-        randomImage.image = UIImage(named: "r" + String(dayComponent) + ".png")
+        //randomImage.image = UIImage(named: "r" + String(dayComponent) + ".png")
         
         //        dayPic = UIImageView(image: UIImage(named: "r" + String(dayComponent) + ".png"))
         //
@@ -135,7 +134,7 @@ class CustomMealCellTableViewCell: UITableViewCell {
         var date = convertStringToDate(dateString)
         //println(date)
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(.MonthCalendarUnit | .DayCalendarUnit, fromDate: date)
+        let components = calendar.components(NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay, fromDate: date)
         //println(components.day)
         return components.day
         

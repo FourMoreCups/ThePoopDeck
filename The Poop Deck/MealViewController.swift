@@ -10,7 +10,7 @@ import UIKit
 
 var didAppearCount = 0
 
-var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.meals")!
+var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
 
 enum UIUserInterfaceIdiom : Int {
     case Unspecified
@@ -31,7 +31,6 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //addPictureToView WithAlpha(targetTableView: self.mealTableView, imageName: "Ted.png", alpha: 0.85, contentMode: .ScaleAspectFill)
         self.mealTableView.backgroundColor = UIColor.whiteColor()
         navigationController?.navigationBar.topItem?.title = "The Meals"
         addPullToRefreshToTableView(target: self, tableView: mealTableView)
@@ -113,7 +112,6 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func updateAppGroupForMeals(){
-        println(self.arrayOfMeals.count)
         var savedBreakfast: String
         var savedLunch: String
         var savedDinner: String
@@ -133,7 +131,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         savedMeals.setValue(savedBreakfast, forKey: "MealBreakfast")
         savedMeals.setValue(savedLunch, forKey: "MealLunch")
         savedMeals.setValue(savedDinner, forKey: "MealDinner")
-        println(savedMeals.valueForKey("MealArray"))
+        println(savedMeals.valueForKey("MealDinner"))
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -243,6 +241,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
+    
     //MARK: Table Functions
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -262,30 +261,4 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
     }
-    
-    
-    
-    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        var selectedRowIndex = indexPath
-    //        currentRow = selectedRowIndex.row
-    //
-    //        tableView.beginUpdates()
-    //        tableView.endUpdates()
-    //    }
-    //
-    //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        if indexPath.row == currentRow {
-    //            if cellTapped == false {
-    //                cellTapped = true
-    //                return 150
-    //            } else {
-    //                cellTapped = false
-    //                return 350
-    //            
-    //            }
-    //        }
-    //        return 163
-    //    }
-    
-    
 }

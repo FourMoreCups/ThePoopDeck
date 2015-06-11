@@ -19,7 +19,7 @@ func theDays(target: String) -> Int{
     let endDate: NSDate = dateFormatter.dateFromString(target)!
     
     
-    let daysLeft = currentCal.components(.DayCalendarUnit, fromDate: startDate, toDate: endDate, options: nil)
+    let daysLeft = currentCal.components(NSCalendarUnit.CalendarUnitDay, fromDate: startDate, toDate: endDate, options: nil)
     let intDaysLeft = daysLeft.day
     
     //take off one to account for "butts"

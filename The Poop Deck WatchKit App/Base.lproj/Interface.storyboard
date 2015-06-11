@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9tQ-xM-xuE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="The_Poop_Deck_WatchKit_App" customModuleProvider="target">
-                    <connections>
-                        <segue destination="nIN-b5-jTe" kind="relationship" relationship="nextPage" id="ivF-FA-aQe"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="235" y="347"/>
-        </scene>
         <!--Radial Bar Controller-->
         <scene sceneID="Rhq-lU-6vq">
             <objects>
@@ -35,10 +24,25 @@
             <objects>
                 <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="The_Poop_Deck_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="t8f-Gd-c4y"/>
-                        <group alignment="left" id="uCw-4Q-Ouw"/>
+                        <group alignment="left" contentMode="left" id="t8f-Gd-c4y">
+                            <items>
+                                <label alignment="left" verticalAlignment="bottom" text="The Meals" id="6lI-ql-HST">
+                                    <color key="textColor" red="1" green="0.73725490196078436" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="25"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group alignment="left" id="uCw-4Q-Ouw">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.80000000000000004" id="0GE-hf-eDE"/>
+                            </items>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="glanceLabel" destination="0GE-hf-eDE" id="JqZ-Jb-7BY"/>
+                        <outlet property="imageGroup" destination="t8f-Gd-c4y" id="dti-mV-fND"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="235" y="672"/>
@@ -65,6 +69,29 @@
                 <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="The_Poop_Deck_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="Rxs-hj-XnX">
+            <objects>
+                <controller id="9tQ-xM-xuE" customClass="InterfaceController" customModule="The_Poop_Deck_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label width="1" alignment="center" verticalAlignment="center" text="No Meals" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.50000000000000011" id="jBY-53-yBv">
+                            <fontDescription key="font" type="system" pointSize="19"/>
+                        </label>
+                        <imageView width="40" height="40" alignment="center" image="swordIcon" contentMode="scaleAspectFit" id="kXA-3x-Ffw"/>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Refresh" id="5cA-ep-iD7">
+                            <connections>
+                                <action selector="refreshButton" destination="9tQ-xM-xuE" id="Jxv-SW-lfL"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="mealLabel" destination="jBY-53-yBv" id="xhn-9U-6WI"/>
+                        <segue destination="nIN-b5-jTe" kind="relationship" relationship="nextPage" id="Pk4-pz-dCn"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="347"/>
         </scene>
     </scenes>
 </document>
