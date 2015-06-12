@@ -27,6 +27,8 @@
 		141232E71B0E92AA0045E7AA /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232E61B0E92AA0045E7AA /* CustomCellTableViewCell.swift */; };
 		141232E91B0E92C20045E7AA /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232E81B0E92C20045E7AA /* DayModel.swift */; };
 		141232F81B0E98890045E7AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232F71B0E98890045E7AA /* Main.storyboard */; };
+		14351E631B2A5DE400693F8F /* armyNavyCircle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14351E621B2A5DE400693F8F /* armyNavyCircle@3x.png */; };
+		14351E651B2A5DE900693F8F /* armyNavyCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14351E641B2A5DE900693F8F /* armyNavyCircle@2x.png */; };
 		143E9D2E1B1FBA3A004BA4A3 /* christmasCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D1F1B1FBA3A004BA4A3 /* christmasCircle@2x.png */; };
 		143E9D2F1B1FBA3A004BA4A3 /* christmasCircle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D201B1FBA3A004BA4A3 /* christmasCircle@3x.png */; };
 		143E9D301B1FBA3A004BA4A3 /* fiveCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D211B1FBA3A004BA4A3 /* fiveCircle@2x.png */; };
@@ -222,6 +224,8 @@
 		141232E81B0E92C20045E7AA /* DayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		141232F71B0E98890045E7AA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		141233761B0EB0C90045E7AA /* RadialBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialBarController.swift; sourceTree = "<group>"; };
+		14351E621B2A5DE400693F8F /* armyNavyCircle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "armyNavyCircle@3x.png"; path = "DayCircles/armyNavyCircle@3x.png"; sourceTree = "<group>"; };
+		14351E641B2A5DE900693F8F /* armyNavyCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "armyNavyCircle@2x.png"; path = "DayCircles/armyNavyCircle@2x.png"; sourceTree = "<group>"; };
 		143E9D1F1B1FBA3A004BA4A3 /* christmasCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "christmasCircle@2x.png"; path = "DayCircles/christmasCircle@2x.png"; sourceTree = "<group>"; };
 		143E9D201B1FBA3A004BA4A3 /* christmasCircle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "christmasCircle@3x.png"; path = "DayCircles/christmasCircle@3x.png"; sourceTree = "<group>"; };
 		143E9D211B1FBA3A004BA4A3 /* fiveCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fiveCircle@2x.png"; path = "DayCircles/fiveCircle@2x.png"; sourceTree = "<group>"; };
@@ -502,6 +506,8 @@
 		141232BB1B0E8EC40045E7AA /* The Days */ = {
 			isa = PBXGroup;
 			children = (
+				14351E641B2A5DE900693F8F /* armyNavyCircle@2x.png */,
+				14351E621B2A5DE400693F8F /* armyNavyCircle@3x.png */,
 				143E9D1F1B1FBA3A004BA4A3 /* christmasCircle@2x.png */,
 				143E9D201B1FBA3A004BA4A3 /* christmasCircle@3x.png */,
 				143E9D211B1FBA3A004BA4A3 /* fiveCircle@2x.png */,
@@ -757,6 +763,7 @@
 					};
 					141232A31B0E85BD0045E7AA = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = J7TFD32G4P;
 					};
 				};
 			};
@@ -786,6 +793,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14351E631B2A5DE400693F8F /* armyNavyCircle@3x.png in Resources */,
 				143E9D331B1FBA3A004BA4A3 /* gradCircle@3x.png in Resources */,
 				141232F81B0E98890045E7AA /* Main.storyboard in Resources */,
 				14922D1B1B0F77A4008776F8 /* plate7@3x.png in Resources */,
@@ -796,6 +804,7 @@
 				14922D1A1B0F77A4008776F8 /* plate7@2x.png in Resources */,
 				143E9D371B1FBA3A004BA4A3 /* ringCircle@2x.png in Resources */,
 				143E9D2F1B1FBA3A004BA4A3 /* christmasCircle@3x.png in Resources */,
+				14351E651B2A5DE900693F8F /* armyNavyCircle@2x.png in Resources */,
 				143E9D301B1FBA3A004BA4A3 /* fiveCircle@2x.png in Resources */,
 				143E9D361B1FBA3A004BA4A3 /* rdayCircle@2x.png in Resources */,
 				143E9D341B1FBA3A004BA4A3 /* hundredCircle@2x.png in Resources */,
@@ -1167,6 +1176,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1185,6 +1195,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IBSC_MODULE = The_Poop_Deck_WatchKit_Extension;
 				INFOPLIST_FILE = "The Poop Deck WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
