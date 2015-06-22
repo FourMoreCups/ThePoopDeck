@@ -39,15 +39,30 @@ class GlanceController: WKInterfaceController {
         var currentHours = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitHour, fromDate: NSDate())
         
         if currentHours > 19 || currentHours < 8 {
-            displayString = defaults!.stringForKey("MealBreakfast")!
+            if (defaults!.stringForKey("MealBreakfast") == nil){
+                displayString = "Looks like there's nothing here"
+            }
+            else {
+                displayString = defaults!.stringForKey("MealBreakfast")!
+            }
             glanceLabel.setText(String(displayString))
         }
         else if currentHours < 13 && currentHours > 8{
-            displayString = defaults!.stringForKey("MealLunch")!
+            if (defaults!.stringForKey("MealLunch") == nil){
+                displayString = "Looks like there's nothing here"
+            }
+            else {
+                displayString = defaults!.stringForKey("MealLunch")!
+            }
             glanceLabel.setText(String(displayString))
         }
         else {
-            displayString = defaults!.stringForKey("MealDinner")!
+            if (defaults!.stringForKey("MealDinner") == nil){
+                displayString = "Looks like there's nothing here"
+            }
+            else {
+                displayString = defaults!.stringForKey("MealDinner")!
+            }
             glanceLabel.setText(String(displayString))
         }
 

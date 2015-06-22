@@ -224,6 +224,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             hideActivityIndicator()
             self.mealTableView.reloadData()
+            self.updateAppGroupForMeals()
             //println(self.arrayOfMeals.count)
         }
         
