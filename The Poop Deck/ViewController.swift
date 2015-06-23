@@ -34,26 +34,26 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = "The Days"
         myTableView.reloadData()
         
-//        if (firstLaunch != true) && (UIDevice.currentDevice().userInterfaceIdiom == .Phone){
-//            let alertVC = UIAlertController(title: "Have an Apple Watch?", message: "Stay updated on your progress in the Academy - update your class year in Settings!", preferredStyle: UIAlertControllerStyle.Alert)
-//            alertVC.addAction(UIAlertAction(title: "Open Settings", style: .Default) { value in
-//                println("tapped default button")
-//                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-//                })
-//            alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
-//                println("dismiss")
-//            }))
-//            self.parentViewController!.presentViewController(alertVC, animated: true, completion: nil)
-//            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
-//            
-//            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealBreakfast")
-//            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealLunch")
-//            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealDinner")
-//            
-//        }
-//        else {
-//            println("Not first launch.")
-//        }
+        if (firstLaunch != true) && (UIDevice.currentDevice().userInterfaceIdiom == .Phone){
+            let alertVC = UIAlertController(title: "Have an Apple Watch?", message: "Stay updated on your progress in the Academy - update your class year in Settings!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertVC.addAction(UIAlertAction(title: "Open Settings", style: .Default) { value in
+                println("tapped default button")
+                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                })
+            alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
+                println("dismiss")
+            }))
+            self.parentViewController!.presentViewController(alertVC, animated: true, completion: nil)
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
+            
+            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealBreakfast")
+            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealLunch")
+            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealDinner")
+            
+        }
+        else {
+            println("Not first launch.")
+        }
     }
     
     

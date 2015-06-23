@@ -88,10 +88,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u5b-4F-wyo" secondAttribute="bottom" id="4SN-u6-CLK"/>
                             <constraint firstAttribute="trailing" secondItem="u5b-4F-wyo" secondAttribute="trailing" id="Am7-Sl-KfZ"/>
                             <constraint firstItem="u5b-4F-wyo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fru-zD-Rwi"/>
-                            <constraint firstItem="u5b-4F-wyo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xsr-Wg-yNO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u5b-4F-wyo" secondAttribute="bottom" id="lTP-tY-Xig"/>
+                            <constraint firstItem="u5b-4F-wyo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="y92-3A-6eZ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Days" image="calendar70.png" id="Z39-Wh-oVx"/>
