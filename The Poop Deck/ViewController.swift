@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         myTableView.reloadData()
         
         if (firstLaunch != true) && (UIDevice.currentDevice().userInterfaceIdiom == .Phone){
-            let alertVC = UIAlertController(title: "Have an Apple Watch?", message: "Stay updated on your progress in the Academy - update your class year in Settings!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertVC = UIAlertController(title: "Have an Apple Watch?", message: "Stay updated on your progress in the Academy - update your class year in Settings!", preferredStyle: UIAlertControllerStyle.ActionSheet)
             alertVC.addAction(UIAlertAction(title: "Open Settings", style: .Default) { value in
                 println("tapped default button")
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
