@@ -23,9 +23,9 @@ class RadialBarController: WKInterfaceController {
         super.willActivate()
         var daysCompleted:Int
         
-        var userDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
-        var selectedClass = userDefaults!.integerForKey("class")
-        println(selectedClass)
+        let userDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
+        let selectedClass = userDefaults!.integerForKey("class")
+        print(selectedClass)
         
         switch selectedClass {
         case 2016:
@@ -39,10 +39,10 @@ class RadialBarController: WKInterfaceController {
         default:
             daysCompleted = theDays("2012-06-29")
         }
-        println(daysCompleted)
+        print(daysCompleted)
         
-        var percentCompletedInt = (Double(abs(daysCompleted))/1424)*100
-        println(percentCompletedInt)
+        let percentCompletedInt = (Double(abs(daysCompleted))/1424)*100
+        print(percentCompletedInt)
         
         self.radialBarImage.setImageNamed("DayCountDown")
         self.radialBarImage.startAnimatingWithImagesInRange(NSMakeRange(0, Int(percentCompletedInt)), duration: 0.7, repeatCount: 1)

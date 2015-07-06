@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1409E9EF1B4AF69F003FF46D /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409E9EE1B4AF69F003FF46D /* Menu.swift */; };
 		141232721B0E85810045E7AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232711B0E85810045E7AA /* AppDelegate.swift */; };
 		141232741B0E85810045E7AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232731B0E85810045E7AA /* ViewController.swift */; };
 		141232791B0E85810045E7AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141232781B0E85810045E7AA /* Images.xcassets */; };
@@ -75,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1409E9EE1B4AF69F003FF46D /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1412326C1B0E85810045E7AA /* The Poop Deck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Poop Deck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		141232701B0E85810045E7AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		141232711B0E85810045E7AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				141232E41B0E927C0045E7AA /* NavigationController.swift */,
 				141232731B0E85810045E7AA /* ViewController.swift */,
 				141232DE1B0E91C40045E7AA /* MealViewController.swift */,
+				1409E9EE1B4AF69F003FF46D /* Menu.swift */,
 				141232E01B0E920A0045E7AA /* HUDRefreshControl.swift */,
 				141232E21B0E92460045E7AA /* JSONLoader.swift */,
 				141232E61B0E92AA0045E7AA /* CustomCellTableViewCell.swift */,
@@ -450,6 +453,7 @@
 				141232741B0E85810045E7AA /* ViewController.swift in Sources */,
 				141232E71B0E92AA0045E7AA /* CustomCellTableViewCell.swift in Sources */,
 				141232721B0E85810045E7AA /* AppDelegate.swift in Sources */,
+				1409E9EF1B4AF69F003FF46D /* Menu.swift in Sources */,
 				141232DF1B0E91C40045E7AA /* MealViewController.swift in Sources */,
 				141232E11B0E920A0045E7AA /* HUDRefreshControl.swift in Sources */,
 			);

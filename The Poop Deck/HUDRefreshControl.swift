@@ -111,6 +111,22 @@ func displayMealFetchFailure() ->UIAlertController {
     return fetchErrorMessage
 }
 
+func genericErrorMessageAlertWithDismissButton(title: String, message: String) -> UIAlertController {
+    var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
+        print("Dismissed Alert")
+    }))
+    return alert
+}
+
+func handleAllErrorCodesWithAlerts(error: NSError?, currentViewController: AnyObject){
+    if (error?.code == NO_INTERNET_CONNECTIVITY_ERROR_CODE){
+        currentViewController.presentViewController(genericErrorMessageAlertWithDismissButton("Uh Oh!", "Looks like you don't have signal right now, try again later"), animated: true, completion: nil)
+    }
+
+}
+
+
 //MARK: Display No Meals to display; Connection works
 
 func displayNoMeals() -> UIAlertController{

@@ -8,14 +8,14 @@
 
 import UIKit
 
+var didTapOtherView: Bool = false
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var myTableView: UITableView!
     
     var arrayOfDates: [Day] = [Day]()
-    var dayCellTouched: Bool = false
-    var currentDayRow = 0
+    var backgroundTaskIdentifier = UIBackgroundTaskIdentifier()
     
     let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
 
@@ -28,20 +28,30 @@ class ViewController: UIViewController {
         addImageAboveTableViewController(myTableViewController: myTableView)
         myTableView.reloadData()
         
+        //BACKGROUND EXECUTION
+        backgroundTaskIdentifier = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ () -> Void in
+            UIApplication.sharedApplication().endBackgroundTask(self.backgroundTaskIdentifier)
+        })
+        //var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "update", userInfo: nil, repeats: true)
+        
+    }
+    
+    func update(){
+        println(NSCalendar.date(NSCalendar.currentCalendar()))
     }
     
     override func viewDidAppear(animated: Bool) {
         navigationController?.navigationBar.topItem?.title = "The Days"
         myTableView.reloadData()
         
-        if (firstLaunch != true) && (UIDevice.currentDevice().userInterfaceIdiom == .Phone){
+        if (firstLaunch != true) && (UIDevice.currentDevice().userInterfaceIdiom == .Phone) && (didTapOtherView == false){
             let alertVC = UIAlertController(title: "Have an Apple Watch?", message: "Stay updated on your progress in the Academy - update your class year in Settings!", preferredStyle: UIAlertControllerStyle.ActionSheet)
             alertVC.addAction(UIAlertAction(title: "Open Settings", style: .Default) { value in
-                println("tapped default button")
+                print("tapped default button")
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
                 })
             alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
-                println("dismiss")
+                print("dismiss")
             }))
             self.parentViewController!.presentViewController(alertVC, animated: true, completion: nil)
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
@@ -52,7 +62,7 @@ class ViewController: UIViewController {
             
         }
         else {
-            println("Not first launch.")
+            print("Not first launch.")
         }
     }
     
@@ -109,12 +119,9 @@ class ViewController: UIViewController {
         }else{
             potentialBottomString = "\(oneDay.daysLeft) and a butt days."
         }
-        
         cell.setCell(oneDay.dayStringTop, bottomLabelText: potentialBottomString, imageName: oneDay.imageName)
         
-        
         cell.backgroundColor = UIColor.clearColor()
-        
         cell.selectionStyle = UITableViewCellSelectionStyle.Default
         
         return cell

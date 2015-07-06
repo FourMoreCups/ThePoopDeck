@@ -9,8 +9,10 @@
 import UIKit
 
 var didAppearCount = 0
+var NO_INTERNET_CONNECTIVITY_ERROR_CODE = -1009
 
 var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
+var menu = Menu()
 
 enum UIUserInterfaceIdiom : Int {
     case Unspecified
@@ -31,6 +33,8 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        menu.loadMealsIntoMenu()
+        
         self.mealTableView.backgroundColor = UIColor.whiteColor()
         navigationController?.navigationBar.topItem?.title = "The Meals"
         addPullToRefreshToTableView(target: self, tableView: mealTableView)
@@ -43,7 +47,8 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
             (responseObject, error) -> () in
             
             if responseObject == nil {
-                println(error)
+                println(error?.description)
+                handleAllErrorCodesWithAlerts(error, self)
                 hideActivityIndicator()
                 self.presentViewController(displayMealFetchFailure(), animated: true, completion: nil)
                 return
@@ -56,35 +61,6 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     var breakfast = (obj.objectForKey("breakfast")! as! String)
                     var lunch = (obj.objectForKey("lunch")! as! String)
                     var dinner = obj.objectForKey("dinner")! as! String
-                    
-                    var breakfastArrayForDifferentDevices = breakfast.componentsSeparatedByString("|")
-                    var lunchArrayForDifferentDevices = lunch.componentsSeparatedByString("|")
-                    var dinnerArrayForDifferentDevices = dinner.componentsSeparatedByString("|")
-                    //println(breakfastArrayForDifferentDevices)
-                    
-                    if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-                        if (breakfastArrayForDifferentDevices.count > 1){
-                            breakfast = (breakfastArrayForDifferentDevices[0] + breakfastArrayForDifferentDevices[1])
-                        }else {
-                            breakfast = breakfastArrayForDifferentDevices[0]
-                        }
-                        if (lunchArrayForDifferentDevices.count>1){
-                            lunch = (lunchArrayForDifferentDevices[0] + lunchArrayForDifferentDevices[1])
-                        }else{
-                            lunch = lunchArrayForDifferentDevices[0]
-                        }
-                        if (dinnerArrayForDifferentDevices.count>1){
-                            dinner = (dinnerArrayForDifferentDevices[0] + dinnerArrayForDifferentDevices[1])
-                        }else {
-                            dinner = dinnerArrayForDifferentDevices[0]
-                        }
-                    }
-                    else {
-                        breakfast = breakfastArrayForDifferentDevices[0]
-                        lunch = lunchArrayForDifferentDevices[0]
-                        dinner = dinnerArrayForDifferentDevices[0]
-                        
-                    }
                     
                     let dateString = obj.objectForKey("dateString")! as! String
                     let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
@@ -135,12 +111,13 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(animated: Bool) {
-        didAppearCount++
+        if (didTapOtherView == false){
+            didTapOtherView = true
+        }
+        
         navigationController?.navigationBar.topItem?.title = "The Meals"
-        if (didAppearCount > 1) {
-            if self.arrayOfMeals.isEmpty == true {
-                self.presentViewController(displayNoMeals(), animated: true, completion: nil)
-            }
+        if (refreshControl.refreshing == false) && (self.arrayOfMeals.isEmpty) {
+            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
         }
     }
     
@@ -175,34 +152,6 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     let dateString = obj.objectForKey("dateString")! as! String
                     let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
                     
-                    var breakfastArrayForDifferentDevices = breakfast.componentsSeparatedByString("|")
-                    var lunchArrayForDifferentDevices = lunch.componentsSeparatedByString("|")
-                    var dinnerArrayForDifferentDevices = dinner.componentsSeparatedByString("|")
-                    //println(breakfastArrayForDifferentDevices)
-                    if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
-                        if (breakfastArrayForDifferentDevices.count > 1){
-                            breakfast = (breakfastArrayForDifferentDevices[0] + breakfastArrayForDifferentDevices[1])
-                        }else {
-                            breakfast = breakfastArrayForDifferentDevices[0]
-                        }
-                        if (lunchArrayForDifferentDevices.count>1){
-                            lunch = (lunchArrayForDifferentDevices[0] + lunchArrayForDifferentDevices[1])
-                        }else{
-                            lunch = lunchArrayForDifferentDevices[0]
-                        }
-                        if (dinnerArrayForDifferentDevices.count>1){
-                            dinner = (dinnerArrayForDifferentDevices[0] + dinnerArrayForDifferentDevices[1])
-                        }else {
-                            dinner = dinnerArrayForDifferentDevices[0]
-                        }
-                    }
-                    else {
-                        breakfast = breakfastArrayForDifferentDevices[0]
-                        lunch = lunchArrayForDifferentDevices[0]
-                        dinner = dinnerArrayForDifferentDevices[0]
-                        
-                    }
-                    
                     let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
                     if theDays(newMeal.dateString) >= -1 {
                         //self.arrayOfMeals.removeAtIndex(find(self.weekDayArray, days)!)
@@ -211,23 +160,19 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         //self.arrayOfMeals.removeAtIndex(0)
                     }
                 }
-                
-                
                 self.mealTableView.reloadData()
-                
             }
-            
-            
-            if self.arrayOfMeals.isEmpty == true {
-                self.presentViewController(displayNoMeals(), animated: true, completion: nil)
-            }
-            
-            hideActivityIndicator()
-            self.mealTableView.reloadData()
-            self.updateAppGroupForMeals()
-            //println(self.arrayOfMeals.count)
         }
         
+        
+        if self.arrayOfMeals.isEmpty == true {
+            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
+        }
+        
+        hideActivityIndicator()
+        self.mealTableView.reloadData()
+        self.updateAppGroupForMeals()
+        //println(self.arrayOfMeals.count)
         
         refreshControl.endRefreshing()
     }
