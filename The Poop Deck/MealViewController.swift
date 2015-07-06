@@ -12,7 +12,7 @@ var didAppearCount = 0
 var NO_INTERNET_CONNECTIVITY_ERROR_CODE = -1009
 
 var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
-var menu = Menu()
+
 
 enum UIUserInterfaceIdiom : Int {
     case Unspecified
@@ -33,7 +33,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menu.loadMealsIntoMenu()
+
         
         self.mealTableView.backgroundColor = UIColor.whiteColor()
         navigationController?.navigationBar.topItem?.title = "The Meals"

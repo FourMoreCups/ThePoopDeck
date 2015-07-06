@@ -16,20 +16,19 @@ class Menu {
 //    var saturday: Meal
 //    var sunday: Meal
     var weekDayArray = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    var arrayOfMeals: [Meal] = [Meal]()
     let urlString = ("http://www.seandeaton.com/meals/Meals")
     
-    init(){
-//        self.monday = monday
-//        self.tuesday = tuesday
-//        self.wednesday = wednesday
-//        self.thursday = thursday
-//        self.friday = friday
-//        self.saturday = saturday
-//        self.sunday = sunday
+    init?(){
     }
+    
+    func isEmpty() -> Bool{
+        return self.arrayOfMeals.isEmpty
+    }
+    
     func retrieveJSON(urlToRequest: String, completionHandler:(responseObject: NSDictionary?, error: NSError?) -> ()) {
         
-        let url: NSURL = NSURL(string: urlToRequest)!
+        let url: NSURL = NSURL(string : urlToRequest)!
         let jsonRequest: NSURLRequest = NSURLRequest(URL: url)
         
         var jsonResponse: NSURLResponse?
@@ -46,7 +45,7 @@ class Menu {
         }
     }
     
-    func loadMealsIntoMenu(){
+    func loadMealsIntoMenu(#isReloading: Bool) {
         self.retrieveJSON(urlString) {
             (responseObject, error) -> () in
     
@@ -57,31 +56,28 @@ class Menu {
                 return
             }
             else{
+                if(isReloading){
+                    self.arrayOfMeals.removeAll(keepCapacity: false)
+                }
                 for day in self.weekDayArray{
                     var newResponse: NSArray = responseObject![day] as! NSArray
                     println(newResponse)
+                    
+                    for obj: AnyObject in newResponse {
+                        var breakfast = (obj.objectForKey("breakfast")! as! String)
+                        var lunch = (obj.objectForKey("lunch")! as! String)
+                        var dinner = obj.objectForKey("dinner")! as! String
+                        let dateString = obj.objectForKey("dateString")! as! String
+                        let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
+                        let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
+                        if theDays(newMeal.dateString) >= -1 {
+                            self.arrayOfMeals.append(newMeal)
+                        }
+                    }
                 }
             }
         }
     }
-    
-    
-//    for days in self.weekDayArray {
-//    var newResponse: NSArray = responseObject![days] as! NSArray
-//    for obj: AnyObject in newResponse{
-//    var breakfast = (obj.objectForKey("breakfast")! as! String)
-//    var lunch = (obj.objectForKey("lunch")! as! String)
-//    var dinner = obj.objectForKey("dinner")! as! String
-//    
-//    let dateString = obj.objectForKey("dateString")! as! String
-//    let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
-//    let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
-//    if theDays(newMeal.dateString) >= -1 {
-//    self.arrayOfMeals.append(newMeal)
-//    }
-//    }
-//    }
-//        }
 
 }
 
