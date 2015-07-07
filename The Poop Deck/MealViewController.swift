@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import Darwin //remove before release
 
 var didAppearCount = 0
-var NO_INTERNET_CONNECTIVITY_ERROR_CODE = -1009
 
 var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
 
@@ -21,86 +21,52 @@ enum UIUserInterfaceIdiom : Int {
     case Pad // iPad style UI
 }
 
+var menu = Menu()
+
 class MealViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var mealTableView: UITableView!
     
     var cellTapped:Bool = true
     var currentRow = 0
     
-    var arrayOfMeals: [Meal] = [Meal]()
+    //var arrayOfMeals: [Meal] = [Meal]()
     var weekDayArray = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    
+    func update(){
+        print(menu.arrayOfMeals)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
-        self.mealTableView.backgroundColor = UIColor.whiteColor()
-        navigationController?.navigationBar.topItem?.title = "The Meals"
         addPullToRefreshToTableView(target: self, tableView: mealTableView)
         mealTableView.addSubview(refreshControl)
-        
         showActivityIndicatory(self.view)
+    
         
-        let urlString = ("http://www.seandeaton.com/meals/Meals")
-        retrieveJSON(urlString) {
-            (responseObject, error) -> () in
-            
-            if responseObject == nil {
-                println(error?.description)
-                handleAllErrorCodesWithAlerts(error, self)
-                hideActivityIndicator()
-                self.presentViewController(displayMealFetchFailure(), animated: true, completion: nil)
-                return
-            }
-            
-            
-            for days in self.weekDayArray {
-                var newResponse: NSArray = responseObject![days] as! NSArray
-                for obj: AnyObject in newResponse{
-                    var breakfast = (obj.objectForKey("breakfast")! as! String)
-                    var lunch = (obj.objectForKey("lunch")! as! String)
-                    var dinner = obj.objectForKey("dinner")! as! String
-                    
-                    let dateString = obj.objectForKey("dateString")! as! String
-                    let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
-                    let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
-                    if theDays(newMeal.dateString) >= -1 {
-                        self.arrayOfMeals.append(newMeal)
-                    }
-                }
-            }
-            
-            
-            self.mealTableView.reloadData()
-            
-            if self.arrayOfMeals.isEmpty == true {
-                self.presentViewController(displayNoMeals(), animated: true, completion: nil)
-            }
-            self.updateAppGroupForMeals()
-            
-            hideActivityIndicator()
-            
-        }
-        
-        self.mealTableView.reloadData()
-        
+        //perform everything neccessary to parse the JSON and load the menu to the view, including refreshing the UITableView
+        menu.loadMealsIntoMenu(isReloading: false, tableToRefresh: mealTableView)
+    
+
+        self.updateAppGroupForMeals()
+
     }
+    
     
     func updateAppGroupForMeals(){
         var savedBreakfast: String
         var savedLunch: String
         var savedDinner: String
         
-        if self.arrayOfMeals.isEmpty {
+        if menu.arrayOfMeals.isEmpty {
             savedBreakfast = "No meals"
             savedLunch = "No meals"
             savedDinner = "No meals"
         }
         else{
-            savedBreakfast = self.arrayOfMeals.first!.breakfast
-            savedLunch = self.arrayOfMeals.first!.lunch
-            savedDinner = self.arrayOfMeals.first!.dinner
+            savedBreakfast = menu.arrayOfMeals.first!.breakfast
+            savedLunch = menu.arrayOfMeals.first!.lunch
+            savedDinner = menu.arrayOfMeals.first!.dinner
         }
         
         
@@ -116,8 +82,8 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         navigationController?.navigationBar.topItem?.title = "The Meals"
-        if (refreshControl.refreshing == false) && (self.arrayOfMeals.isEmpty) {
-            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
+        if (refreshControl.refreshing == false) && (menu.arrayOfMeals.isEmpty) {
+            //self.presentViewController(displayNoMeals(), animated: true, completion: nil)
         }
     }
     
@@ -127,54 +93,10 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    
-    func handleRefreshForMeals() {
-        refreshControl.beginRefreshing()
-        arrayOfMeals.removeAll(keepCapacity: false)
-        let urlString = ("http://www.seandeaton.com/meals/Meals")
-        retrieveJSON(urlString) {
-            (responseObject, error) -> () in
-            
-            if responseObject == nil {
-                println(error)
-                refreshControl.endRefreshing()
-                self.presentViewController(displayMealFetchFailure(), animated: true, completion: nil)
-                return
-            }
-            for days in self.weekDayArray {
-                var newResponse: NSArray = responseObject![days] as! NSArray
-                
-                for obj: AnyObject in newResponse{
-                    
-                    var breakfast = (obj.objectForKey("breakfast")! as! String)
-                    var lunch = (obj.objectForKey("lunch")! as! String)
-                    var dinner = obj.objectForKey("dinner")! as! String
-                    let dateString = obj.objectForKey("dateString")! as! String
-                    let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
-                    
-                    let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
-                    if theDays(newMeal.dateString) >= -1 {
-                        //self.arrayOfMeals.removeAtIndex(find(self.weekDayArray, days)!)
-                        //self.arrayOfMeals.insert(newMeal, atIndex: find(self.weekDayArray, days)! - 1)
-                        self.arrayOfMeals.append(newMeal)
-                        //self.arrayOfMeals.removeAtIndex(0)
-                    }
-                }
-                self.mealTableView.reloadData()
-            }
-        }
+    func handleRefreshForMeals(){
         
-        
-        if self.arrayOfMeals.isEmpty == true {
-            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
-        }
-        
-        hideActivityIndicator()
-        self.mealTableView.reloadData()
+        menu.loadMealsIntoMenu(isReloading: true, tableToRefresh: mealTableView)
         self.updateAppGroupForMeals()
-        //println(self.arrayOfMeals.count)
-        
-        refreshControl.endRefreshing()
     }
     
     func convertDateToString(aDate: NSDate) -> String {
@@ -192,13 +114,13 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return arrayOfMeals.count
+        return menu.arrayOfMeals.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:CustomMealCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("MealCell") as! CustomMealCellTableViewCell
-        var oneMeal = arrayOfMeals[indexPath.row]
+        var oneMeal = menu.arrayOfMeals[indexPath.row]
         
         
         cell.setCell(oneMeal.dayOfWeek, breakfastLabel: oneMeal.breakfast, lunchLabel: oneMeal.lunch, dinnerLabel: oneMeal.dinner, dateString: oneMeal.dateString)

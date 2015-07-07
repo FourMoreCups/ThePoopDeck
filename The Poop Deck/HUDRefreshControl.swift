@@ -120,10 +120,13 @@ func genericErrorMessageAlertWithDismissButton(title: String, message: String) -
 }
 
 func handleAllErrorCodesWithAlerts(error: NSError?, currentViewController: AnyObject){
-    if (error?.code == NO_INTERNET_CONNECTIVITY_ERROR_CODE){
+    print(error?.code)
+    if (error?.code == NSURLErrorNotConnectedToInternet){
         currentViewController.presentViewController(genericErrorMessageAlertWithDismissButton("Uh Oh!", "Looks like you don't have signal right now, try again later"), animated: true, completion: nil)
     }
-
+    if (error?.code == NSURLErrorTimedOut){
+        currentViewController.presentViewController(genericErrorMessageAlertWithDismissButton("Uh Oh!", "The connection timed out. Try again later."), animated: true, completion: nil)
+    }
 }
 
 

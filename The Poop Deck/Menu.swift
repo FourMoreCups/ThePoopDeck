@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 class Menu {
 //    var monday: Meal
 //    var tuesday: Meal
@@ -19,7 +21,11 @@ class Menu {
     var arrayOfMeals: [Meal] = [Meal]()
     let urlString = ("http://www.seandeaton.com/meals/Meals")
     
-    init?(){
+    init(){
+    }
+    
+    func empty(){
+        self.arrayOfMeals.removeAll(keepCapacity: false)
     }
     
     func isEmpty() -> Bool{
@@ -45,8 +51,9 @@ class Menu {
         }
     }
     
-    func loadMealsIntoMenu(#isReloading: Bool) {
-        self.retrieveJSON(urlString) {
+    func loadMealsIntoMenu(#isReloading: Bool, tableToRefresh: UITableView) {
+        refreshControl.beginRefreshing()
+        self.retrieveJSON(self.urlString) {
             (responseObject, error) -> () in
     
             if responseObject == nil {
@@ -56,13 +63,12 @@ class Menu {
                 return
             }
             else{
+                print("Attempting to load menu")
                 if(isReloading){
                     self.arrayOfMeals.removeAll(keepCapacity: false)
                 }
                 for day in self.weekDayArray{
                     var newResponse: NSArray = responseObject![day] as! NSArray
-                    println(newResponse)
-                    
                     for obj: AnyObject in newResponse {
                         var breakfast = (obj.objectForKey("breakfast")! as! String)
                         var lunch = (obj.objectForKey("lunch")! as! String)
@@ -75,6 +81,9 @@ class Menu {
                         }
                     }
                 }
+                tableToRefresh.reloadData()
+                hideActivityIndicator()
+                refreshControl.endRefreshing()
             }
         }
     }

@@ -61,9 +61,6 @@ class ViewController: UIViewController {
             savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealDinner")
             
         }
-        else {
-            print("Not first launch.")
-        }
     }
     
     
