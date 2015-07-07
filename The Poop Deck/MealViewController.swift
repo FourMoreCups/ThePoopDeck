@@ -7,16 +7,11 @@
 //
 
 import UIKit
-import Darwin //remove before release
 
 var didAppearCount = 0
 
-var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
-
-
 enum UIUserInterfaceIdiom : Int {
     case Unspecified
-    
     case Phone // iPhone and iPod touch style UI
     case Pad // iPad style UI
 }
@@ -30,11 +25,6 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var currentRow = 0
     
     //var arrayOfMeals: [Meal] = [Meal]()
-    var weekDayArray = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-    
-    func update(){
-        print(menu.arrayOfMeals)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,48 +32,18 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         addPullToRefreshToTableView(target: self, tableView: mealTableView)
         mealTableView.addSubview(refreshControl)
         showActivityIndicatory(self.view)
-    
         
         //perform everything neccessary to parse the JSON and load the menu to the view, including refreshing the UITableView
         menu.loadMealsIntoMenu(isReloading: false, tableToRefresh: mealTableView)
-    
-
-        self.updateAppGroupForMeals()
-
-    }
-    
-    
-    func updateAppGroupForMeals(){
-        var savedBreakfast: String
-        var savedLunch: String
-        var savedDinner: String
-        
-        if menu.arrayOfMeals.isEmpty {
-            savedBreakfast = "No meals"
-            savedLunch = "No meals"
-            savedDinner = "No meals"
-        }
-        else{
-            savedBreakfast = menu.arrayOfMeals.first!.breakfast
-            savedLunch = menu.arrayOfMeals.first!.lunch
-            savedDinner = menu.arrayOfMeals.first!.dinner
-        }
-        
-        
-        savedMeals.setValue(savedBreakfast, forKey: "MealBreakfast")
-        savedMeals.setValue(savedLunch, forKey: "MealLunch")
-        savedMeals.setValue(savedDinner, forKey: "MealDinner")
-        println(savedMeals.valueForKey("MealDinner"))
     }
     
     override func viewDidAppear(animated: Bool) {
         if (didTapOtherView == false){
             didTapOtherView = true
         }
-        
         navigationController?.navigationBar.topItem?.title = "The Meals"
         if (refreshControl.refreshing == false) && (menu.arrayOfMeals.isEmpty) {
-            //self.presentViewController(displayNoMeals(), animated: true, completion: nil)
+            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
         }
     }
     
@@ -92,11 +52,8 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    
     func handleRefreshForMeals(){
-        
         menu.loadMealsIntoMenu(isReloading: true, tableToRefresh: mealTableView)
-        self.updateAppGroupForMeals()
     }
     
     func convertDateToString(aDate: NSDate) -> String {
@@ -107,8 +64,6 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return dateString
         
     }
-    
-    
     
     //MARK: Table Functions
     
@@ -125,8 +80,5 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         cell.setCell(oneMeal.dayOfWeek, breakfastLabel: oneMeal.breakfast, lunchLabel: oneMeal.lunch, dinnerLabel: oneMeal.dinner, dateString: oneMeal.dateString)
         return cell
-        
-        
-        
     }
 }

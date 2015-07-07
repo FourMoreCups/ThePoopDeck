@@ -32,12 +32,12 @@ class ViewController: UIViewController {
         backgroundTaskIdentifier = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ () -> Void in
             UIApplication.sharedApplication().endBackgroundTask(self.backgroundTaskIdentifier)
         })
-        //var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "update", userInfo: nil, repeats: true)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "update", userInfo: nil, repeats: true)
         
     }
     
     func update(){
-        println(NSCalendar.date(NSCalendar.currentCalendar()))
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,7 +59,6 @@ class ViewController: UIViewController {
             savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealBreakfast")
             savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealLunch")
             savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealDinner")
-            
         }
     }
     
@@ -94,15 +93,11 @@ class ViewController: UIViewController {
                 arrayOfDates.append(date)
             }
         }
-        
     }
-    
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfDates.count
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         

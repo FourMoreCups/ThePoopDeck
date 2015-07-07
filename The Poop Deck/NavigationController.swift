@@ -30,8 +30,6 @@ class MainController: UINavigationController {
         navBorder.opaque = true
         navigationBar.addSubview(navBorder)
         navigationBar.clipsToBounds = true
-        
-        
     }
 }
 

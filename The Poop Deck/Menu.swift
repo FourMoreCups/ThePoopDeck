@@ -9,14 +9,9 @@
 import Foundation
 import UIKit
 
+var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
+
 class Menu {
-//    var monday: Meal
-//    var tuesday: Meal
-//    var wednesday: Meal
-//    var thursday: Meal
-//    var friday: Meal
-//    var saturday: Meal
-//    var sunday: Meal
     var weekDayArray = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
     var arrayOfMeals: [Meal] = [Meal]()
     let urlString = ("http://www.seandeaton.com/meals/Meals")
@@ -57,13 +52,12 @@ class Menu {
             (responseObject, error) -> () in
     
             if responseObject == nil {
-                println(error?.description)
+                print(error?.description)
                 handleAllErrorCodesWithAlerts(error, self)
                 hideActivityIndicator()
                 return
             }
             else{
-                print("Attempting to load menu")
                 if(isReloading){
                     self.arrayOfMeals.removeAll(keepCapacity: false)
                 }
@@ -81,11 +75,35 @@ class Menu {
                         }
                     }
                 }
+                self.updateAppGroupForMeals()
                 tableToRefresh.reloadData()
                 hideActivityIndicator()
                 refreshControl.endRefreshing()
             }
         }
+    }
+    
+    func updateAppGroupForMeals(){
+        var savedBreakfast: String
+        var savedLunch: String
+        var savedDinner: String
+        
+        if menu.arrayOfMeals.isEmpty {
+            savedBreakfast = "No meals"
+            savedLunch = "No meals"
+            savedDinner = "No meals"
+        }
+        else{
+            savedBreakfast = menu.arrayOfMeals.first!.breakfast
+            savedLunch = menu.arrayOfMeals.first!.lunch
+            savedDinner = menu.arrayOfMeals.first!.dinner
+        }
+        
+        
+        savedMeals.setValue(savedBreakfast, forKey: "MealBreakfast")
+        savedMeals.setValue(savedLunch, forKey: "MealLunch")
+        savedMeals.setValue(savedDinner, forKey: "MealDinner")
+        //println(savedMeals.valueForKey("MealDinner"))
     }
 
 }
