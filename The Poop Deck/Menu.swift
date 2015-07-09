@@ -56,6 +56,7 @@ class Menu {
                 print(error?.description)
                 handleAllErrorCodesWithAlerts(error, self)
                 hideActivityIndicator()
+                tableToRefresh.userInteractionEnabled = true
                 return
             }
             else{
