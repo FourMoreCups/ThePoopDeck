@@ -22,10 +22,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var mealTableView: UITableView!
     
     var cellTapped:Bool = true
-    var currentRow = 0
-    
-    //var arrayOfMeals: [Meal] = [Meal]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -47,6 +47,7 @@ class Menu {
     }
     
     func loadMealsIntoMenu(#isReloading: Bool, tableToRefresh: UITableView) {
+        tableToRefresh.userInteractionEnabled = false
         refreshControl.beginRefreshing()
         self.retrieveJSON(self.urlString) {
             (responseObject, error) -> () in
@@ -76,9 +77,10 @@ class Menu {
                     }
                 }
                 self.updateAppGroupForMeals()
-                tableToRefresh.reloadData()
                 hideActivityIndicator()
                 refreshControl.endRefreshing()
+                tableToRefresh.userInteractionEnabled = true
+                tableToRefresh.reloadData()
             }
         }
     }
@@ -98,7 +100,6 @@ class Menu {
             savedLunch = menu.arrayOfMeals.first!.lunch
             savedDinner = menu.arrayOfMeals.first!.dinner
         }
-        
         
         savedMeals.setValue(savedBreakfast, forKey: "MealBreakfast")
         savedMeals.setValue(savedLunch, forKey: "MealLunch")
