@@ -42,9 +42,6 @@ class Day {
         self.imageName = imageName
         self.isFootball = isFootball
         self.needsDisplay = needsDisplay
-        
-        
-        
     }
 }
 
@@ -63,7 +60,5 @@ class Meal {
         self.dinner = dinner
         self.dayOfWeek = dayOfWeek
         self.dateString = dateString
-        
     }
-    
 }

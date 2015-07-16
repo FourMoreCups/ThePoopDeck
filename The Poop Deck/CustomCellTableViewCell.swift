@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import QuartzCore
 import Foundation
 
 var dayPic: UIImageView = UIImageView()
-var pictureArray = ["r1.png", "r2.png", "r3.png", "r4.png"]
-var randomIndexOfPictureArray = Int(arc4random_uniform(UInt32(pictureArray.count)))
 
 class CustomCellTableViewCell: UITableViewCell {
     
@@ -45,41 +42,7 @@ class CustomCellTableViewCell: UITableViewCell {
         self.mainView.alpha = 1.0
         
         dayPicture.image = UIImage(named: imageName)
-        
-        //        dayPic = UIImageView(image: UIImage(named: imageName))
-        //        dayPic.frame = CGRectMake(UIScreen.mainScreen().bounds.width * 0.6, 25, 150, 150)
-        //        dayPic.layer.borderWidth = 1
-        //        dayPic.layer.borderColor = UIColor.clearColor().CGColor
-        //        self.mainView.addSubview(dayPic)
     }
-    
-    func handleLongPress(){
-        
-        //dayPic.transform = CGAffineTransformMakeRotation(CGFloat(0.0))
-        //println("hi")
-        let fullRotation = CGFloat(2*M_PI)
-        
-        let animation = CAKeyframeAnimation()
-        animation.keyPath = "transform.rotation.z"
-        animation.duration = 1
-        animation.removedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
-        animation.repeatCount = Float(1)
-        animation.values = [M_PI/16, M_PI/32, 0]
-        
-        dayPic.layer.addAnimation(animation, forKey: "rotate")
-        
-        UIView.animateWithDuration(4.0, delay: 1.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-            dayPic.frame = CGRectMake(0, 0, 250, 250)
-            }, completion: nil)
-        
-        
-    }
-    
-    
-    
-    
-    
 }
 
 class CustomMealCellTableViewCell: UITableViewCell {
@@ -89,8 +52,6 @@ class CustomMealCellTableViewCell: UITableViewCell {
     @IBOutlet weak var breakfastLabel: UILabel!
     @IBOutlet weak var lunchLabel: UILabel!
     @IBOutlet weak var dinnerLabel: UILabel!
-    //@IBOutlet weak var randomImage: UIImageView!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -109,18 +70,6 @@ class CustomMealCellTableViewCell: UITableViewCell {
         self.dinnerLabel.text = dinnerLabel
         
         var dayComponent = dayComponentFromString(dateString)
-        
-        //randomImage.image = UIImage(named: "r" + String(dayComponent) + ".png")
-        
-        //        dayPic = UIImageView(image: UIImage(named: "r" + String(dayComponent) + ".png"))
-        //
-        //        dayPic.layer.anchorPoint = CGPointMake(0.5, 0.5)
-        //        dayPic.frame = CGRectMake(UIScreen.mainScreen().bounds.width * 0.60, 30, 150, 150)
-        //        self.mainView.addSubview(dayPic)
-        
-        
-        
-        
     }
     
     func convertStringToDate(aDateString: String) -> NSDate {
@@ -137,9 +86,7 @@ class CustomMealCellTableViewCell: UITableViewCell {
         let components = calendar.components(NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay, fromDate: date)
         //println(components.day)
         return components.day
-        
     }
-    
 }
 
 

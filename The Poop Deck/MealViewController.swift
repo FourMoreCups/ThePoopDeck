@@ -39,9 +39,21 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
             didTapOtherView = true
         }
         navigationController?.navigationBar.topItem?.title = "The Meals"
-        if (refreshControl.refreshing == false) && (menu.arrayOfMeals.isEmpty) {
-            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
+//        if (refreshControl.refreshing == false) && (menu.arrayOfMeals.isEmpty) {
+//            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
+//        }
+        if (isViewLoaded() && menu.isEmpty() && !refreshControl.refreshing){
+            var promptToReloadAlert = UIAlertController(title: "There's nothing here!", message: "Would you like to reload?", preferredStyle: UIAlertControllerStyle.Alert)
+            promptToReloadAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
+            promptToReloadAlert.addAction(UIAlertAction(title: "Reload", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+                self.handleRepeatOfInitialLoadForMeals()
+                self.mealTableView.reloadData()
+            }))
+                
+            self.presentViewController(promptToReloadAlert, animated: true, completion: nil)
         }
+        
+        self.mealTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,6 +63,10 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func handleRefreshForMeals(){
         menu.loadMealsIntoMenu(isReloading: true, tableToRefresh: mealTableView)
+    }
+    
+    func handleRepeatOfInitialLoadForMeals(){
+        menu.loadMealsIntoMenu(isReloading: false, tableToRefresh: mealTableView)
     }
     
     func convertDateToString(aDate: NSDate) -> String {

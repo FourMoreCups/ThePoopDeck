@@ -28,17 +28,17 @@ class ViewController: UIViewController {
         addImageAboveTableViewController(myTableViewController: myTableView)
         myTableView.reloadData()
         
-        //BACKGROUND EXECUTION
-        backgroundTaskIdentifier = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ () -> Void in
-            UIApplication.sharedApplication().endBackgroundTask(self.backgroundTaskIdentifier)
-        })
-        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "update", userInfo: nil, repeats: true)
+        //BACKGROUND EXECUTION for Apple Watch in iOS9
+//        backgroundTaskIdentifier = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ () -> Void in
+//            UIApplication.sharedApplication().endBackgroundTask(self.backgroundTaskIdentifier)
+//        })
+//        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "update", userInfo: nil, repeats: true)
         
     }
     
-    func update(){
-
-    }
+//    func update(){
+//
+//    }
     
     override func viewDidAppear(animated: Bool) {
         navigationController?.navigationBar.topItem?.title = "The Days"
@@ -117,10 +117,6 @@ class ViewController: UIViewController {
         cell.selectionStyle = UITableViewCellSelectionStyle.Default
         
         return cell
-        
     }
-
-
-
 }
 

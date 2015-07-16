@@ -54,8 +54,9 @@ class Menu {
     
             if responseObject == nil {
                 print(error?.description)
-                handleAllErrorCodesWithAlerts(error, self)
+                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(handleAllErrorCodesWithAlerts(error), animated: true, completion: nil)
                 hideActivityIndicator()
+                refreshControl.endRefreshing()
                 tableToRefresh.userInteractionEnabled = true
                 return
             }

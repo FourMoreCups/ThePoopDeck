@@ -119,16 +119,18 @@ func genericErrorMessageAlertWithDismissButton(title: String, message: String) -
     return alert
 }
 
-func handleAllErrorCodesWithAlerts(error: NSError?, currentViewController: AnyObject){
+func handleAllErrorCodesWithAlerts(error: NSError?) -> UIAlertController{
     print(error?.code)
     if (error?.code == NSURLErrorNotConnectedToInternet){
-        currentViewController.presentViewController(genericErrorMessageAlertWithDismissButton("Uh Oh!", "Looks like you don't have signal right now, try again later"), animated: true, completion: nil)
+        return genericErrorMessageAlertWithDismissButton("Uh Oh!", "Looks like you don't have signal!")
     }
     if (error?.code == NSURLErrorTimedOut){
-        currentViewController.presentViewController(genericErrorMessageAlertWithDismissButton("Uh Oh!", "The connection timed out. Try again later."), animated: true, completion: nil)
+        return genericErrorMessageAlertWithDismissButton("Uh Oh!", "The connection timed out. Try again later.")
+    }
+    else{
+        return genericErrorMessageAlertWithDismissButton("Oh oh!", "Something went wrong here...")
     }
 }
-
 
 //MARK: Display No Meals to display; Connection works
 
@@ -138,7 +140,6 @@ func displayNoMeals() -> UIAlertController{
     
     noMealsAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
         println("Dismiss")
-        
     }))
     
     return noMealsAlert
