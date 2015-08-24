@@ -52,7 +52,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
             self.presentViewController(promptToReloadAlert, animated: true, completion: nil)
         }
-        
+        menu.reloadUponAppear()
         self.mealTableView.reloadData()
     }
     

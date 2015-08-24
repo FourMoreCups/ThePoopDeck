@@ -34,7 +34,22 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
+    func sendMessageToParentAppWithString(messageText: String) {
+        let infoDictionary = ["message" : messageText]
+        
+        WKInterfaceController.openParentApplication(infoDictionary) {
+            (replyDictionary, error) -> Void in
+            
+            if let castedResponseDictionary = replyDictionary as? [String: String],
+                responseMessage = castedResponseDictionary["message"]
+            {
+                println(responseMessage)
+            }
+        }
+    }
+    
     func updateMeals() {
+        sendMessageToParentAppWithString("Refreshed")
         let defaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
         var displayString: String
         var currentHours = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitHour, fromDate: NSDate())

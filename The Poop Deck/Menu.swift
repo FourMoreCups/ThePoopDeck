@@ -23,6 +23,10 @@ class Menu {
         self.arrayOfMeals.removeAll(keepCapacity: false)
     }
     
+    func getFirstDay() -> String{
+        return self.arrayOfMeals[1].dayOfWeek
+    }
+    
     func isEmpty() -> Bool{
         return self.arrayOfMeals.isEmpty
     }
@@ -85,6 +89,43 @@ class Menu {
                 tableToRefresh.reloadData()
             }
         }
+    }
+    
+    func reloadUponAppear(){
+        //if the app is backgrounded while the day of the week changes
+        //this allows the view to refresh the current menu to get rid of the meal yesterday.
+        //needs to happen without requiring the user to reload the data from the website
+        let day = NSDate().weekdayName
+        if !menu.arrayOfMeals.isEmpty{
+            if convertDayToNumerberForSorting(menu.arrayOfMeals[0].dayOfWeek) < convertDayToNumerberForSorting(day){
+                menu.arrayOfMeals.removeAtIndex(0)
+            }
+        }
+    }
+    
+    private func convertDayToNumerberForSorting(dayOfWeek: String) -> Int?{
+        var dayNum: Int?
+        switch dayOfWeek{
+        case "Sunday":
+            dayNum = 1
+        case "Monday":
+            dayNum = 2
+        case "Tuesday":
+            dayNum = 3
+        case "Wednesday":
+            dayNum = 4
+        case "Thursday":
+            dayNum = 5
+        case "Friday":
+            dayNum = 6
+        case "Saturday":
+            dayNum = 7
+        case "PSA":
+            dayNum = 8
+        default:
+            dayNum = 8
+        }
+        return dayNum
     }
     
     func updateAppGroupForMeals(){

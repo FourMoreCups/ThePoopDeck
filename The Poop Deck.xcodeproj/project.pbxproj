@@ -30,6 +30,7 @@
 		141232F81B0E98890045E7AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232F71B0E98890045E7AA /* Main.storyboard */; };
 		143E9D431B1FCC55004BA4A3 /* swordIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D411B1FCC55004BA4A3 /* swordIcon@3x.png */; };
 		143E9D441B1FCC55004BA4A3 /* swordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D421B1FCC55004BA4A3 /* swordIcon@2x.png */; };
+		14526E051B8810F20011AFAB /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14526E041B8810F20011AFAB /* Dates.swift */; };
 		1488C6A31B37AB6F00E32B23 /* RadialBars.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1488C6A21B37AB6E00E32B23 /* RadialBars.xcassets */; };
 		1488C6A51B37AC5D00E32B23 /* Buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1488C6A41B37AC5D00E32B23 /* Buttons.xcassets */; };
 		148F78881B0EBBC40056D00E /* RadialBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141233761B0EB0C90045E7AA /* RadialBarController.swift */; };
@@ -107,6 +108,7 @@
 		141233761B0EB0C90045E7AA /* RadialBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialBarController.swift; sourceTree = "<group>"; };
 		143E9D411B1FCC55004BA4A3 /* swordIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "swordIcon@3x.png"; path = "../The Poop Deck WatchKit Extension/swordIcon@3x.png"; sourceTree = "<group>"; };
 		143E9D421B1FCC55004BA4A3 /* swordIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "swordIcon@2x.png"; path = "../The Poop Deck WatchKit Extension/swordIcon@2x.png"; sourceTree = "<group>"; };
+		14526E041B8810F20011AFAB /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		1488C6A21B37AB6E00E32B23 /* RadialBars.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadialBars.xcassets; sourceTree = "<group>"; };
 		1488C6A41B37AC5D00E32B23 /* Buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buttons.xcassets; sourceTree = "<group>"; };
 		14B39C8A1B121F00005D682E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				141232E41B0E927C0045E7AA /* NavigationController.swift */,
 				141232731B0E85810045E7AA /* ViewController.swift */,
 				141232DE1B0E91C40045E7AA /* MealViewController.swift */,
+				14526E041B8810F20011AFAB /* Dates.swift */,
 				1409E9EE1B4AF69F003FF46D /* Menu.swift */,
 				141232E01B0E920A0045E7AA /* HUDRefreshControl.swift */,
 				141232E21B0E92460045E7AA /* JSONLoader.swift */,
@@ -448,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				141232E91B0E92C20045E7AA /* DayModel.swift in Sources */,
+				14526E051B8810F20011AFAB /* Dates.swift in Sources */,
 				141232E31B0E92460045E7AA /* JSONLoader.swift in Sources */,
 				141232E51B0E927C0045E7AA /* NavigationController.swift in Sources */,
 				141232741B0E85810045E7AA /* ViewController.swift in Sources */,
