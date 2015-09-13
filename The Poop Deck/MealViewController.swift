@@ -43,7 +43,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
 //        }
         if (isViewLoaded() && menu.isEmpty() && !refreshControl.refreshing){
-            var promptToReloadAlert = UIAlertController(title: "There's nothing here!", message: "Would you like to reload?", preferredStyle: UIAlertControllerStyle.Alert)
+            let promptToReloadAlert = UIAlertController(title: "There's nothing here!", message: "Would you like to reload?", preferredStyle: UIAlertControllerStyle.Alert)
             promptToReloadAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
             promptToReloadAlert.addAction(UIAlertAction(title: "Reload", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
                 self.handleRepeatOfInitialLoadForMeals()
@@ -88,7 +88,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:CustomMealCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("MealCell") as! CustomMealCellTableViewCell
-        var oneMeal = menu.arrayOfMeals[indexPath.row]
+        let oneMeal = menu.arrayOfMeals[indexPath.row]
         
         
         cell.setCell(oneMeal.dayOfWeek, breakfastLabel: oneMeal.breakfast, lunchLabel: oneMeal.lunch, dinnerLabel: oneMeal.dinner, dateString: oneMeal.dateString)

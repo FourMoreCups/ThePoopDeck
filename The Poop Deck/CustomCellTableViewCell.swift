@@ -75,15 +75,15 @@ class CustomMealCellTableViewCell: UITableViewCell {
     func convertStringToDate(aDateString: String) -> NSDate {
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = ("yyyy-MM-dd")
-        var newDate = dateFormat.dateFromString(aDateString)
+        let newDate = dateFormat.dateFromString(aDateString)
         return newDate!
     }
     
     func dayComponentFromString(dateString: String) -> Int {
-        var date = convertStringToDate(dateString)
+        let date = convertStringToDate(dateString)
         //println(date)
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay, fromDate: date)
+        let components = calendar.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: date)
         //println(components.day)
         return components.day
     }

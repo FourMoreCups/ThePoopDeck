@@ -36,7 +36,7 @@ class GlanceController: WKInterfaceController {
     func updateMeals() {
         let defaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
         var displayString: String
-        var currentHours = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitHour, fromDate: NSDate())
+        let currentHours = NSCalendar.currentCalendar().component(NSCalendarUnit.Hour, fromDate: NSDate())
         
         if currentHours > 19 || currentHours < 8 {
             if (defaults!.stringForKey("MealBreakfast") == nil){

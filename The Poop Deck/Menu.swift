@@ -36,28 +36,38 @@ class Menu {
         let url: NSURL = NSURL(string : urlToRequest)!
         let jsonRequest: NSURLRequest = NSURLRequest(URL: url)
         
-        var jsonResponse: NSURLResponse?
+        //var jsonResponse: NSURLResponse?
         NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: NSOperationQueue.mainQueue()) {
             response, data, error in
+            print(error)
+//            if data == nil {
+//                completionHandler(responseObject: nil, error: error)
+//            } else {
+//                var parseError: NSError?
+//                let jsonResult = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as! NSDictionary?
+//                completionHandler(responseObject: jsonResult, error: error)
+                
+                do {
+                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    completionHandler(responseObject: jsonResult, error: error)
+                }
+                
+                catch {
+                    print(error)
+                }
             
-            if data == nil {
-                completionHandler(responseObject: nil, error: error)
-            } else {
-                var parseError: NSError?
-                let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &parseError) as! NSDictionary?
-                completionHandler(responseObject: jsonResult, error: error)
-            }
+ //           }
         }
     }
     
-    func loadMealsIntoMenu(#isReloading: Bool, tableToRefresh: UITableView) {
+    func loadMealsIntoMenu(isReloading isReloading: Bool, tableToRefresh: UITableView) {
         tableToRefresh.userInteractionEnabled = false
         refreshControl.beginRefreshing()
         self.retrieveJSON(self.urlString) {
             (responseObject, error) -> () in
     
             if responseObject == nil {
-                print(error?.description)
+                print(error?.description, terminator: "")
                 UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(handleAllErrorCodesWithAlerts(error), animated: true, completion: nil)
                 hideActivityIndicator()
                 refreshControl.endRefreshing()
@@ -69,11 +79,11 @@ class Menu {
                     self.arrayOfMeals.removeAll(keepCapacity: false)
                 }
                 for day in self.weekDayArray{
-                    var newResponse: NSArray = responseObject![day] as! NSArray
+                    let newResponse: NSArray = responseObject![day] as! NSArray
                     for obj: AnyObject in newResponse {
-                        var breakfast = (obj.objectForKey("breakfast")! as! String)
-                        var lunch = (obj.objectForKey("lunch")! as! String)
-                        var dinner = obj.objectForKey("dinner")! as! String
+                        let breakfast = (obj.objectForKey("breakfast")! as! String)
+                        let lunch = (obj.objectForKey("lunch")! as! String)
+                        let dinner = obj.objectForKey("dinner")! as! String
                         let dateString = obj.objectForKey("dateString")! as! String
                         let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
                         let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)

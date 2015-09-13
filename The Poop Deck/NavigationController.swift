@@ -48,14 +48,14 @@ class MyTabBarController: UITabBarController {
 }
 
 // Creates a UIColor from a Hex string.
-func colorWithHexString (#hex:String) -> UIColor {
+func colorWithHexString (hex hex:String) -> UIColor {
     var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
     
     if (cString.hasPrefix("#")) {
-        cString = cString.substringFromIndex(advance(cString.startIndex, 1))
+        cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
     }
     
-    if (count(cString) != 6) {
+    if (cString.characters.count != 6) {
         return UIColor.grayColor()
     }
     
@@ -70,7 +70,7 @@ func colorWithHexString (#hex:String) -> UIColor {
     )
 }
 
-func addImageAboveTableViewController(#myTableViewController: UITableView) {
+func addImageAboveTableViewController(myTableViewController myTableViewController: UITableView) {
     let logoAboveView = UIImageView(image: UIImage(named: "tarBucket.png"))
     logoAboveView.contentMode = UIViewContentMode.ScaleAspectFit
     logoAboveView.layer.anchorPoint = logoAboveView.center
@@ -80,7 +80,7 @@ func addImageAboveTableViewController(#myTableViewController: UITableView) {
     myTableViewController.addSubview(logoAboveView)
 }
 
-func changeStatusBarAppearance(#targetNavigationBar: UINavigationBar) {
+func changeStatusBarAppearance(targetNavigationBar targetNavigationBar: UINavigationBar) {
     let blockInStatusBarPlace = UIView(frame: CGRectMake(0, -UIApplication.sharedApplication().statusBarFrame.height, (UIApplication.sharedApplication().statusBarFrame.width), UIApplication.sharedApplication().statusBarFrame.height))
     blockInStatusBarPlace.backgroundColor = UIColor(red: 240.0/250.0, green: 240.0/250.0, blue: 240.0/250.0, alpha: 1.0)
     targetNavigationBar.addSubview(blockInStatusBarPlace)

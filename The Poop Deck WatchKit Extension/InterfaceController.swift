@@ -34,25 +34,25 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
-    func sendMessageToParentAppWithString(messageText: String) {
-        let infoDictionary = ["message" : messageText]
-        
-        WKInterfaceController.openParentApplication(infoDictionary) {
-            (replyDictionary, error) -> Void in
-            
-            if let castedResponseDictionary = replyDictionary as? [String: String],
-                responseMessage = castedResponseDictionary["message"]
-            {
-                println(responseMessage)
-            }
-        }
-    }
+//    func sendMessageToParentAppWithString(messageText: String) {
+//        let infoDictionary = ["message" : messageText]
+//        
+//        WKInterfaceController.openParentApplication(infoDictionary) {
+//            (replyDictionary, error) -> Void in
+//            
+//            if let castedResponseDictionary = replyDictionary as? [String: String],
+//                responseMessage = castedResponseDictionary["message"]
+//            {
+//                print(responseMessage)
+//            }
+//        }
+//    }
     
     func updateMeals() {
-        sendMessageToParentAppWithString("Refreshed")
+        //sendMessageToParentAppWithString("Refreshed")
         let defaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
         var displayString: String
-        var currentHours = NSCalendar.currentCalendar().component(NSCalendarUnit.CalendarUnitHour, fromDate: NSDate())
+        let currentHours = NSCalendar.currentCalendar().component(NSCalendarUnit.Hour, fromDate: NSDate())
         
         if currentHours > 19 || currentHours < 8 {
             if (defaults!.stringForKey("MealBreakfast") != nil){

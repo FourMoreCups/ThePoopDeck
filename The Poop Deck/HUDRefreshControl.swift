@@ -27,7 +27,7 @@ var fetchErrorMessage: UIAlertController = UIAlertController()
 var refreshTime: NSTimer = NSTimer()
 
 
-func addPictureToViewWithAlpha(#targetTableView: UITableView, #imageName: String, #alpha: CGFloat, #contentMode: UIViewContentMode){
+func addPictureToViewWithAlpha(targetTableView targetTableView: UITableView, imageName: String, alpha: CGFloat, contentMode: UIViewContentMode){
     targetTableView.clipsToBounds = true
     targetTableView.backgroundView = UIImageView(image: UIImage(named: imageName))
     targetTableView.backgroundView?.alpha = alpha
@@ -38,18 +38,13 @@ func showActivityIndicatory(uiView: UIView) {
     
     container.frame = uiView.frame
     container.center = uiView.center
-    container.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight |
-        UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin |
-        UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin
+    container.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
     container.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     
     //make loadingframe and center it in the superview
     loadingView.frame = CGRectMake(0, 0, 200, 200)
     loadingView.center = container.center
-    loadingView.autoresizingMask = (UIViewAutoresizing.FlexibleLeftMargin   |
-        UIViewAutoresizing.FlexibleRightMargin  |
-        UIViewAutoresizing.FlexibleTopMargin    |
-        UIViewAutoresizing.FlexibleBottomMargin)
+    loadingView.autoresizingMask = ([UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin])
     loadingView.backgroundColor = UIColor(red: 50, green: 50, blue: 50, alpha: 0.2)
     loadingView.clipsToBounds = true
     loadingView.layer.cornerRadius = 10
@@ -93,7 +88,7 @@ func customRefreshImageSpinner() {
 }
 
 // MARK: Pull to Refresh
-func addPullToRefreshToTableView(#target: AnyObject?, #tableView: UITableView) {
+func addPullToRefreshToTableView(target target: AnyObject?, tableView: UITableView) {
     refreshControl.addTarget(target, action: "handleRefreshForMeals", forControlEvents: UIControlEvents.ValueChanged)
     tableView.addSubview(refreshControl)
 }
@@ -101,45 +96,45 @@ func addPullToRefreshToTableView(#target: AnyObject?, #tableView: UITableView) {
 //MARK: Display Faiulure To Refresh Button; Connection Error
 
 func displayMealFetchFailure() ->UIAlertController {
-    var message = "We couldn't reach the Mess Hall, try again later."
+    let message = "We couldn't reach the Mess Hall, try again later."
     fetchErrorMessage = UIAlertController(title: "Oh no!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
     
     fetchErrorMessage.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
-        println("dismiss")
+        print("dismiss")
     }))
     
     return fetchErrorMessage
 }
 
 func genericErrorMessageAlertWithDismissButton(title: String, message: String) -> UIAlertController {
-    var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
     alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
-        print("Dismissed Alert")
+        print("Dismissed Alert", terminator: "")
     }))
     return alert
 }
 
 func handleAllErrorCodesWithAlerts(error: NSError?) -> UIAlertController{
-    print(error?.code)
+    print(error?.code, terminator: "")
     if (error?.code == NSURLErrorNotConnectedToInternet){
-        return genericErrorMessageAlertWithDismissButton("Uh Oh!", "Looks like you don't have signal!")
+        return genericErrorMessageAlertWithDismissButton("Uh Oh!", message: "Looks like you don't have signal!")
     }
     if (error?.code == NSURLErrorTimedOut){
-        return genericErrorMessageAlertWithDismissButton("Uh Oh!", "The connection timed out. Try again later.")
+        return genericErrorMessageAlertWithDismissButton("Uh Oh!", message: "The connection timed out. Try again later.")
     }
     else{
-        return genericErrorMessageAlertWithDismissButton("Oh oh!", "Something went wrong here...")
+        return genericErrorMessageAlertWithDismissButton("Oh oh!", message: "Something went wrong here...")
     }
 }
 
 //MARK: Display No Meals to display; Connection works
 
 func displayNoMeals() -> UIAlertController{
-    var message = "Either the meals are not posted this week, or our developers got lazy."
+    let message = "Either the meals are not posted this week, or our developers got lazy."
     noMealsAlert = UIAlertController(title: "Whoops!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
     
     noMealsAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
-        println("Dismiss")
+        print("Dismiss")
     }))
     
     return noMealsAlert

@@ -58,13 +58,13 @@ class RadialBarController: WKInterfaceController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let currentCal = NSCalendar.currentCalendar()
-        var todaysDay = dateFormatter.stringFromDate(NSDate())
+        let todaysDay = dateFormatter.stringFromDate(NSDate())
         
         let startDate: NSDate = dateFormatter.dateFromString(todaysDay)!
         let endDate: NSDate = dateFormatter.dateFromString(target)!
         
         
-        let daysLeft = currentCal.components(NSCalendarUnit.CalendarUnitDay, fromDate: startDate, toDate: endDate, options: nil)
+        let daysLeft = currentCal.components(NSCalendarUnit.Day, fromDate: startDate, toDate: endDate, options: [])
         let intDaysLeft = daysLeft.day
         
         //take off one to account for "butts"

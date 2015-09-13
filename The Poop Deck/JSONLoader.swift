@@ -16,16 +16,24 @@ func retrieveJSON(urlToRequest: String, completionHandler:(responseObject: NSDic
     let url: NSURL = NSURL(string: urlToRequest)!
     let jsonRequest: NSURLRequest = NSURLRequest(URL: url)
     
-    var jsonResponse: NSURLResponse?
+    let jsonResponse: NSURLResponse?
     NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: NSOperationQueue.mainQueue()) {
         response, data, error in
         
-        if data == nil {
-            completionHandler(responseObject: nil, error: error)
-        } else {
-            var parseError: NSError?
-            let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers, error: &parseError) as! NSDictionary?
-            completionHandler(responseObject: jsonResult, error: error)
-        }
+//        if data == nil {
+//            completionHandler(responseObject: nil, error: error)
+//        } else {
+//            var parseError: NSError?
+//            let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSDictionary?
+            do {
+                let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                completionHandler(responseObject: jsonResult, error: error)
+            }
+                
+            catch {
+                print(error)
+            }
+            
+//        }
     }
 }
