@@ -40,9 +40,9 @@ class Menu {
         NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: NSOperationQueue.mainQueue()) {
             response, data, error in
             print(error)
-//            if data == nil {
-//                completionHandler(responseObject: nil, error: error)
-//            } else {
+           if data == nil {
+                completionHandler(responseObject: nil, error: error)
+            } else {
 //                var parseError: NSError?
 //                let jsonResult = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as! NSDictionary?
 //                completionHandler(responseObject: jsonResult, error: error)
@@ -51,12 +51,12 @@ class Menu {
                     let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     completionHandler(responseObject: jsonResult, error: error)
                 }
-                
-                catch {
+                catch let error as NSError?{
                     print(error)
+                    completionHandler(responseObject: nil, error: error)
                 }
             
- //           }
+            }
         }
     }
     
