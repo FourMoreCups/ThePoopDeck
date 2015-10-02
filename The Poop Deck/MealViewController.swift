@@ -35,6 +35,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         if (didTapOtherView == false){
             didTapOtherView = true
         }

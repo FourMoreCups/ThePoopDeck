@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     
     var arrayOfDates: [Day] = [Day]()
-    var backgroundTaskIdentifier = UIBackgroundTaskIdentifier()
+    //var backgroundTaskIdentifier = UIBackgroundTaskIdentifier()
     
     let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
 
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         
         self.setUpDays()
         addImageAboveTableViewController(myTableViewController: myTableView)
+        
         myTableView.reloadData()
         
         //BACKGROUND EXECUTION for Apple Watch in iOS9
@@ -100,6 +101,7 @@ class ViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         
         let cell:CustomCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCellTableViewCell
         

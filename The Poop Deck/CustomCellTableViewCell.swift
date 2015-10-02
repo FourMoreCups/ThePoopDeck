@@ -69,7 +69,7 @@ class CustomMealCellTableViewCell: UITableViewCell {
         self.lunchLabel.text = lunchLabel
         self.dinnerLabel.text = dinnerLabel
         
-        var dayComponent = dayComponentFromString(dateString)
+        //var dayComponent = dayComponentFromString(dateString)
     }
     
     func convertStringToDate(aDateString: String) -> NSDate {

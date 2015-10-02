@@ -16,7 +16,7 @@ func retrieveJSON(urlToRequest: String, completionHandler:(responseObject: NSDic
     let url: NSURL = NSURL(string: urlToRequest)!
     let jsonRequest: NSURLRequest = NSURLRequest(URL: url)
     
-    let jsonResponse: NSURLResponse?
+    //let jsonResponse: NSURLResponse?
     NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: NSOperationQueue.mainQueue()) {
         response, data, error in
         

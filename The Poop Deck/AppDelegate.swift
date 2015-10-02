@@ -13,6 +13,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
+    enum ShortcutType: String {
+        case MealShortcut = "com.seandeaton.The-Poop-Deck.mealshortcut"
+    }
     
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
         if let infoDictionary = userInfo as? [String: String],
@@ -30,7 +34,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        var launchedFromShortcut = false
+        //check for shortcut item
+        
+        if #available(iOS 9.0, *) {
+            if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as! UIApplicationShortcutItem?{
+                launchedFromShortcut = true
+                self.handleShortcutItem(shortcutItem)
+            }
+        } else {
+            // Fallback on earlier versions
+        }
         return true
+    }
+    
+    @available(iOS 9.0, *)
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        print("shortcutLaunched")
+        self.handleShortcutItem(shortcutItem)
+    }
+    
+    @available(iOS 9.0, *)
+    func handleShortcutItem(shortcutIcon: UIApplicationShortcutItem) -> Bool{
+        var handled = false
+        
+        if let shortcutType = ShortcutType.init(rawValue: shortcutIcon.type){
+            print(shortcutIcon.type)
+            let rootNavViewController = window!.rootViewController as? UINavigationController
+            rootNavViewController?.popToRootViewControllerAnimated(false)
+            
+            switch shortcutType{
+            case .MealShortcut:
+                print("case acheived, present meals")
+                let tabBar = window?.rootViewController!.childViewControllers[0] as! MyTabBarController
+                tabBar.loadMealsTab()
+                handled = true
+            }
+        }
+        
+        return handled
     }
 
     func applicationWillResignActive(application: UIApplication) {

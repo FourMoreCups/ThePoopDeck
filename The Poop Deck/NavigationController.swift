@@ -14,6 +14,7 @@ let customYellowColor: UIColor = colorWithHexString(hex: "FFC52E")
 class MainController: UINavigationController {
     
     override func viewDidLoad() {
+        self.hidesBottomBarWhenPushed = false
         //self.navigationBar.barTintColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1.0)
         self.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
         self.navigationBar.shadowImage = nil
@@ -35,8 +36,13 @@ class MainController: UINavigationController {
 
 class MyTabBarController: UITabBarController {
     override func viewDidLoad(){
+        self.hidesBottomBarWhenPushed = false
         self.tabBarController?.tabBar.tintColor = UIColor(red: 240.0, green: 240.0, blue: 240.0, alpha: 1.0)
         addBorderToTabBar()
+    }
+    
+    func loadMealsTab(){
+        self.selectedViewController = self.viewControllers![1]
     }
     
     func addBorderToTabBar(){
