@@ -144,7 +144,7 @@ public extension NSDate {
         let (date,interval) = self.firstWeekDate()
         return date.day
     }
-    
+
     /// Return the last day of the week
     var lastDayOfWeek : Int {
         let (startWeek,interval) = self.firstWeekDate()
