@@ -15,7 +15,6 @@
 		141232881B0E85810045E7AA /* The_Poop_DeckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232871B0E85810045E7AA /* The_Poop_DeckTests.swift */; };
 		1412329B1B0E85BD0045E7AA /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412329A1B0E85BD0045E7AA /* InterfaceController.swift */; };
 		1412329D1B0E85BD0045E7AA /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412329C1B0E85BD0045E7AA /* NotificationController.swift */; };
-		1412329F1B0E85BD0045E7AA /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412329E1B0E85BD0045E7AA /* GlanceController.swift */; };
 		141232A11B0E85BD0045E7AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141232A01B0E85BD0045E7AA /* Images.xcassets */; };
 		141232AD1B0E85BD0045E7AA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232AB1B0E85BD0045E7AA /* Interface.storyboard */; };
 		141232AF1B0E85BD0045E7AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141232AE1B0E85BD0045E7AA /* Images.xcassets */; };
@@ -28,7 +27,11 @@
 		141232F81B0E98890045E7AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232F71B0E98890045E7AA /* Main.storyboard */; };
 		143E9D431B1FCC55004BA4A3 /* swordIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D411B1FCC55004BA4A3 /* swordIcon@3x.png */; };
 		143E9D441B1FCC55004BA4A3 /* swordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D421B1FCC55004BA4A3 /* swordIcon@2x.png */; };
-		14526E051B8810F20011AFAB /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14526E041B8810F20011AFAB /* Dates.swift */; };
+		145507711C2E09D7009BBFF8 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232AB1B0E85BD0045E7AA /* Interface.storyboard */; };
+		145507781C2E1B89009BBFF8 /* WatchMenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145507761C2E1B89009BBFF8 /* WatchMenuRow.swift */; };
+		145507791C2E1D2E009BBFF8 /* WatchMenuInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141A44CF1C2CD75300513AAE /* WatchMenuInterface.swift */; };
+		1455077B1C2E21AB009BBFF8 /* WatchMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455077A1C2E21AB009BBFF8 /* WatchMenu.swift */; };
+		1455077D1C30774C009BBFF8 /* GraduationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455077C1C30774C009BBFF8 /* GraduationClass.swift */; };
 		1488C6A31B37AB6F00E32B23 /* RadialBars.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1488C6A21B37AB6E00E32B23 /* RadialBars.xcassets */; };
 		1488C6A51B37AC5D00E32B23 /* Buttons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1488C6A41B37AC5D00E32B23 /* Buttons.xcassets */; };
 		148F78881B0EBBC40056D00E /* RadialBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141233761B0EB0C90045E7AA /* RadialBarController.swift */; };
@@ -36,6 +39,8 @@
 		1498ACD31BA4A65E009362C0 /* The Poop Deck WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 141232A41B0E85BD0045E7AA /* The Poop Deck WatchKit App.app */; };
 		14B39C8B1B121F00005D682E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14B39C8A1B121F00005D682E /* Settings.bundle */; };
 		14D88E411B101D06003D4A8A /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D88E401B101D06003D4A8A /* WatchKit.framework */; };
+		14EFFCAE1C2B79B600E40973 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EFFCAD1C2B79B600E40973 /* Dates.swift */; };
+		14EFFCAF1C2B79B600E40973 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EFFCAD1C2B79B600E40973 /* Dates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +108,6 @@
 		141232991B0E85BD0045E7AA /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1412329A1B0E85BD0045E7AA /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		1412329C1B0E85BD0045E7AA /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		1412329E1B0E85BD0045E7AA /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		141232A01B0E85BD0045E7AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		141232A41B0E85BD0045E7AA /* The Poop Deck WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Poop Deck WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		141232AA1B0E85BD0045E7AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,15 +121,20 @@
 		141232E81B0E92C20045E7AA /* DayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		141232F71B0E98890045E7AA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		141233761B0EB0C90045E7AA /* RadialBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialBarController.swift; sourceTree = "<group>"; };
+		141A44CF1C2CD75300513AAE /* WatchMenuInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMenuInterface.swift; sourceTree = "<group>"; };
 		143E9D411B1FCC55004BA4A3 /* swordIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "swordIcon@3x.png"; path = "../The Poop Deck WatchKit Extension/swordIcon@3x.png"; sourceTree = "<group>"; };
 		143E9D421B1FCC55004BA4A3 /* swordIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "swordIcon@2x.png"; path = "../The Poop Deck WatchKit Extension/swordIcon@2x.png"; sourceTree = "<group>"; };
-		14526E041B8810F20011AFAB /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
+		145507761C2E1B89009BBFF8 /* WatchMenuRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMenuRow.swift; sourceTree = "<group>"; };
+		1455077A1C2E21AB009BBFF8 /* WatchMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMenu.swift; sourceTree = "<group>"; };
+		1455077C1C30774C009BBFF8 /* GraduationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraduationClass.swift; sourceTree = "<group>"; };
 		1488C6A21B37AB6E00E32B23 /* RadialBars.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RadialBars.xcassets; sourceTree = "<group>"; };
 		1488C6A41B37AC5D00E32B23 /* Buttons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buttons.xcassets; sourceTree = "<group>"; };
 		14B39C8A1B121F00005D682E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		14D88E401B101D06003D4A8A /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		14D88E421B101DC0003D4A8A /* The Poop Deck WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Poop Deck WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		14D88E431B101DCF003D4A8A /* The Poop Deck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Poop Deck.entitlements"; sourceTree = "<group>"; };
+		14EFFCAC1C2B79B500E40973 /* The Poop Deck WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Poop Deck WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
+		14EFFCAD1C2B79B600E40973 /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,10 +191,10 @@
 			children = (
 				14D88E431B101DCF003D4A8A /* The Poop Deck.entitlements */,
 				141232711B0E85810045E7AA /* AppDelegate.swift */,
+				14EFFCAD1C2B79B600E40973 /* Dates.swift */,
 				141232E41B0E927C0045E7AA /* NavigationController.swift */,
 				141232731B0E85810045E7AA /* ViewController.swift */,
 				141232DE1B0E91C40045E7AA /* MealViewController.swift */,
-				14526E041B8810F20011AFAB /* Dates.swift */,
 				1409E9EE1B4AF69F003FF46D /* Menu.swift */,
 				141232E01B0E920A0045E7AA /* HUDRefreshControl.swift */,
 				141232E21B0E92460045E7AA /* JSONLoader.swift */,
@@ -197,6 +206,7 @@
 				1412327A1B0E85810045E7AA /* LaunchScreen.xib */,
 				14B39C8A1B121F00005D682E /* Settings.bundle */,
 				1412326F1B0E85810045E7AA /* Supporting Files */,
+				14EFFCAC1C2B79B500E40973 /* The Poop Deck WatchKit App-Bridging-Header.h */,
 			);
 			path = "The Poop Deck";
 			sourceTree = "<group>";
@@ -232,8 +242,8 @@
 				14D88E421B101DC0003D4A8A /* The Poop Deck WatchKit Extension.entitlements */,
 				1412329A1B0E85BD0045E7AA /* InterfaceController.swift */,
 				141233761B0EB0C90045E7AA /* RadialBarController.swift */,
+				1455077C1C30774C009BBFF8 /* GraduationClass.swift */,
 				1412329C1B0E85BD0045E7AA /* NotificationController.swift */,
-				1412329E1B0E85BD0045E7AA /* GlanceController.swift */,
 				141232A01B0E85BD0045E7AA /* Images.xcassets */,
 				141232971B0E85BD0045E7AA /* Supporting Files */,
 			);
@@ -253,6 +263,9 @@
 			isa = PBXGroup;
 			children = (
 				141232AB1B0E85BD0045E7AA /* Interface.storyboard */,
+				145507761C2E1B89009BBFF8 /* WatchMenuRow.swift */,
+				141A44CF1C2CD75300513AAE /* WatchMenuInterface.swift */,
+				1455077A1C2E21AB009BBFF8 /* WatchMenu.swift */,
 				141232AE1B0E85BD0045E7AA /* Images.xcassets */,
 				141232A91B0E85BD0045E7AA /* Supporting Files */,
 			);
@@ -359,7 +372,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Sean Deaton";
 				TargetAttributes = {
@@ -439,6 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				145507711C2E09D7009BBFF8 /* Interface.storyboard in Resources */,
 				141232A11B0E85BD0045E7AA /* Images.xcassets in Resources */,
 				143E9D441B1FCC55004BA4A3 /* swordIcon@2x.png in Resources */,
 				143E9D431B1FCC55004BA4A3 /* swordIcon@3x.png in Resources */,
@@ -463,7 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				141232E91B0E92C20045E7AA /* DayModel.swift in Sources */,
-				14526E051B8810F20011AFAB /* Dates.swift in Sources */,
+				14EFFCAE1C2B79B600E40973 /* Dates.swift in Sources */,
 				141232E31B0E92460045E7AA /* JSONLoader.swift in Sources */,
 				141232E51B0E927C0045E7AA /* NavigationController.swift in Sources */,
 				141232741B0E85810045E7AA /* ViewController.swift in Sources */,
@@ -487,10 +501,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				145507791C2E1D2E009BBFF8 /* WatchMenuInterface.swift in Sources */,
 				1412329D1B0E85BD0045E7AA /* NotificationController.swift in Sources */,
+				14EFFCAF1C2B79B600E40973 /* Dates.swift in Sources */,
 				1412329B1B0E85BD0045E7AA /* InterfaceController.swift in Sources */,
+				1455077D1C30774C009BBFF8 /* GraduationClass.swift in Sources */,
 				148F78881B0EBBC40056D00E /* RadialBarController.swift in Sources */,
-				1412329F1B0E85BD0045E7AA /* GlanceController.swift in Sources */,
+				145507781C2E1B89009BBFF8 /* WatchMenuRow.swift in Sources */,
+				1455077B1C2E21AB009BBFF8 /* WatchMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -698,10 +717,13 @@
 				);
 				IBSC_MODULE = The_Poop_Deck_WatchKit_Extension;
 				INFOPLIST_FILE = "The Poop Deck WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seandeaton.The-Poop-Deck.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "The Poop Deck/The Poop Deck WatchKit App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -711,14 +733,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = The_Poop_Deck_WatchKit_Extension;
 				INFOPLIST_FILE = "The Poop Deck WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seandeaton.The-Poop-Deck.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "The Poop Deck/The Poop Deck WatchKit App-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};

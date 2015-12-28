@@ -10,7 +10,31 @@ import WatchKit
 import Foundation
 
 class RadialBarController: WKInterfaceController {
+    
+    var userGraduatingClass = Graduation()
 
+    @IBAction func select2016() {
+        self.userGraduatingClass.classOf = 2016
+        self.userGraduatingClass.percentCompletedInt = self.calculatePercentage(self.userGraduatingClass.classOf)
+        self.radialAnimation()
+    }
+    @IBAction func select2017() {
+        self.userGraduatingClass.classOf = 2017
+        self.userGraduatingClass.percentCompletedInt = self.calculatePercentage(self.userGraduatingClass.classOf)
+        self.radialAnimation()
+    }
+    @IBAction func select2018() {
+        self.userGraduatingClass.classOf = 2018
+        self.userGraduatingClass.percentCompletedInt = self.calculatePercentage(self.userGraduatingClass.classOf)
+        self.radialAnimation()
+    }
+    @IBAction func select2019() {
+        self.userGraduatingClass.classOf = 2019
+        self.userGraduatingClass.percentCompletedInt = self.calculatePercentage(self.userGraduatingClass.classOf)
+        self.radialAnimation()
+    }
+    
+    
     @IBOutlet weak var radialBarImage: WKInterfaceImage!
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -21,12 +45,43 @@ class RadialBarController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+//        var daysCompleted:Int
+//        
+//        let userDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
+//        let selectedClass = userDefaults!.integerForKey("class")
+//        print(selectedClass)
+//        
+//        switch self.userGraduatingClass.classOf {
+//        case 2016:
+//            daysCompleted = theDays("2012-07-02")
+//        case 2017:
+//            daysCompleted = theDays("2013-07-02")
+//        case 2018:
+//            daysCompleted = theDays("2014-07-02")
+//        case 2019:
+//            daysCompleted = theDays("2015-07-02")
+//        default:
+//            daysCompleted = theDays("2012-06-29")
+//        }
+//        print(daysCompleted)
+//        
+//        self.userGraduatingClass.percentCompletedInt = (Double(abs(daysCompleted))/1424)*100
+//        print(self.userGraduatingClass.percentCompletedInt)
+        self.userGraduatingClass.percentCompletedInt = self.calculatePercentage(self.userGraduatingClass.classOf)
+        self.radialBarImage.setImageNamed("DayCountDown")
+    }
+    override func didDeactivate() {
+        // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+    }
+    
+    override func didAppear() {
+        super.didAppear()
+        self.radialAnimation()
+    }
+    
+    func calculatePercentage(selectedClass: Int)->Double{
         var daysCompleted:Int
-        
-        let userDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")
-        let selectedClass = userDefaults!.integerForKey("class")
-        print(selectedClass)
-        
         switch selectedClass {
         case 2016:
             daysCompleted = theDays("2012-07-02")
@@ -41,20 +96,15 @@ class RadialBarController: WKInterfaceController {
         }
         print(daysCompleted)
         
-        let percentCompletedInt = (Double(abs(daysCompleted))/1424)*100
-        print(percentCompletedInt)
-        
-        self.radialBarImage.setImageNamed("DayCountDown")
-        self.radialBarImage.startAnimatingWithImagesInRange(NSMakeRange(0, Int(percentCompletedInt)), duration: 0.7, repeatCount: 1)
-        
+        return(Double(abs(daysCompleted))/1424)*100
+
     }
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    
+    func radialAnimation(){
+        self.radialBarImage.startAnimatingWithImagesInRange(NSMakeRange(0, Int(self.userGraduatingClass.percentCompletedInt)), duration: 0.7, repeatCount: 1)
     }
     
     func theDays(target: String) -> Int{
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let currentCal = NSCalendar.currentCalendar()

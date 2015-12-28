@@ -7,44 +7,51 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
+    
 
     enum ShortcutType: String {
         case MealShortcut = "com.seandeaton.The-Poop-Deck.mealshortcut"
     }
-    
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
-        if let infoDictionary = userInfo as? [String: String],
-            message = infoDictionary["message"]
-        {
-            menu.reloadUponAppear()
-            let response = "\(message), and the iPhone app has seen it."
-            
-            let responseDictionary = ["message" : response]
-            
-            reply(responseDictionary)
-        }
-    }
-    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        var launchedFromShortcut = false
         //check for shortcut item
         
         if #available(iOS 9.0, *) {
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as! UIApplicationShortcutItem?{
-                launchedFromShortcut = true
                 self.handleShortcutItem(shortcutItem)
             }
         } else {
             // Fallback on earlier versions
         }
+        
+        if #available(iOS 9.0, *) {
+            if WCSession.isSupported() {
+                let session = WCSession.defaultSession()
+                session.delegate = self
+                session.activateSession()
+                
+                if session.paired.boolValue != true {
+                    print("Apple Watch not paired")
+                }
+                if session.watchAppInstalled.boolValue != true {
+                    print("Apple Watch paired but App not installed")
+                }
+            }
+            else{
+                print("Watch connectivity not supported")
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        
         return true
     }
     
@@ -74,6 +81,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return handled
     }
+    
+    @available(iOS 9.0, *)
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        var replyValue = Dictionary<String, AnyObject>()
+        let cachedMenu = NSUserDefaults.standardUserDefaults().dictionaryForKey("savedMenu")
+        
+        if cachedMenu != nil{
+            if message["currentWeekDay"] != nil {
+                let currentWeekDay = message["currentWeekDay"] as! String
+                let menuDateToDisplayOnWatch = cachedMenu![currentWeekDay] as? NSArray
+                if menuDateToDisplayOnWatch != nil || menuDateToDisplayOnWatch!.count != 0 {
+                    let watchBreakfast = menuDateToDisplayOnWatch![0].objectForKey("breakfast")
+                    let watchLunch = menuDateToDisplayOnWatch![0].objectForKey("lunch")
+                    let watchDinner = menuDateToDisplayOnWatch![0].objectForKey("dinner")
+                    replyValue["breakfast"] = watchBreakfast
+                    replyValue["lunch"] = watchLunch
+                    replyValue["dinner"] = watchDinner
+                    replyHandler(replyValue)
+                }
+            }
+        }
+        else{
+            print("Looks like there was nothing saved for this week's menu. :(")
+        }
+        
+//        if menuDateToDisplayOnWatch == nil {
+//            //reply here
+//        } else {
+//            do {
+//                //let jsonResult = try NSJSONSerialization.JSONObjectWithData(menuDateToDisplayOnWatch, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+//                //print(jsonResult)
+//            }
+//            catch let error as NSError?{
+//                print(error)
+//            }
+//            
+//        }
+
+    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -100,4 +146,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
 

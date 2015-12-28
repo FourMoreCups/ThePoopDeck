@@ -141,7 +141,8 @@ public extension NSDate {
     
     /// Return the first day of the current date's week
     var firstDayOfWeek : Int {
-        let (date,interval) = self.firstWeekDate()
+        //interval
+        let (date,_) = self.firstWeekDate()
         return date.day
     }
 

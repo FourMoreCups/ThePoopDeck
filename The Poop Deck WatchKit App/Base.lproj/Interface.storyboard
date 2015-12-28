@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9tQ-xM-xuE">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9tQ-xM-xuE">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
     </dependencies>
     <scenes>
-        <!--Radial Bar Controller-->
+        <!--Graduation-->
         <scene sceneID="Rhq-lU-6vq">
             <objects>
-                <controller id="nIN-b5-jTe" customClass="RadialBarController" customModule="The_Poop_Deck_WatchKit_Extension">
+                <controller title="Graduation" id="nIN-b5-jTe" customClass="RadialBarController" customModule="The_Poop_Deck_WatchKit_Extension">
                     <items>
                         <imageView width="1" height="1" alignment="center" id="V6t-Zc-bM3"/>
                     </items>
+                    <menu key="menu" id="zOw-Bm-Hc6">
+                        <items>
+                            <menuItem title="Menu Item" image="2016" id="qQ5-E5-BzD">
+                                <connections>
+                                    <action selector="select2016" destination="nIN-b5-jTe" id="iX7-Oq-V4k"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Menu Item" image="2017" id="1rw-cO-O9A">
+                                <connections>
+                                    <action selector="select2017" destination="nIN-b5-jTe" id="Aaq-lJ-Ybp"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Menu Item" image="2018" id="fpm-4Y-RIR">
+                                <connections>
+                                    <action selector="select2018" destination="nIN-b5-jTe" id="JJc-Qk-Aiq"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Menu Item" image="2019" id="AMQ-Mr-2KP">
+                                <connections>
+                                    <action selector="select2019" destination="nIN-b5-jTe" id="5eg-2X-hmw"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="radialBarImage" destination="V6t-Zc-bM3" id="iYf-4y-3TS"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="416" y="347"/>
-        </scene>
-        <!--Glance Interface Controller-->
-        <scene sceneID="BOz-TT-tkC">
-            <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="The_Poop_Deck_WatchKit_App" customModuleProvider="target">
-                    <items>
-                        <group alignment="left" contentMode="left" id="t8f-Gd-c4y">
-                            <items>
-                                <label alignment="left" verticalAlignment="bottom" text="The Meals" id="6lI-ql-HST">
-                                    <color key="textColor" red="1" green="0.73725490196078436" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="font" type="system" pointSize="25"/>
-                                </label>
-                            </items>
-                        </group>
-                        <group alignment="left" id="uCw-4Q-Ouw">
-                            <items>
-                                <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.80000000000000004" id="0GE-hf-eDE"/>
-                            </items>
-                        </group>
-                    </items>
-                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
-                    <connections>
-                        <outlet property="glanceLabel" destination="0GE-hf-eDE" id="JqZ-Jb-7BY"/>
-                        <outlet property="imageGroup" destination="t8f-Gd-c4y" id="dti-mV-fND"/>
-                    </connections>
-                </glanceController>
-            </objects>
-            <point key="canvasLocation" x="235" y="672"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -70,23 +66,32 @@
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>
-        <!--Interface Controller-->
+        <!--The Meals-->
         <scene sceneID="Rxs-hj-XnX">
             <objects>
-                <controller id="9tQ-xM-xuE" customClass="InterfaceController" customModule="The_Poop_Deck_WatchKit_App" customModuleProvider="target">
+                <controller title="The Meals" id="9tQ-xM-xuE" customClass="WatchMenuInterfaceController" customModule="The_Poop_Deck_WatchKit_Extension">
                     <items>
-                        <label width="1" alignment="center" verticalAlignment="center" text="No Meals" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.50000000000000011" id="jBY-53-yBv">
-                            <fontDescription key="font" type="system" pointSize="19"/>
-                        </label>
                         <imageView width="40" height="40" alignment="center" image="swordIcon" contentMode="scaleAspectFit" id="kXA-3x-Ffw"/>
-                        <button width="1" alignment="center" verticalAlignment="bottom" title="Refresh" id="5cA-ep-iD7">
-                            <connections>
-                                <action selector="refreshButton" destination="9tQ-xM-xuE" id="Jxv-SW-lfL"/>
-                            </connections>
-                        </button>
+                        <table alignment="left" id="Tsv-m3-oHQ">
+                            <items>
+                                <tableRow identifier="WatchMenuRow" selectable="NO" id="Iwc-zx-J5P" customClass="WatchMenuRow" customModule="The_Poop_Deck_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="60" alignment="left" id="43F-W8-JVv">
+                                        <items>
+                                            <separator height="1" heightAdjustment="-10" alignment="left" verticalAlignment="center" id="xeJ-Bd-4Zi">
+                                                <color key="color" red="1" green="0.70980392156862748" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                            <label width="81" alignment="center" verticalAlignment="center" text="Updating..." numberOfLines="3" minimumScaleFactor="0.80000000000000004" id="lbb-Hp-Rb3"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="menuLabel" destination="lbb-Hp-Rb3" id="YQW-4k-rHu"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <connections>
-                        <outlet property="mealLabel" destination="jBY-53-yBv" id="xhn-9U-6WI"/>
+                        <outlet property="menu" destination="Tsv-m3-oHQ" id="5Lq-ZO-v09"/>
                         <segue destination="nIN-b5-jTe" kind="relationship" relationship="nextPage" id="Pk4-pz-dCn"/>
                     </connections>
                 </controller>
@@ -94,4 +99,5 @@
             <point key="canvasLocation" x="235" y="347"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.71764705882352942" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
 </document>

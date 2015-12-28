@@ -43,13 +43,11 @@ class Menu {
            if data == nil {
                 completionHandler(responseObject: nil, error: error)
             } else {
-//                var parseError: NSError?
-//                let jsonResult = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as! NSDictionary?
-//                completionHandler(responseObject: jsonResult, error: error)
-                
                 do {
                     let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     completionHandler(responseObject: jsonResult, error: error)
+                    NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "savedMenu")
+                    
                 }
                 catch let error as NSError?{
                     print(error)
@@ -80,6 +78,7 @@ class Menu {
                 }
                 for day in self.weekDayArray{
                     let newResponse: NSArray = responseObject![day] as! NSArray
+                    print(newResponse)
                     for obj: AnyObject in newResponse {
                         let breakfast = (obj.objectForKey("breakfast")! as! String)
                         let lunch = (obj.objectForKey("lunch")! as! String)
@@ -131,7 +130,7 @@ class Menu {
         case "Saturday":
             dayNum = 7
         case "PSA":
-            dayNum = 8
+            dayNum = 0
         default:
             dayNum = 8
         }
@@ -159,6 +158,23 @@ class Menu {
         savedMeals.setValue(savedDinner, forKey: "MealDinner")
         //println(savedMeals.valueForKey("MealDinner"))
     }
+    
+//    var writeJSONtoDefaults(jsonString: String){
+//    
+//    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String:AnyObject]
+                return json
+            } catch {
+                print("Something went wrong")
+            }
+        }
+        return nil
+    }
+    
 
 }
 
