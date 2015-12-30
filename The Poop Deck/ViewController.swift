@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     var arrayOfDates: [Day] = [Day]()
     //var backgroundTaskIdentifier = UIBackgroundTaskIdentifier()
     
-    let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,39 +27,29 @@ class ViewController: UIViewController {
         addImageAboveTableViewController(myTableViewController: myTableView)
         
         myTableView.reloadData()
-        
-        //BACKGROUND EXECUTION for Apple Watch in iOS9
-//        backgroundTaskIdentifier = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ () -> Void in
-//            UIApplication.sharedApplication().endBackgroundTask(self.backgroundTaskIdentifier)
-//        })
-//        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "update", userInfo: nil, repeats: true)
-        
     }
     
-//    func update(){
-//
-//    }
     
     override func viewDidAppear(animated: Bool) {
         navigationController?.navigationBar.topItem?.title = "The Days"
         myTableView.reloadData()
         
-        if (firstLaunch != true) && (UIDevice.currentDevice().userInterfaceIdiom == .Phone) && (didTapOtherView == false){
-            let alertVC = UIAlertController(title: "Have an Apple Watch?", message: "Stay updated on your progress in the Academy - update your class year in Settings!", preferredStyle: UIAlertControllerStyle.ActionSheet)
-            alertVC.addAction(UIAlertAction(title: "Open Settings", style: .Default) { value in
-                print("tapped default button", terminator: "")
-                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-                })
-            alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
-                print("dismiss", terminator: "")
-            }))
-            self.parentViewController!.presentViewController(alertVC, animated: true, completion: nil)
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
-            
-            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealBreakfast")
-            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealLunch")
-            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealDinner")
-        }
+//        if (firstLaunch != true) && (UIDevice.currentDevice().userInterfaceIdiom == .Phone) && (didTapOtherView == false){
+//            let alertVC = UIAlertController(title: "Have an Apple Watch?", message: "Stay updated on your progress in the Academy - update your class year in Settings!", preferredStyle: UIAlertControllerStyle.ActionSheet)
+//            alertVC.addAction(UIAlertAction(title: "Open Settings", style: .Default) { value in
+//                print("tapped default button", terminator: "")
+//                UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+//                })
+//            alertVC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
+//                print("dismiss", terminator: "")
+//            }))
+//            self.parentViewController!.presentViewController(alertVC, animated: true, completion: nil)
+//            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
+//            
+//            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealBreakfast")
+//            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealLunch")
+//            savedMeals.setValue("Open Meal Tab on iPhone", forKey: "MealDinner")
+//        }
     }
     
     

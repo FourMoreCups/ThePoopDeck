@@ -43,8 +43,8 @@ class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
                     }
                     
                     }, errorHandler: { (mealFetchError) -> Void in
-                        self.watchMenuDataBase.mealDictionary["breakfast"]="Army Football isn't the only one fumbling!"
-                        self.watchMenuDataBase.mealDictionary["lunch"] = "Try refreshing the meals on your phone!"
+                        self.watchMenuDataBase.mealDictionary["breakfast"]="Here's a nondescript error."
+                        self.watchMenuDataBase.mealDictionary["lunch"] = "Try refreshing on your phone!"
                         self.watchMenuDataBase.mealDictionary["dinner"] = "Otherwise, contact x74803."
                         self.loadTable()
                         print(mealFetchError)
@@ -59,7 +59,7 @@ class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
                 }
                 else{
                 //Not reachable
-                    self.watchMenuDataBase.mealDictionary["breakfast"]="Can't seem to pair with your phone."
+                    self.watchMenuDataBase.mealDictionary["breakfast"]="Can't seem to pair with phone."
                     self.watchMenuDataBase.mealDictionary["lunch"] = "Try again when in range."
                     self.watchMenuDataBase.mealDictionary["dinner"] = "Otherwise, contact x74803."
                     self.loadTable()
