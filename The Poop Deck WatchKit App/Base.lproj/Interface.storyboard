@@ -14,22 +14,22 @@
                     </items>
                     <menu key="menu" id="zOw-Bm-Hc6">
                         <items>
-                            <menuItem title="Menu Item" image="2016" id="qQ5-E5-BzD">
+                            <menuItem title="2016" image="2016" id="qQ5-E5-BzD">
                                 <connections>
                                     <action selector="select2016" destination="nIN-b5-jTe" id="iX7-Oq-V4k"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Menu Item" image="2017" id="1rw-cO-O9A">
+                            <menuItem title="2017" image="2017" id="1rw-cO-O9A">
                                 <connections>
                                     <action selector="select2017" destination="nIN-b5-jTe" id="Aaq-lJ-Ybp"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Menu Item" image="2018" id="fpm-4Y-RIR">
+                            <menuItem title="2018" image="2018" id="fpm-4Y-RIR">
                                 <connections>
                                     <action selector="select2018" destination="nIN-b5-jTe" id="JJc-Qk-Aiq"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Menu Item" image="2019" id="AMQ-Mr-2KP">
+                            <menuItem title="2019" image="2019" id="AMQ-Mr-2KP">
                                 <connections>
                                     <action selector="select2019" destination="nIN-b5-jTe" id="5eg-2X-hmw"/>
                                 </connections>

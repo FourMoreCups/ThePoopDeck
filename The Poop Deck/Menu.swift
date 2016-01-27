@@ -14,7 +14,7 @@ var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton
 class Menu {
     var weekDayArray = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
     var arrayOfMeals: [Meal] = [Meal]()
-    let urlString = ("http://www.seandeaton.com/meals/Meals")
+    let urlString = ("https://www.seandeaton.com/meals/Meals")
     
     init(){
     }
@@ -78,7 +78,7 @@ class Menu {
                 }
                 for day in self.weekDayArray{
                     let newResponse: NSArray = responseObject![day] as! NSArray
-                    print(newResponse)
+                    //print(newResponse)
                     for obj: AnyObject in newResponse {
                         let breakfast = (obj.objectForKey("breakfast")! as! String)
                         let lunch = (obj.objectForKey("lunch")! as! String)
