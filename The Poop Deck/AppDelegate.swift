@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         // Override point for customization after application launch.
         //check for shortcut item
         
+        inititializeNotificationsServices()
+        
         if #available(iOS 9.0, *) {
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as! UIApplicationShortcutItem?{
                 self.handleShortcutItem(shortcutItem)
@@ -66,7 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         var handled = false
         
         if let shortcutType = ShortcutType.init(rawValue: shortcutIcon.type){
-            print(shortcutIcon.type)
             let rootNavViewController = window!.rootViewController as? UINavigationController
             rootNavViewController?.popToRootViewControllerAnimated(false)
             
@@ -105,20 +106,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         else{
             print("Looks like there was nothing saved for this week's menu. :(")
         }
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        var tokenToCompare = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "")
+        tokenToCompare = tokenToCompare.stringByReplacingOccurrencesOfString(">", withString: "")
+        tokenToCompare = tokenToCompare.stringByReplacingOccurrencesOfString(" ", withString: "")
         
-//        if menuDateToDisplayOnWatch == nil {
-//            //reply here
-//        } else {
-//            do {
-//                //let jsonResult = try NSJSONSerialization.JSONObjectWithData(menuDateToDisplayOnWatch, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-//                //print(jsonResult)
-//            }
-//            catch let error as NSError?{
-//                print(error)
-//            }
-//            
-//        }
-
+        if (NSUserDefaults.standardUserDefaults().boolForKey("didSaveDeviceToken") == false) || (NSUserDefaults.standardUserDefaults().objectForKey("savedDeviceToken") as! String != tokenToCompare){
+            uploadDeviceTokens(deviceToken.description)
+        }
+    }
+    
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error.localizedDescription)
     }
 
     func applicationWillResignActive(application: UIApplication) {

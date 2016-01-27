@@ -25,6 +25,7 @@
 		141232E71B0E92AA0045E7AA /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232E61B0E92AA0045E7AA /* CustomCellTableViewCell.swift */; };
 		141232E91B0E92C20045E7AA /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232E81B0E92C20045E7AA /* DayModel.swift */; };
 		141232F81B0E98890045E7AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232F71B0E98890045E7AA /* Main.storyboard */; };
+		141605981C594B3700C60AA6 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141605971C594B3700C60AA6 /* PushNotifications.swift */; };
 		143E9D431B1FCC55004BA4A3 /* swordIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D411B1FCC55004BA4A3 /* swordIcon@3x.png */; };
 		143E9D441B1FCC55004BA4A3 /* swordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 143E9D421B1FCC55004BA4A3 /* swordIcon@2x.png */; };
 		145507711C2E09D7009BBFF8 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 141232AB1B0E85BD0045E7AA /* Interface.storyboard */; };
@@ -121,6 +122,7 @@
 		141232E81B0E92C20045E7AA /* DayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		141232F71B0E98890045E7AA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		141233761B0EB0C90045E7AA /* RadialBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialBarController.swift; sourceTree = "<group>"; };
+		141605971C594B3700C60AA6 /* PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		141A44CF1C2CD75300513AAE /* WatchMenuInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMenuInterface.swift; sourceTree = "<group>"; };
 		143E9D411B1FCC55004BA4A3 /* swordIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "swordIcon@3x.png"; path = "../The Poop Deck WatchKit Extension/swordIcon@3x.png"; sourceTree = "<group>"; };
 		143E9D421B1FCC55004BA4A3 /* swordIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "swordIcon@2x.png"; path = "../The Poop Deck WatchKit Extension/swordIcon@2x.png"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				1409E9EE1B4AF69F003FF46D /* Menu.swift */,
 				141232E01B0E920A0045E7AA /* HUDRefreshControl.swift */,
 				141232E21B0E92460045E7AA /* JSONLoader.swift */,
+				141605971C594B3700C60AA6 /* PushNotifications.swift */,
 				141232E61B0E92AA0045E7AA /* CustomCellTableViewCell.swift */,
 				141232E81B0E92C20045E7AA /* DayModel.swift */,
 				141232F71B0E98890045E7AA /* Main.storyboard */,
@@ -477,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				141232E91B0E92C20045E7AA /* DayModel.swift in Sources */,
+				141605981C594B3700C60AA6 /* PushNotifications.swift in Sources */,
 				14EFFCAE1C2B79B600E40973 /* Dates.swift in Sources */,
 				141232E31B0E92460045E7AA /* JSONLoader.swift in Sources */,
 				141232E51B0E927C0045E7AA /* NavigationController.swift in Sources */,
