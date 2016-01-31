@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         // Override point for customization after application launch.
         //check for shortcut item
         
-        inititializeNotificationsServices()
+        Push.initializeNotificationServices()
         
         if #available(iOS 9.0, *) {
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as! UIApplicationShortcutItem?{
@@ -118,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         tokenToCompare = tokenToCompare.stringByReplacingOccurrencesOfString(" ", withString: "")
         
         if (NSUserDefaults.standardUserDefaults().boolForKey("didSaveDeviceToken") == false) || (NSUserDefaults.standardUserDefaults().objectForKey("savedDeviceToken") as! String != tokenToCompare){
-            uploadDeviceTokens(deviceToken.description)
+            Push.uploadDeviceToken(deviceToken.description)
         }
     }
     
