@@ -17,7 +17,9 @@ class NotificationScreenController: UIViewController, HolderViewDelegate {
     @IBOutlet var notificationView: UIView!
     @IBOutlet weak var uniformLabel: UILabel!
     @IBAction func refreshButton(sender: AnyObject) {
-        cgrNews.updateNotification()
+        showActivityIndicatory(self.view)
+        self.uniformLabel.text = cgrNews.updateNotification()
+        self.holderView.addImageToCenterOfCircle(cgrNews.checkWhatImageToPlace())
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -28,50 +30,25 @@ class NotificationScreenController: UIViewController, HolderViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        uniformLabel.layer.zPosition = 0
+        
         addHolderView()
         holderView.addOval()
         holderView.wobbleOval()
         
-        //notificationView.addSubview(refreshControl)
+        let vertSpaceBetweenLabelAndImage = NSLayoutConstraint(item: self.uniformLabel, attribute: .Top, relatedBy: .Equal, toItem: self.holderView, attribute: .Bottom, multiplier: 1, constant: 35)
+        NSLayoutConstraint.activateConstraints([vertSpaceBetweenLabelAndImage])
+        
         showActivityIndicatory(self.view)
         
-        
         self.uniformLabel.text = self.cgrNews.updateNotification()
-//        let url = "https://seandeaton.com/push/uniformOfTheDay"
-//        retrieveJSON(url) { (responseObject, error) -> () in
-//            guard error == nil else {
-//                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "pushedUniform")
-//                self.uniformLabel.text = "There was an error updating the duty uniform."
-//                self.notificationRefreshControl.endRefreshing()
-//                hideActivityIndicator()
-//                return
-//            }
-//            let arrayOfUpdates = responseObject!["push"] as! NSArray
-//            NSUserDefaults.standardUserDefaults().setObject(arrayOfUpdates, forKey: "pushedUniform")
-//            self.cgrNews.parseInput(arrayOfUpdates)
-//            print(self.cgrNews.breakfastUniform)
-//            self.uniformLabel.text = self.cgrNews.labelString()
-//            self.notificationRefreshControl.endRefreshing()
-//            hideActivityIndicator()
-//        }
-        // Do any additional setup after loading the view.
+        self.holderView.addImageToCenterOfCircle(cgrNews.checkWhatImageToPlace())
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func addHolderView() {
         let boxSize: CGFloat = 150
@@ -81,6 +58,7 @@ class NotificationScreenController: UIViewController, HolderViewDelegate {
         height: boxSize)
         holderView.parentFrame = view.frame
         holderView.delegate = self
+        holderView.layer.zPosition = 1.0
         view.addSubview(holderView)
     }
     

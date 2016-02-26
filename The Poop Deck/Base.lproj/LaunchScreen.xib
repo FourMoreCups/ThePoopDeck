@@ -15,8 +15,9 @@
                     <rect key="frame" x="0.0" y="431" width="480" height="49"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem title="Days" image="calendar70.png" id="eHu-IG-cpm"/>
-                        <tabBarItem title="Meals" image="plate7.png" id="TAF-oD-RI1"/>
+                        <tabBarItem title="Days" image="calendar70" id="eHu-IG-cpm"/>
+                        <tabBarItem title="Meals" image="plate7" id="TAF-oD-RI1"/>
+                        <tabBarItem title="CGR" image="cgrIcon" id="HGu-NJ-o6x"/>
                     </items>
                 </tabBar>
                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsF-jp-Y4f">
@@ -41,7 +42,8 @@
         </view>
     </objects>
     <resources>
-        <image name="calendar70.png" width="21" height="22"/>
-        <image name="plate7.png" width="26" height="22"/>
+        <image name="calendar70" width="21" height="22"/>
+        <image name="cgrIcon" width="26" height="22"/>
+        <image name="plate7" width="26" height="22"/>
     </resources>
 </document>

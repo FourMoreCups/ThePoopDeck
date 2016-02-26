@@ -90,12 +90,8 @@ class OvalLayer: CAShapeLayer {
         wobbleAnimationGroup.repeatCount = 1
         addAnimation(wobbleAnimationGroup, forKey: nil)
   }
-  
-  func contract() {
     
-  }
-    
-    func changeColors(newColor: UIColor){
-        
+    func addAndAnimateTank(){
     }
+  
 }
