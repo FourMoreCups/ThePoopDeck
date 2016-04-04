@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="86" width="600" height="194"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MeG-AU-1no" id="vE8-SY-XBC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="193.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="194"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-ry-u5V" userLabel="mainView">
@@ -175,7 +175,7 @@
                                         <rect key="frame" x="0.0" y="86" width="600" height="225"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="03v-lD-xP2" id="WCQ-mb-DNI">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="224.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="225"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWc-cb-VyP" userLabel="mainView">

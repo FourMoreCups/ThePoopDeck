@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     enum ShortcutType: String {
         case MealShortcut = "com.seandeaton.The-Poop-Deck.mealshortcut"
+        case NotificationShortcute = "com.seandeaton.The-Poop-Deck.notificationshortcut"
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -77,6 +78,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 let tabBar = window?.rootViewController!.childViewControllers[0] as! MyTabBarController
                 tabBar.loadMealsTab()
                 handled = true
+            case .NotificationShortcute:
+                print("Here are the notifications!")
+                let tabBar = window?.rootViewController!.childViewControllers[0] as! MyTabBarController
+                tabBar.loadNotificationView()
+                handled = true
+
             }
         }
         

@@ -21,7 +21,7 @@ class HolderView: UIView {
       
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Colors.clear
+        backgroundColor = UIColor.clearColor()
     }
       
     required init(coder: NSCoder) {

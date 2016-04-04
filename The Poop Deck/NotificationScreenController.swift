@@ -25,6 +25,7 @@ class NotificationScreenController: UIViewController, HolderViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         navigationController?.navigationBar.topItem?.title = "Central Guard Room"
+        //self.uniformLabel.text = cgrNews.updateNotification()
     }
 
     override func viewDidLoad() {
