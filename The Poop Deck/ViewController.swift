@@ -60,20 +60,20 @@ class ViewController: UIViewController {
     
     func setUpDays(){
         let rdayCell = Day(dayStringTop: "R-Day", yyyyMMdd: "2015-06-29", imageName: "rdayCircle.png", isFootball: false, needsDisplay: true)
-        let ringCell = Day(dayStringTop: "Ring Weekend", yyyyMMdd: "2015-08-28", imageName: "ringCircle.png", isFootball: false, needsDisplay: false)
+        let ringCell = Day(dayStringTop: "Ring Weekend", yyyyMMdd: "2016-08-26", imageName: "ringCircle.png", isFootball: false, needsDisplay: false)
         //        var buffaloCell = Day(dayStringTop: "Fordham", yyyyMMdd: "2014-09-06", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
         //        var wakeForestCell = Day(dayStringTop: "Wake Forest", yyyyMMdd: "2014-09-20", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
         //        var ballStateCell = Day(dayStringTop: "Ball State", yyyyMMdd: "2014-10-04", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
         //        var riceCell = Day(dayStringTop: "Rice", yyyyMMdd: "2014-10-11", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
         //        var airForceCell = Day(dayStringTop: "Air Force", yyyyMMdd: "2014-11-01", imageName: "airForcePic.png", isFootball: true, needsDisplay: true)
         //        var fordhamCell = Day(dayStringTop: "Fordham", yyyyMMdd: "2014-11-22", imageName: "fordham.png", isFootball: true, needsDisplay: true)
-        let armyNavyCell = Day(dayStringTop: "Army Navy", yyyyMMdd: "2015-12-12", imageName: "armyNavyCircle.png",isFootball: false, needsDisplay: true)
-        let christmasCell = Day(dayStringTop: "Christmas Leave", yyyyMMdd: "2015-12-19", imageName: "christmasCircle.png", isFootball: false, needsDisplay: true)
-        let fiveCell = Day(dayStringTop: "500th Night", yyyyMMdd: "2016-01-30", imageName: "fiveCircle.png", isFootball: false, needsDisplay: true)
-        let yearlingCell = Day(dayStringTop: "Yearling Winter Weekend", yyyyMMdd: "2016-02-06", imageName: "yearlingCircle.png", isFootball: false, needsDisplay: true)
-        let hundredCell = Day(dayStringTop: "100th Night", yyyyMMdd: "2016-02-19", imageName: "hundredCircle.png", isFootball: false, needsDisplay: true)
-        let springCell = Day(dayStringTop: "Spring Leave", yyyyMMdd: "2016-03-11", imageName: "springCircle.png", isFootball: false, needsDisplay: true)
-        let graduationCell = Day(dayStringTop: "Graduation", yyyyMMdd: "2016-05-21", imageName: "gradCircle.png", isFootball: false, needsDisplay: true)
+        let armyNavyCell = Day(dayStringTop: "Army Navy", yyyyMMdd: "2016-12-10", imageName: "armyNavyCircle.png",isFootball: false, needsDisplay: true)
+        let christmasCell = Day(dayStringTop: "Christmas Leave", yyyyMMdd: "2016-12-17", imageName: "christmasCircle.png", isFootball: false, needsDisplay: true)
+        let fiveCell = Day(dayStringTop: "500th Night", yyyyMMdd: "2017-01-14", imageName: "fiveCircle.png", isFootball: false, needsDisplay: true)
+        let yearlingCell = Day(dayStringTop: "Yearling Winter Weekend", yyyyMMdd: "2017-02-04", imageName: "yearlingCircle.png", isFootball: false, needsDisplay: true)
+        let hundredCell = Day(dayStringTop: "100th Night", yyyyMMdd: "2017-02-17", imageName: "hundredCircle.png", isFootball: false, needsDisplay: true)
+        let springCell = Day(dayStringTop: "Spring Leave", yyyyMMdd: "2017-03-10", imageName: "springCircle.png", isFootball: false, needsDisplay: true)
+        let graduationCell = Day(dayStringTop: "Graduation", yyyyMMdd: "2017-05-27", imageName: "gradCircle.png", isFootball: false, needsDisplay: true)
         
         
         let potentialCells = [rdayCell, ringCell, armyNavyCell, christmasCell, fiveCell, yearlingCell, hundredCell, springCell, graduationCell]
