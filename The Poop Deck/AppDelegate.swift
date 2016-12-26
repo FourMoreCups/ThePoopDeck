@@ -18,11 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     enum ShortcutType: String {
         case MealShortcut = "com.seandeaton.The-Poop-Deck.mealshortcut"
+        case NotificationShortcute = "com.seandeaton.The-Poop-Deck.notificationshortcut"
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         //check for shortcut item
+        
+        Push.initializeNotificationServices()
         
         if #available(iOS 9.0, *) {
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as! UIApplicationShortcutItem?{
@@ -66,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         var handled = false
         
         if let shortcutType = ShortcutType.init(rawValue: shortcutIcon.type){
-            print(shortcutIcon.type)
             let rootNavViewController = window!.rootViewController as? UINavigationController
             rootNavViewController?.popToRootViewControllerAnimated(false)
             
@@ -76,6 +78,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 let tabBar = window?.rootViewController!.childViewControllers[0] as! MyTabBarController
                 tabBar.loadMealsTab()
                 handled = true
+            case .NotificationShortcute:
+                print("Here are the notifications!")
+                let tabBar = window?.rootViewController!.childViewControllers[0] as! MyTabBarController
+                tabBar.loadNotificationView()
+                handled = true
+
             }
         }
         
@@ -105,20 +113,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         else{
             print("Looks like there was nothing saved for this week's menu. :(")
         }
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        var tokenToCompare = deviceToken.description.stringByReplacingOccurrencesOfString("<", withString: "")
+        tokenToCompare = tokenToCompare.stringByReplacingOccurrencesOfString(">", withString: "")
+        tokenToCompare = tokenToCompare.stringByReplacingOccurrencesOfString(" ", withString: "")
         
-//        if menuDateToDisplayOnWatch == nil {
-//            //reply here
-//        } else {
-//            do {
-//                //let jsonResult = try NSJSONSerialization.JSONObjectWithData(menuDateToDisplayOnWatch, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-//                //print(jsonResult)
-//            }
-//            catch let error as NSError?{
-//                print(error)
-//            }
-//            
-//        }
-
+        if (NSUserDefaults.standardUserDefaults().boolForKey("didSaveDeviceToken") == false) || (NSUserDefaults.standardUserDefaults().objectForKey("savedDeviceToken") as! String != tokenToCompare){
+            Push.uploadDeviceToken(deviceToken.description)
+        }
+    }
+    
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error.localizedDescription)
     }
 
     func applicationWillResignActive(application: UIApplication) {

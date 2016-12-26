@@ -126,6 +126,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="u97-QV-RMK"/>
                         <segue destination="XVm-5K-Ae8" kind="relationship" relationship="viewControllers" id="v4V-1P-dYB"/>
+                        <segue destination="nxm-lb-C70" kind="relationship" relationship="viewControllers" id="K1s-5s-H8c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Pg-ug-AHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,9 +280,57 @@
             </objects>
             <point key="canvasLocation" x="1056" y="1350"/>
         </scene>
+        <!--Uniform-->
+        <scene sceneID="F5x-b9-WVb">
+            <objects>
+                <viewController storyboardIdentifier="NotificationScreen" title="Uniform" id="nxm-lb-C70" customClass="NotificationScreenController" customModule="The_Poop_Deck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bxh-r8-cip"/>
+                        <viewControllerLayoutGuide type="bottom" id="YQ0-3C-p6Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z9W-hA-ZuS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.65000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="sw8-rz-Szc">
+                                <rect key="frame" x="175" y="361" width="250" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="ecy-LR-IhR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDy-lj-Ejq">
+                                <rect key="frame" x="274" y="425" width="53" height="30"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="refreshButton:" destination="nxm-lb-C70" eventType="touchUpInside" id="cgM-Gf-4YD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YQ0-3C-p6Y" firstAttribute="top" secondItem="sw8-rz-Szc" secondAttribute="bottom" constant="166" id="SKs-sJ-vgj"/>
+                            <constraint firstItem="yDy-lj-Ejq" firstAttribute="centerX" secondItem="Z9W-hA-ZuS" secondAttribute="centerX" id="SQ8-iP-G38"/>
+                            <constraint firstItem="yDy-lj-Ejq" firstAttribute="top" secondItem="sw8-rz-Szc" secondAttribute="bottom" constant="40" id="bI0-1v-kqV"/>
+                            <constraint firstItem="sw8-rz-Szc" firstAttribute="centerX" secondItem="Z9W-hA-ZuS" secondAttribute="centerX" id="zEP-2s-Oha"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="CGR" image="cgrIcon" id="czi-vb-R4W"/>
+                    <connections>
+                        <outlet property="notificationView" destination="Z9W-hA-ZuS" id="Tps-y7-QpW"/>
+                        <outlet property="uniformLabel" destination="sw8-rz-Szc" id="0OM-Ts-TW9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8n-fm-Ufd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="1826"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar70.png" width="21" height="22"/>
+        <image name="cgrIcon" width="25" height="21"/>
         <image name="plate7.png" width="26" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -101,6 +101,9 @@ class Menu {
     }
     
     func reloadUponAppear(){
+        
+        //TODO: the expression is alwasy true....
+        
         //if the app is backgrounded while the day of the week changes
         //this allows the view to refresh the current menu to get rid of the meal yesterday.
         //needs to happen without requiring the user to reload the data from the website

@@ -14,7 +14,7 @@ var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
 var loadingView: UIView = UIView()
 var isCurrentlySpinning: Bool = false
 
-let spinningImage = UIImageView(image: UIImage(named: "tarBucket.png"))
+let spinningImage = UIImageView(image: UIImage(named: "spinningImage.png"))
 
 //Pull To Refresh
 var refreshControl = UIRefreshControl()

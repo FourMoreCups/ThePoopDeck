@@ -45,6 +45,10 @@ class MyTabBarController: UITabBarController {
         self.selectedViewController = self.viewControllers![1]
     }
     
+    func loadNotificationView(){
+        self.selectedViewController = self.viewControllers![2]
+    }
+    
     func addBorderToTabBar(){
         let navBorder: UIView = UIView(frame: (CGRectMake(0, 0, 2*(tabBar.frame.size.width), 1)))
         navBorder.backgroundColor = customYellowColor
