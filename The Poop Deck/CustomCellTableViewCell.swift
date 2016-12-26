@@ -25,20 +25,20 @@ class CustomCellTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         //println("SELECTED")
         // Configure the view for the selected state
     }
     
-    func setCell(topLabelText: String, bottomLabelText: String, imageName: String) {
+    func setCell(_ topLabelText: String, bottomLabelText: String, imageName: String) {
         
         self.topDayLabel.text = topLabelText
         self.bottomDayLabel.text = bottomLabelText
         
         self.mainView.layer.cornerRadius = 0
         self.mainView.layer.masksToBounds = true
-        self.mainView.backgroundColor = UIColor.whiteColor()
+        self.mainView.backgroundColor = UIColor.white
         self.mainView.alpha = 1.0
         
         dayPicture.image = UIImage(named: imageName)
@@ -57,11 +57,11 @@ class CustomMealCellTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func setCell(topLabel: String, breakfastLabel: String, lunchLabel: String, dinnerLabel: String, dateString: String) {
+    func setCell(_ topLabel: String, breakfastLabel: String, lunchLabel: String, dinnerLabel: String, dateString: String) {
         
         self.topLabel.text = topLabel
         //self.topLabel.font = UIFont(name: "OpenSans", size: 27)
@@ -72,20 +72,20 @@ class CustomMealCellTableViewCell: UITableViewCell {
         //var dayComponent = dayComponentFromString(dateString)
     }
     
-    func convertStringToDate(aDateString: String) -> NSDate {
-        let dateFormat = NSDateFormatter()
+    func convertStringToDate(_ aDateString: String) -> Date {
+        let dateFormat = DateFormatter()
         dateFormat.dateFormat = ("yyyy-MM-dd")
-        let newDate = dateFormat.dateFromString(aDateString)
+        let newDate = dateFormat.date(from: aDateString)
         return newDate!
     }
     
-    func dayComponentFromString(dateString: String) -> Int {
+    func dayComponentFromString(_ dateString: String) -> Int {
         let date = convertStringToDate(dateString)
         //println(date)
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: date)
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([NSCalendar.Unit.month, NSCalendar.Unit.day], from: date)
         //println(components.day)
-        return components.day
+        return components.day!
     }
 }
 
@@ -97,7 +97,7 @@ class CustomUniformTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     

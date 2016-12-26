@@ -36,8 +36,8 @@ class RadialBarController: WKInterfaceController {
     
     
     @IBOutlet weak var radialBarImage: WKInterfaceImage!
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
         // Configure interface objects here.
     }
@@ -80,7 +80,7 @@ class RadialBarController: WKInterfaceController {
         self.radialAnimation()
     }
     
-    func calculatePercentage(selectedClass: Int)->Double{
+    func calculatePercentage(_ selectedClass: Int)->Double{
         var daysCompleted:Int
         switch selectedClass {
         case 2016:
@@ -101,24 +101,24 @@ class RadialBarController: WKInterfaceController {
     }
     
     func radialAnimation(){
-        self.radialBarImage.startAnimatingWithImagesInRange(NSMakeRange(0, Int(self.userGraduatingClass.percentCompletedInt)), duration: 0.7, repeatCount: 1)
+        self.radialBarImage.startAnimatingWithImages(in: NSMakeRange(0, Int(self.userGraduatingClass.percentCompletedInt)), duration: 0.7, repeatCount: 1)
     }
     
-    func theDays(target: String) -> Int{
-        let dateFormatter = NSDateFormatter()
+    func theDays(_ target: String) -> Int{
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let currentCal = NSCalendar.currentCalendar()
-        let todaysDay = dateFormatter.stringFromDate(NSDate())
+        let currentCal = Calendar.current
+        let todaysDay = dateFormatter.string(from: Date())
         
-        let startDate: NSDate = dateFormatter.dateFromString(todaysDay)!
-        let endDate: NSDate = dateFormatter.dateFromString(target)!
+        let startDate: Date = dateFormatter.date(from: todaysDay)!
+        let endDate: Date = dateFormatter.date(from: target)!
         
         
-        let daysLeft = currentCal.components(NSCalendarUnit.Day, fromDate: startDate, toDate: endDate, options: [])
+        let daysLeft = (currentCal as NSCalendar).components(NSCalendar.Unit.day, from: startDate, to: endDate, options: [])
         let intDaysLeft = daysLeft.day
         
         //take off one to account for "butts"
-        return (intDaysLeft - 1)
+        return (intDaysLeft! - 1)
         
     }
 }

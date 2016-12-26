@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1409E9EF1B4AF69F003FF46D /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409E9EE1B4AF69F003FF46D /* Menu.swift */; };
+		140C9BDE1E1174EF0098EDC1 /* SwiftDate in Resources */ = {isa = PBXBuildFile; fileRef = 140C9BDD1E1174EF0098EDC1 /* SwiftDate */; };
 		141232721B0E85810045E7AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232711B0E85810045E7AA /* AppDelegate.swift */; };
 		141232741B0E85810045E7AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141232731B0E85810045E7AA /* ViewController.swift */; };
 		141232791B0E85810045E7AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141232781B0E85810045E7AA /* Images.xcassets */; };
@@ -44,8 +45,6 @@
 		1498ACD31BA4A65E009362C0 /* The Poop Deck WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 141232A41B0E85BD0045E7AA /* The Poop Deck WatchKit App.app */; };
 		14B39C8B1B121F00005D682E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 14B39C8A1B121F00005D682E /* Settings.bundle */; };
 		14D88E411B101D06003D4A8A /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14D88E401B101D06003D4A8A /* WatchKit.framework */; };
-		14EFFCAE1C2B79B600E40973 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EFFCAD1C2B79B600E40973 /* Dates.swift */; };
-		14EFFCAF1C2B79B600E40973 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EFFCAD1C2B79B600E40973 /* Dates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		1409E9EE1B4AF69F003FF46D /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		140C9BDD1E1174EF0098EDC1 /* SwiftDate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftDate; sourceTree = "<group>"; };
 		1412326C1B0E85810045E7AA /* The Poop Deck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Poop Deck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		141232701B0E85810045E7AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		141232711B0E85810045E7AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,7 +144,6 @@
 		14D88E421B101DC0003D4A8A /* The Poop Deck WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Poop Deck WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		14D88E431B101DCF003D4A8A /* The Poop Deck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "The Poop Deck.entitlements"; sourceTree = "<group>"; };
 		14EFFCAC1C2B79B500E40973 /* The Poop Deck WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Poop Deck WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
-		14EFFCAD1C2B79B600E40973 /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +200,6 @@
 			children = (
 				14D88E431B101DCF003D4A8A /* The Poop Deck.entitlements */,
 				141232711B0E85810045E7AA /* AppDelegate.swift */,
-				14EFFCAD1C2B79B600E40973 /* Dates.swift */,
 				1419C2661C682B77002C24A1 /* CGRupdate.swift */,
 				141232E41B0E927C0045E7AA /* NavigationController.swift */,
 				141232731B0E85810045E7AA /* ViewController.swift */,
@@ -215,6 +213,7 @@
 				141232E81B0E92C20045E7AA /* DayModel.swift */,
 				1419C2611C655406002C24A1 /* Loading */,
 				141232F71B0E98890045E7AA /* Main.storyboard */,
+				140C9BDD1E1174EF0098EDC1 /* SwiftDate */,
 				141232781B0E85810045E7AA /* Images.xcassets */,
 				1488C6A41B37AC5D00E32B23 /* Buttons.xcassets */,
 				1412327A1B0E85810045E7AA /* LaunchScreen.xib */,
@@ -396,12 +395,13 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Sean Deaton";
 				TargetAttributes = {
 					1412326B1B0E85810045E7AA = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = J7TFD32G4P;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -416,11 +416,13 @@
 					};
 					141232801B0E85810045E7AA = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 1412326B1B0E85810045E7AA;
 					};
 					141232941B0E85BD0045E7AA = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = J7TFD32G4P;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -433,6 +435,7 @@
 					141232A31B0E85BD0045E7AA = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = J7TFD32G4P;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -464,6 +467,7 @@
 			files = (
 				141232F81B0E98890045E7AA /* Main.storyboard in Resources */,
 				14B39C8B1B121F00005D682E /* Settings.bundle in Resources */,
+				140C9BDE1E1174EF0098EDC1 /* SwiftDate in Resources */,
 				1488C6A51B37AC5D00E32B23 /* Buttons.xcassets in Resources */,
 				1412327C1B0E85810045E7AA /* LaunchScreen.xib in Resources */,
 				141232791B0E85810045E7AA /* Images.xcassets in Resources */,
@@ -508,7 +512,6 @@
 				145495101C5DF62A0021F70A /* NotificationScreenController.swift in Sources */,
 				141232E91B0E92C20045E7AA /* DayModel.swift in Sources */,
 				141605981C594B3700C60AA6 /* PushNotifications.swift in Sources */,
-				14EFFCAE1C2B79B600E40973 /* Dates.swift in Sources */,
 				141232E31B0E92460045E7AA /* JSONLoader.swift in Sources */,
 				1419C2601C6553E3002C24A1 /* OvalLayer.swift in Sources */,
 				141232E51B0E927C0045E7AA /* NavigationController.swift in Sources */,
@@ -537,7 +540,6 @@
 			files = (
 				145507791C2E1D2E009BBFF8 /* WatchMenuInterface.swift in Sources */,
 				1412329D1B0E85BD0045E7AA /* NotificationController.swift in Sources */,
-				14EFFCAF1C2B79B600E40973 /* Dates.swift in Sources */,
 				1412329B1B0E85BD0045E7AA /* InterfaceController.swift in Sources */,
 				1455077D1C30774C009BBFF8 /* GraduationClass.swift in Sources */,
 				148F78881B0EBBC40056D00E /* RadialBarController.swift in Sources */,
@@ -599,8 +601,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -645,8 +649,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -665,6 +671,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -683,6 +690,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seandeaton.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -699,6 +707,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seandeaton.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -716,6 +725,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seandeaton.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Poop Deck.app/The Poop Deck";
 			};
 			name = Debug;
@@ -730,6 +740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seandeaton.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Poop Deck.app/The Poop Deck";
 			};
 			name = Release;
@@ -737,10 +748,10 @@
 		141232B41B0E85BD0045E7AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -755,6 +766,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "The Poop Deck/The Poop Deck WatchKit App-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -763,10 +775,10 @@
 		141232B51B0E85BD0045E7AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = The_Poop_Deck_WatchKit_Extension;
 				INFOPLIST_FILE = "The Poop Deck WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -776,6 +788,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "The Poop Deck/The Poop Deck WatchKit App-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -798,6 +811,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -816,6 +830,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};

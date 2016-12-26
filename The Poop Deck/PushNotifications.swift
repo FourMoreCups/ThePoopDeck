@@ -11,36 +11,36 @@ import UIKit
 
 struct Push {
     static func initializeNotificationServices(){
-        let requestedSettings = UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(requestedSettings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
+        let requestedSettings = UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(requestedSettings)
+        UIApplication.shared.registerForRemoteNotifications()
     }
 
-    static func uploadDeviceToken(token: String) -> Bool {
-        var tokenToUpload = token.stringByReplacingOccurrencesOfString("<", withString: "")
-        tokenToUpload = tokenToUpload.stringByReplacingOccurrencesOfString(">", withString: "")
-        tokenToUpload = tokenToUpload.stringByReplacingOccurrencesOfString(" ", withString: "")
+    static func uploadDeviceToken(_ token: String) -> Bool {
+        var tokenToUpload = token.replacingOccurrences(of: "<", with: "")
+        tokenToUpload = tokenToUpload.replacingOccurrences(of: ">", with: "")
+        tokenToUpload = tokenToUpload.replacingOccurrences(of: " ", with: "")
         
-        NSUserDefaults.standardUserDefaults().setObject(tokenToUpload, forKey: "savedDeviceToken")
+        UserDefaults.standard.set(tokenToUpload, forKey: "savedDeviceToken")
         
         //URL
-        let targetDatabase: NSURL = NSURL(string: "https://seandeaton.com/push/addDeviceToken.php?token=" + (NSUserDefaults.standardUserDefaults().objectForKey("savedDeviceToken") as! String))!
-        let urlRequest = NSURLRequest(URL: targetDatabase)
-        let queue = NSOperationQueue()
+        let targetDatabase: URL = URL(string: "https://seandeaton.com/push/addDeviceToken.php?token=" + (UserDefaults.standard.object(forKey: "savedDeviceToken") as! String))!
+        let urlRequest = URLRequest(url: targetDatabase)
+        let queue = OperationQueue()
         
         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: queue) { (responseFromDatabasee, returnedData, errorFromDatabase) -> Void in
             if (errorFromDatabase == nil){
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "didSaveDeviceToken")
+                UserDefaults.standard.set(true, forKey: "didSaveDeviceToken")
             }
             else{
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "didSaveDeviceToken")
+                UserDefaults.standard.set(false, forKey: "didSaveDeviceToken")
             }
         }
-        return NSUserDefaults.standardUserDefaults().boolForKey("didSaveDeviceToken")
+        return UserDefaults.standard.bool(forKey: "didSaveDeviceToken")
     }
 
     func reuploadDeviceTokenUponPreviousFailure() -> Bool {
-        let token =  NSUserDefaults.standardUserDefaults().objectForKey("savedDeviceToken") as! String
+        let token =  UserDefaults.standard.object(forKey: "savedDeviceToken") as! String
         return Push.uploadDeviceToken(token)
     }
 }

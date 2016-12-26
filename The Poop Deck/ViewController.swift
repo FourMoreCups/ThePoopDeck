@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.myTableView.backgroundColor = UIColor.clearColor()
+        self.myTableView.backgroundColor = UIColor.clear
         
         self.setUpDays()
         addImageAboveTableViewController(myTableViewController: myTableView)
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.topItem?.title = "The Days"
         myTableView.reloadData()
         
@@ -85,14 +85,14 @@ class ViewController: UIViewController {
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfDates.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
         
-        let cell:CustomCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell") as! CustomCellTableViewCell
+        let cell:CustomCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomCellTableViewCell
         
         let oneDay = arrayOfDates[indexPath.row]
         var potentialBottomString: String
@@ -104,8 +104,8 @@ class ViewController: UIViewController {
         }
         cell.setCell(oneDay.dayStringTop, bottomLabelText: potentialBottomString, imageName: oneDay.imageName)
         
-        cell.backgroundColor = UIColor.clearColor()
-        cell.selectionStyle = UITableViewCellSelectionStyle.Default
+        cell.backgroundColor = UIColor.clear
+        cell.selectionStyle = UITableViewCellSelectionStyle.default
         
         return cell
     }

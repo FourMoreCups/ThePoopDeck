@@ -11,17 +11,17 @@ import Foundation
 var arrayOfMeals: [Meal] = [Meal]()
 var weekDayArray = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
-func retrieveJSON(urlToRequest: String, completionHandler:(responseObject: NSDictionary?, error: NSError?) -> ()) {
+func retrieveJSON(_ urlToRequest: String, completionHandler:@escaping (_ responseObject: NSDictionary?, _ error: NSError?) -> ()) {
     
-    let url: NSURL = NSURL(string: urlToRequest)!
-    let jsonRequest: NSURLRequest = NSURLRequest(URL: url)
+    let url: URL = URL(string: urlToRequest)!
+    let jsonRequest: URLRequest = URLRequest(url: url)
     
-    NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: NSOperationQueue.mainQueue()) {
+    NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: OperationQueue.main) {
         response, data, error in
             do {
-                let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                 print(jsonResult)
-                completionHandler(responseObject: jsonResult, error: error)
+                completionHandler(jsonResult, error as NSError?)
             }
                 
             catch {

@@ -24,40 +24,40 @@ var noMealsAlert: UIAlertController = UIAlertController()
 
 //Failure Message
 var fetchErrorMessage: UIAlertController = UIAlertController()
-var refreshTime: NSTimer = NSTimer()
+var refreshTime: Timer = Timer()
 
 
-func addPictureToViewWithAlpha(targetTableView targetTableView: UITableView, imageName: String, alpha: CGFloat, contentMode: UIViewContentMode){
+func addPictureToViewWithAlpha(targetTableView: UITableView, imageName: String, alpha: CGFloat, contentMode: UIViewContentMode){
     targetTableView.clipsToBounds = true
     targetTableView.backgroundView = UIImageView(image: UIImage(named: imageName))
     targetTableView.backgroundView?.alpha = alpha
     targetTableView.backgroundView?.contentMode = contentMode
 }
 
-func showActivityIndicatory(uiView: UIView) {
+func showActivityIndicatory(_ uiView: UIView) {
     
     container.frame = uiView.frame
     container.center = uiView.center
-    container.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
+    container.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
     container.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
     
     //make loadingframe and center it in the superview
-    loadingView.frame = CGRectMake(0, 0, 200, 200)
+    loadingView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
     loadingView.center = container.center
-    loadingView.autoresizingMask = ([UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin])
+    loadingView.autoresizingMask = ([UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin])
     loadingView.backgroundColor = UIColor(red: 50, green: 50, blue: 50, alpha: 0.2)
     loadingView.clipsToBounds = true
     loadingView.layer.cornerRadius = 10
     
     spinningImage.alpha = 1
     //actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-    spinningImage.contentMode = UIViewContentMode.Center
+    spinningImage.contentMode = UIViewContentMode.center
     
     //spinningImage.contentMode = UIViewContentMode.ScaleAspectFit
     
     spinningImage.frame = CGRect()
-    spinningImage.center = CGPointMake(loadingView.frame.size.width / 2,
-        loadingView.frame.size.height / 2);
+    spinningImage.center = CGPoint(x: loadingView.frame.size.width / 2,
+        y: loadingView.frame.size.height / 2);
     loadingView.addSubview(spinningImage)
     container.addSubview(loadingView)
     uiView.addSubview(container)
@@ -78,18 +78,18 @@ func customRefreshImageSpinner() {
     let animation = CAKeyframeAnimation()
     animation.keyPath = "transform.rotation.z"
     animation.duration = 1
-    animation.removedOnCompletion = false
+    animation.isRemovedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
     animation.repeatCount = Float.infinity
     animation.values = [0 ,fullRotation/4, fullRotation/2, fullRotation*3/4, fullRotation]
     
-    spinningImage.layer.addAnimation(animation, forKey: "rotate")
+    spinningImage.layer.add(animation, forKey: "rotate")
     
 }
 
 // MARK: Pull to Refresh
-func addPullToRefreshToTableView(target target: AnyObject?, tableView: UITableView) {
-    refreshControl.addTarget(target, action: "handleRefreshForMeals", forControlEvents: UIControlEvents.ValueChanged)
+func addPullToRefreshToTableView(target: AnyObject?, tableView: UITableView) {
+    refreshControl.addTarget(target, action: "handleRefreshForMeals", for: UIControlEvents.valueChanged)
     tableView.addSubview(refreshControl)
 }
 
@@ -97,24 +97,24 @@ func addPullToRefreshToTableView(target target: AnyObject?, tableView: UITableVi
 
 func displayMealFetchFailure() ->UIAlertController {
     let message = "We couldn't reach the Mess Hall, try again later."
-    fetchErrorMessage = UIAlertController(title: "Oh no!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    fetchErrorMessage = UIAlertController(title: "Oh no!", message: message, preferredStyle: UIAlertControllerStyle.alert)
     
-    fetchErrorMessage.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
+    fetchErrorMessage.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: { (dismiss) -> Void in
         print("dismiss")
     }))
     
     return fetchErrorMessage
 }
 
-func genericErrorMessageAlertWithDismissButton(title: String, message: String) -> UIAlertController {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (dismiss) -> Void in
+func genericErrorMessageAlertWithDismissButton(_ title: String, message: String) -> UIAlertController {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: { (dismiss) -> Void in
         print("Dismissed Alert", terminator: "")
     }))
     return alert
 }
 
-func handleAllErrorCodesWithAlerts(error: NSError?) -> UIAlertController{
+func handleAllErrorCodesWithAlerts(_ error: NSError?) -> UIAlertController{
     print(error?.code, terminator: "")
     if (error?.code == NSURLErrorNotConnectedToInternet){
         return genericErrorMessageAlertWithDismissButton("Uh Oh!", message: "Looks like you don't have signal!")
@@ -131,9 +131,9 @@ func handleAllErrorCodesWithAlerts(error: NSError?) -> UIAlertController{
 
 func displayNoMeals() -> UIAlertController{
     let message = "Either the meals are not posted this week, or our developers got lazy."
-    noMealsAlert = UIAlertController(title: "Whoops!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    noMealsAlert = UIAlertController(title: "Whoops!", message: message, preferredStyle: UIAlertControllerStyle.alert)
     
-    noMealsAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+    noMealsAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
         print("Dismiss")
     }))
     

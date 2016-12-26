@@ -34,7 +34,7 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         menu.loadMealsIntoMenu(isReloading: false, tableToRefresh: mealTableView)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         if (didTapOtherView == false){
             didTapOtherView = true
@@ -43,15 +43,15 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        if (refreshControl.refreshing == false) && (menu.arrayOfMeals.isEmpty) {
 //            self.presentViewController(displayNoMeals(), animated: true, completion: nil)
 //        }
-        if (isViewLoaded() && menu.isEmpty() && !refreshControl.refreshing){
-            let promptToReloadAlert = UIAlertController(title: "There's nothing here!", message: "Would you like to reload?", preferredStyle: UIAlertControllerStyle.Alert)
-            promptToReloadAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
-            promptToReloadAlert.addAction(UIAlertAction(title: "Reload", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+        if (isViewLoaded && menu.isEmpty() && !refreshControl.isRefreshing){
+            let promptToReloadAlert = UIAlertController(title: "There's nothing here!", message: "Would you like to reload?", preferredStyle: UIAlertControllerStyle.alert)
+            promptToReloadAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: nil))
+            promptToReloadAlert.addAction(UIAlertAction(title: "Reload", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
                 self.handleRepeatOfInitialLoadForMeals()
                 self.mealTableView.reloadData()
             }))
                 
-            self.presentViewController(promptToReloadAlert, animated: true, completion: nil)
+            self.present(promptToReloadAlert, animated: true, completion: nil)
         }
         //menu.reloadUponAppear()
         self.mealTableView.reloadData()
@@ -70,25 +70,25 @@ class MealViewController: UIViewController, UITableViewDataSource, UITableViewDe
         menu.loadMealsIntoMenu(isReloading: false, tableToRefresh: mealTableView)
     }
     
-    func convertDateToString(aDate: NSDate) -> String {
+    func convertDateToString(_ aDate: Date) -> String {
         
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString: String = (dateFormatter.stringFromDate(aDate) as String)
+        let dateString: String = (dateFormatter.string(from: aDate) as String)
         return dateString
         
     }
     
     //MARK: Table Functions
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return menu.arrayOfMeals.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:CustomMealCellTableViewCell = tableView.dequeueReusableCellWithIdentifier("MealCell") as! CustomMealCellTableViewCell
+        let cell:CustomMealCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MealCell") as! CustomMealCellTableViewCell
         let oneMeal = menu.arrayOfMeals[indexPath.row]
         
         

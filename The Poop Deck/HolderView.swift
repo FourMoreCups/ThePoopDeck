@@ -16,12 +16,12 @@ class HolderView: UIView {
     
     let ovalLayer = OvalLayer()
     
-    var parentFrame: CGRect = CGRectZero
+    var parentFrame: CGRect = CGRect.zero
     weak var delegate:HolderViewDelegate?
       
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
     }
       
     required init(coder: NSCoder) {
@@ -35,7 +35,7 @@ class HolderView: UIView {
         ovalLayer.wobble()
     }
     
-    func addImageToCenterOfCircle(imageToAdd: UIImage){
+    func addImageToCenterOfCircle(_ imageToAdd: UIImage){
         //if there is alreay an image in the circle, remove it.
         self.viewWithTag(1)?.removeFromSuperview()
         

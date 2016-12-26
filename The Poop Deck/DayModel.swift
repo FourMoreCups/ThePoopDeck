@@ -8,22 +8,22 @@
 
 import Foundation
 
-func theDays(target: String) -> Int{
+func theDays(_ target: String) -> Int{
     
-    let dateFormatter = NSDateFormatter()
+    let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
-    let currentCal = NSCalendar.currentCalendar()
-    let todaysDay = dateFormatter.stringFromDate(NSDate())
+    let currentCal = Calendar.current
+    let todaysDay = dateFormatter.string(from: Date())
     
-    let startDate: NSDate = dateFormatter.dateFromString(todaysDay)!
-    let endDate: NSDate = dateFormatter.dateFromString(target)!
+    let startDate: Date = dateFormatter.date(from: todaysDay)!
+    let endDate: Date = dateFormatter.date(from: target)!
     
     
-    let daysLeft = currentCal.components(NSCalendarUnit.Day, fromDate: startDate, toDate: endDate, options: [])
+    let daysLeft = (currentCal as NSCalendar).components(NSCalendar.Unit.day, from: startDate, to: endDate, options: [])
     let intDaysLeft = daysLeft.day
     
     //take off one to account for "butts"
-    return (intDaysLeft - 1)
+    return (intDaysLeft! - 1)
     
 }
 

@@ -19,19 +19,19 @@ class CGRupdate {
     init(){
     }
     
-    func parseInput(newUpdate: NSArray){
+    func parseInput(_ newUpdate: NSArray){
         for obj: AnyObject in newUpdate {
-            breakfastUniform = (obj.objectForKey("breakfast")! as! String)
-            lunchUniform = (obj.objectForKey("lunch")! as! String)
-            taps = obj.objectForKey("taps")! as! String
-            dateString = obj.objectForKey("dateString")! as! String
+            breakfastUniform = (obj.object(forKey: "breakfast")! as! String)
+            lunchUniform = (obj.object(forKey: "lunch")! as! String)
+            taps = obj.object(forKey: "taps")! as! String
+            dateString = obj.object(forKey: "dateString")! as! String
             stringToDisplay = self.labelString()
         }
     }
     
     func checkWhatImageToPlace() -> UIImage {
-        let doesContainArmy = self.stringToDisplay.lowercaseString.rangeOfString("army")
-        let doesContainACU = self.stringToDisplay.lowercaseString.rangeOfString("acu")
+        let doesContainArmy = self.stringToDisplay.lowercased().range(of: "army")
+        let doesContainACU = self.stringToDisplay.lowercased().range(of: "acu")
         /*let doesContainAFC = self.stringToDisplay.lowercaseString.rangeOfString("afc")
         let doesContainAsForClass = self.stringToDisplay.lowercaseString.rangeOfString("class")*/
         
@@ -47,25 +47,25 @@ class CGRupdate {
         return "The uniform for " + self.dateString + " is " + self.breakfastUniform + ". Taps is at " + self.taps + "."
     }
     
-    func retrieveJSON(urlToRequest: String, completionHandler:(responseObject: NSDictionary?, error: NSError?) -> ()) {
+    func retrieveJSON(_ urlToRequest: String, completionHandler:@escaping (_ responseObject: NSDictionary?, _ error: NSError?) -> ()) {
         
-        let url: NSURL = NSURL(string : urlToRequest)!
-        let jsonRequest: NSURLRequest = NSURLRequest(URL: url)
+        let url: URL = URL(string : urlToRequest)!
+        let jsonRequest: URLRequest = URLRequest(url: url)
         
         //var jsonResponse: NSURLResponse?
-        NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: NSOperationQueue.mainQueue()) {
+        NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: OperationQueue.main) {
             response, data, error in
             if data == nil {
-                completionHandler(responseObject: nil, error: error)
+                completionHandler(nil, error as NSError?)
             } else {
                 do {
-                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    completionHandler(responseObject: jsonResult, error: error)
-                    NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "pushedUniform")
+                    let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                    completionHandler(jsonResult, error as NSError?)
+                    UserDefaults.standard.set(jsonResult, forKey: "pushedUniform")
                 }
                 catch let error as NSError?{
                     print(error)
-                    completionHandler(responseObject: nil, error: error)
+                    completionHandler(nil, error)
                 }
             }
         }
@@ -78,20 +78,20 @@ class CGRupdate {
             print(responseObject)
             guard error == nil else {
                 //print(error?.description)
-                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "pushedUniform")
-                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(handleAllErrorCodesWithAlerts(error), animated: true, completion: nil)
+                UserDefaults.standard.set(nil, forKey: "pushedUniform")
+                UIApplication.shared.keyWindow?.rootViewController?.present(handleAllErrorCodesWithAlerts(error), animated: true, completion: nil)
                 hideActivityIndicator()
                 return
             }
             let arrayOfUpdates = responseObject!["push"] as! NSArray
-            NSUserDefaults.standardUserDefaults().setObject(responseObject, forKey: "pushedUniform")
+            UserDefaults.standard.set(responseObject, forKey: "pushedUniform")
             self.parseInput(arrayOfUpdates)
             hideActivityIndicator()
         }
         //print(NSUserDefaults.standardUserDefaults().objectForKey("pushedUniform") as! NSDictionary)
         //if let unwrapArray = NSUserDefaults.standardUserDefaults().objectForKey("pushedUniform") as? NSArray{
-        if (NSUserDefaults.standardUserDefaults().objectForKey("pushedUniform") != nil){
-            let unwrapAsDict = NSUserDefaults.standardUserDefaults().objectForKey("pushedUniform") as! NSDictionary
+        if (UserDefaults.standard.object(forKey: "pushedUniform") != nil){
+            let unwrapAsDict = UserDefaults.standard.object(forKey: "pushedUniform") as! NSDictionary
             let unwrapAsArray = unwrapAsDict["push"] as! NSArray
             self.parseInput(unwrapAsArray)
             return self.stringToDisplay

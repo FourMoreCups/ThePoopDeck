@@ -11,11 +11,17 @@ import Foundation
 import WatchConnectivity
 
 class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(watchOS 2.2, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        //nothing here
+    }
+
     @IBOutlet var menu: WKInterfaceTable!
     var watchMenuDataBase = WatchMenu()
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         menu.setNumberOfRows(3, withRowType: "WatchMenuRow")
 
     }
@@ -24,21 +30,21 @@ class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        let currentDate = NSDate().weekdayName
-        print(currentDate.lowercaseString)
+        let currentDate = Date().weekdayName
+        print(currentDate.lowercased())
         //var restoredDict = NSUserDefaults.standardUserDefaults().dictionaryForKey("savedMenu")
         
         if #available(iOS 9.0, *) {
-            let session = WCSession.defaultSession()
+            let session = WCSession.default()
             session.delegate = self
-            session.activateSession()
-            if session.reachable{
+            session.activate()
+            if session.isReachable{
                 print("reachable!")
-                session.sendMessage(["currentWeekDay": NSDate().weekdayName.lowercaseString], replyHandler: { (response) -> Void in
+                session.sendMessage(["currentWeekDay": NSDate().weekdayName.lowercased()], replyHandler: { (response) -> Void in
                     if response["breakfast"] != nil && response["lunch"] != nil && response["dinner"] != nil {
-                        self.watchMenuDataBase.mealDictionary["breakfast"] = (response["breakfast"] as? String)?.componentsSeparatedByString("&")[0]
-                        self.watchMenuDataBase.mealDictionary["lunch"] = (response["lunch"] as? String)?.componentsSeparatedByString("&")[0]
-                        self.watchMenuDataBase.mealDictionary["dinner"] = (response["dinner"] as? String)?.componentsSeparatedByString("&")[0]
+                        self.watchMenuDataBase.mealDictionary["breakfast"] = (response["breakfast"] as? String)?.components(separatedBy: "&")[0]
+                        self.watchMenuDataBase.mealDictionary["lunch"] = (response["lunch"] as? String)?.components(separatedBy: "&")[0]
+                        self.watchMenuDataBase.mealDictionary["dinner"] = (response["dinner"] as? String)?.components(separatedBy: "&")[0]
                         self.loadTable()
                     }
                     
@@ -78,7 +84,7 @@ class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     func loadTable(){
         for cell in 0...menu.numberOfRows-1{
-            let row = menu.rowControllerAtIndex(cell) as! WatchMenuRow
+            let row = menu.rowController(at: cell) as! WatchMenuRow
             
             switch cell{
             case 0:

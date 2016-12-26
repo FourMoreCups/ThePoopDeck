@@ -8,8 +8,21 @@
 
 import Foundation
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
 
-var savedMeals: NSUserDefaults = NSUserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
+
+var savedMeals: UserDefaults = UserDefaults(suiteName: "group.com.seandeaton.The-Poop-Deck")!
 
 class Menu {
     var weekDayArray = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
@@ -20,7 +33,7 @@ class Menu {
     }
     
     func empty(){
-        self.arrayOfMeals.removeAll(keepCapacity: false)
+        self.arrayOfMeals.removeAll(keepingCapacity: false)
     }
     
     func getFirstDay() -> String{
@@ -31,60 +44,60 @@ class Menu {
         return self.arrayOfMeals.isEmpty
     }
     
-    func retrieveJSON(urlToRequest: String, completionHandler:(responseObject: NSDictionary?, error: NSError?) -> ()) {
+    func retrieveJSON(_ urlToRequest: String, completionHandler:@escaping (_ responseObject: NSDictionary?, _ error: NSError?) -> ()) {
         
-        let url: NSURL = NSURL(string : urlToRequest)!
-        let jsonRequest: NSURLRequest = NSURLRequest(URL: url)
+        let url: URL = URL(string : urlToRequest)!
+        let jsonRequest: URLRequest = URLRequest(url: url)
         
         //var jsonResponse: NSURLResponse?
-        NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: NSOperationQueue.mainQueue()) {
+        NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: OperationQueue.main) {
             response, data, error in
             print(error)
            if data == nil {
-                completionHandler(responseObject: nil, error: error)
+                completionHandler(nil, error as NSError?)
             } else {
                 do {
-                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    completionHandler(responseObject: jsonResult, error: error)
-                    NSUserDefaults.standardUserDefaults().setObject(jsonResult, forKey: "savedMenu")
+                    let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
+                    completionHandler(jsonResult, error as NSError?)
+                    UserDefaults.standard.set(jsonResult, forKey: "savedMenu")
                     
                 }
                 catch let error as NSError?{
                     print(error)
-                    completionHandler(responseObject: nil, error: error)
+                    completionHandler(nil, error)
                 }
             
             }
         }
     }
     
-    func loadMealsIntoMenu(isReloading isReloading: Bool, tableToRefresh: UITableView) {
-        tableToRefresh.userInteractionEnabled = false
+    func loadMealsIntoMenu(isReloading: Bool, tableToRefresh: UITableView) {
+        tableToRefresh.isUserInteractionEnabled = false
         refreshControl.beginRefreshing()
         self.retrieveJSON(self.urlString) {
             (responseObject, error) -> () in
     
             if responseObject == nil {
                 print(error?.description, terminator: "")
-                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(handleAllErrorCodesWithAlerts(error), animated: true, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController?.present(handleAllErrorCodesWithAlerts(error), animated: true, completion: nil)
                 hideActivityIndicator()
                 refreshControl.endRefreshing()
-                tableToRefresh.userInteractionEnabled = true
+                tableToRefresh.isUserInteractionEnabled = true
                 return
             }
             else{
                 if(isReloading){
-                    self.arrayOfMeals.removeAll(keepCapacity: false)
+                    self.arrayOfMeals.removeAll(keepingCapacity: false)
                 }
                 for day in self.weekDayArray{
                     let newResponse: NSArray = responseObject![day] as! NSArray
                     //print(newResponse)
                     for obj: AnyObject in newResponse {
-                        let breakfast = (obj.objectForKey("breakfast")! as! String)
-                        let lunch = (obj.objectForKey("lunch")! as! String)
-                        let dinner = obj.objectForKey("dinner")! as! String
-                        let dateString = obj.objectForKey("dateString")! as! String
-                        let dayOfWeek = obj.objectForKey("dayOfWeek")! as! String
+                        let breakfast = (obj.object(forKey: "breakfast")! as! String)
+                        let lunch = (obj.object(forKey: "lunch")! as! String)
+                        let dinner = obj.object(forKey: "dinner")! as! String
+                        let dateString = obj.object(forKey: "dateString")! as! String
+                        let dayOfWeek = obj.object(forKey: "dayOfWeek")! as! String
                         let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
                         if theDays(newMeal.dateString) >= -1 {
                             self.arrayOfMeals.append(newMeal)
@@ -94,7 +107,7 @@ class Menu {
                 self.updateAppGroupForMeals()
                 hideActivityIndicator()
                 refreshControl.endRefreshing()
-                tableToRefresh.userInteractionEnabled = true
+                tableToRefresh.isUserInteractionEnabled = true
                 tableToRefresh.reloadData()
             }
         }
@@ -107,15 +120,15 @@ class Menu {
         //if the app is backgrounded while the day of the week changes
         //this allows the view to refresh the current menu to get rid of the meal yesterday.
         //needs to happen without requiring the user to reload the data from the website
-        let day = NSDate().weekdayName
+        let day = Date().weekdayName
         if !menu.arrayOfMeals.isEmpty{
             if convertDayToNumerberForSorting(menu.arrayOfMeals[0].dayOfWeek) < convertDayToNumerberForSorting(day){
-                menu.arrayOfMeals.removeAtIndex(0)
+                menu.arrayOfMeals.remove(at: 0)
             }
         }
     }
     
-    private func convertDayToNumerberForSorting(dayOfWeek: String) -> Int?{
+    fileprivate func convertDayToNumerberForSorting(_ dayOfWeek: String) -> Int?{
         var dayNum: Int?
         switch dayOfWeek{
         case "Sunday":
@@ -166,10 +179,10 @@ class Menu {
 //    
 //    }
     
-    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
-        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+    func convertStringToDictionary(_ text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
             do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String:AnyObject]
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]
                 return json
             } catch {
                 print("Something went wrong")

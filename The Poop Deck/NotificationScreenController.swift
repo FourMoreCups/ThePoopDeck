@@ -11,18 +11,18 @@ import UIKit
 class NotificationScreenController: UIViewController, HolderViewDelegate {
     
     var notificationRefreshControl = UIRefreshControl()
-    var holderView = HolderView(frame: CGRectZero)
+    var holderView = HolderView(frame: CGRect.zero)
     var cgrNews = CGRupdate()
 
     @IBOutlet var notificationView: UIView!
     @IBOutlet weak var uniformLabel: UILabel!
-    @IBAction func refreshButton(sender: AnyObject) {
+    @IBAction func refreshButton(_ sender: AnyObject) {
         showActivityIndicatory(self.view)
         self.uniformLabel.text = cgrNews.updateNotification()
         self.holderView.addImageToCenterOfCircle(cgrNews.checkWhatImageToPlace())
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         navigationController?.navigationBar.topItem?.title = "Central Guard Room"
         self.uniformLabel.text = cgrNews.updateNotification()
@@ -37,8 +37,8 @@ class NotificationScreenController: UIViewController, HolderViewDelegate {
         holderView.addOval()
         holderView.wobbleOval()
         
-        let vertSpaceBetweenLabelAndImage = NSLayoutConstraint(item: self.uniformLabel, attribute: .Top, relatedBy: .Equal, toItem: self.holderView, attribute: .Bottom, multiplier: 1, constant: 35)
-        NSLayoutConstraint.activateConstraints([vertSpaceBetweenLabelAndImage])
+        let vertSpaceBetweenLabelAndImage = NSLayoutConstraint(item: self.uniformLabel, attribute: .top, relatedBy: .equal, toItem: self.holderView, attribute: .bottom, multiplier: 1, constant: 35)
+        NSLayoutConstraint.activate([vertSpaceBetweenLabelAndImage])
         
         showActivityIndicatory(self.view)
         
@@ -70,14 +70,14 @@ class NotificationScreenController: UIViewController, HolderViewDelegate {
 
 class UniformTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 2
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("UniformCell")!
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "UniformCell")!
         return cell
     }
 }
