@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,11 +17,10 @@
             <subviews>
                 <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="207-Mh-2yO">
                     <rect key="frame" x="0.0" y="431" width="480" height="49"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <items>
                         <tabBarItem title="Days" image="calendar70" id="eHu-IG-cpm"/>
                         <tabBarItem title="Meals" image="plate7" id="TAF-oD-RI1"/>
-                        <tabBarItem title="CGR" image="cgrIcon" id="HGu-NJ-o6x"/>
                     </items>
                 </tabBar>
                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsF-jp-Y4f">
@@ -27,7 +30,7 @@
                     </items>
                 </navigationBar>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="207-Mh-2yO" firstAttribute="leading" secondItem="zcR-M3-iwH" secondAttribute="leading" id="64a-Ja-Vio"/>
                 <constraint firstAttribute="trailing" secondItem="207-Mh-2yO" secondAttribute="trailing" id="Lto-oZ-PiH"/>
@@ -43,7 +46,6 @@
     </objects>
     <resources>
         <image name="calendar70" width="21" height="22"/>
-        <image name="cgrIcon" width="25" height="21"/>
         <image name="plate7" width="26" height="22"/>
     </resources>
 </document>

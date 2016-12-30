@@ -52,7 +52,7 @@ class Menu {
         //var jsonResponse: NSURLResponse?
         NSURLConnection.sendAsynchronousRequest(jsonRequest, queue: OperationQueue.main) {
             response, data, error in
-            print(error)
+            print(error as Any)
            if data == nil {
                 completionHandler(nil, error as NSError?)
             } else {
@@ -63,7 +63,7 @@ class Menu {
                     
                 }
                 catch let error as NSError?{
-                    print(error)
+                    print(error as Any)
                     completionHandler(nil, error)
                 }
             
@@ -78,7 +78,7 @@ class Menu {
             (responseObject, error) -> () in
     
             if responseObject == nil {
-                print(error?.description, terminator: "")
+                print(error?.description as Any, terminator: "")
                 UIApplication.shared.keyWindow?.rootViewController?.present(handleAllErrorCodesWithAlerts(error), animated: true, completion: nil)
                 hideActivityIndicator()
                 refreshControl.endRefreshing()
@@ -92,12 +92,12 @@ class Menu {
                 for day in self.weekDayArray{
                     let newResponse: NSArray = responseObject![day] as! NSArray
                     //print(newResponse)
-                    for obj: AnyObject in newResponse {
-                        let breakfast = (obj.object(forKey: "breakfast")! as! String)
-                        let lunch = (obj.object(forKey: "lunch")! as! String)
-                        let dinner = obj.object(forKey: "dinner")! as! String
-                        let dateString = obj.object(forKey: "dateString")! as! String
-                        let dayOfWeek = obj.object(forKey: "dayOfWeek")! as! String
+                    for obj in newResponse {
+                        let breakfast = ((obj as AnyObject).object(forKey: "breakfast")! as! String)
+                        let lunch = ((obj as AnyObject).object(forKey: "lunch")! as! String)
+                        let dinner = (obj as AnyObject).object(forKey: "dinner")! as! String
+                        let dateString = (obj as AnyObject).object(forKey: "dateString")! as! String
+                        let dayOfWeek = (obj as AnyObject).object(forKey: "dayOfWeek")! as! String
                         let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
                         if theDays(newMeal.dateString) >= -1 {
                             self.arrayOfMeals.append(newMeal)

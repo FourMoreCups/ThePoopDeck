@@ -10,6 +10,6 @@ import Foundation
 import WatchKit
 
 class Graduation {
-    var classOf: Int = 2016
+    var classOf: Int = 2017
     var percentCompletedInt = Double()
 }

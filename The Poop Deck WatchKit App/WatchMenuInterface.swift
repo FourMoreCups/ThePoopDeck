@@ -30,6 +30,7 @@ class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
+        //let currentDate = Date().weekdayName
         let currentDate = Date().weekdayName
         print(currentDate.lowercased())
         //var restoredDict = NSUserDefaults.standardUserDefaults().dictionaryForKey("savedMenu")
@@ -40,7 +41,7 @@ class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
             session.activate()
             if session.isReachable{
                 print("reachable!")
-                session.sendMessage(["currentWeekDay": NSDate().weekdayName.lowercased()], replyHandler: { (response) -> Void in
+                session.sendMessage(["currentWeekDay": Date().weekdayName.lowercased()], replyHandler: { (response) -> Void in
                     if response["breakfast"] != nil && response["lunch"] != nil && response["dinner"] != nil {
                         self.watchMenuDataBase.mealDictionary["breakfast"] = (response["breakfast"] as? String)?.components(separatedBy: "&")[0]
                         self.watchMenuDataBase.mealDictionary["lunch"] = (response["lunch"] as? String)?.components(separatedBy: "&")[0]

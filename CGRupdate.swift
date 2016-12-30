@@ -20,11 +20,11 @@ class CGRupdate {
     }
     
     func parseInput(_ newUpdate: NSArray){
-        for obj: AnyObject in newUpdate {
-            breakfastUniform = (obj.object(forKey: "breakfast")! as! String)
-            lunchUniform = (obj.object(forKey: "lunch")! as! String)
-            taps = obj.object(forKey: "taps")! as! String
-            dateString = obj.object(forKey: "dateString")! as! String
+        for obj in newUpdate {
+            breakfastUniform = ((obj as AnyObject).object(forKey: "breakfast")! as! String)
+            lunchUniform = ((obj as AnyObject).object(forKey: "lunch")! as! String)
+            taps = (obj as AnyObject).object(forKey: "taps")! as! String
+            dateString = (obj as AnyObject).object(forKey: "dateString")! as! String
             stringToDisplay = self.labelString()
         }
     }
@@ -64,7 +64,7 @@ class CGRupdate {
                     UserDefaults.standard.set(jsonResult, forKey: "pushedUniform")
                 }
                 catch let error as NSError?{
-                    print(error)
+                    print(error!)
                     completionHandler(nil, error)
                 }
             }
@@ -75,7 +75,7 @@ class CGRupdate {
     func updateNotification() -> String{
         let url = "https://seandeaton.com/push/uniformOfTheDayJSON"
         self.retrieveJSON(url) { (responseObject, error) -> () in
-            print(responseObject)
+            print(responseObject as Any)
             guard error == nil else {
                 //print(error?.description)
                 UserDefaults.standard.set(nil, forKey: "pushedUniform")

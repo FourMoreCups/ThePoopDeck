@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9tQ-xM-xuE">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9tQ-xM-xuE">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
         <!--Graduation-->
@@ -14,24 +18,24 @@
                     </items>
                     <menu key="menu" id="zOw-Bm-Hc6">
                         <items>
-                            <menuItem title="2016" image="2016" id="qQ5-E5-BzD">
+                            <menuItem title="2017" image="2017" id="qQ5-E5-BzD">
                                 <connections>
-                                    <action selector="select2016" destination="nIN-b5-jTe" id="iX7-Oq-V4k"/>
+                                    <action selector="select2017" destination="nIN-b5-jTe" id="qih-7O-Jcd"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="2017" image="2017" id="1rw-cO-O9A">
+                            <menuItem title="2018" image="2018" id="1rw-cO-O9A">
                                 <connections>
-                                    <action selector="select2017" destination="nIN-b5-jTe" id="Aaq-lJ-Ybp"/>
+                                    <action selector="select2018" destination="nIN-b5-jTe" id="xb1-Gi-BDG"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="2018" image="2018" id="fpm-4Y-RIR">
+                            <menuItem title="2019" image="2019" id="fpm-4Y-RIR">
                                 <connections>
-                                    <action selector="select2018" destination="nIN-b5-jTe" id="JJc-Qk-Aiq"/>
+                                    <action selector="select2019" destination="nIN-b5-jTe" id="LMm-xv-nlx"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="2019" image="2019" id="AMQ-Mr-2KP">
+                            <menuItem title="2020" image="2020" id="AMQ-Mr-2KP">
                                 <connections>
-                                    <action selector="select2019" destination="nIN-b5-jTe" id="5eg-2X-hmw"/>
+                                    <action selector="select2020" destination="nIN-b5-jTe" id="U0W-7f-LN2"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -41,7 +45,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="416" y="347"/>
+            <point key="canvasLocation" x="506" y="347"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -78,7 +82,7 @@
                                     <group key="rootItem" width="1" height="60" alignment="left" id="43F-W8-JVv">
                                         <items>
                                             <separator height="1" heightAdjustment="-10" alignment="left" verticalAlignment="center" id="xeJ-Bd-4Zi">
-                                                <color key="color" red="1" green="0.70980392156862748" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="color" red="1" green="0.70980392156862748" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </separator>
                                             <label width="81" alignment="center" verticalAlignment="center" text="Updating..." numberOfLines="3" minimumScaleFactor="0.80000000000000004" id="lbb-Hp-Rb3"/>
                                         </items>
@@ -99,5 +103,5 @@
             <point key="canvasLocation" x="235" y="347"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="1" green="0.71764705882352942" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="1" green="0.71764705882352942" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

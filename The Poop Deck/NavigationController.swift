@@ -59,7 +59,7 @@ class MyTabBarController: UITabBarController {
 
 // Creates a UIColor from a Hex string.
 func colorWithHexString (hex:String) -> UIColor {
-    var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercased()
+    var cString:String = hex.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines as CharacterSet).uppercased()
     
     if (cString.hasPrefix("#")) {
         cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))

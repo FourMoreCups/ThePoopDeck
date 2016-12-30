@@ -12,20 +12,38 @@ import WatchConnectivity
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
+    /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
+    @available(iOS 9.3, *)
+    public func sessionDidDeactivate(_ session: WCSession) {
+        //something here
+    }
+
+    /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
+    @available(iOS 9.3, *)
+    public func sessionDidBecomeInactive(_ session: WCSession) {
+        //something here
+    }
+
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(iOS 9.3, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        //something here
+    }
+
 
     var window: UIWindow?
     
 
     enum ShortcutType: String {
         case MealShortcut = "com.seandeaton.The-Poop-Deck.mealshortcut"
-        case NotificationShortcute = "com.seandeaton.The-Poop-Deck.notificationshortcut"
+        //case NotificationShortcut = "com.seandeaton.The-Poop-Deck.notificationshortcut"
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //check for shortcut item
-        
-        Push.initializeNotificationServices()
+        // Enable to prompt for notications.
+        //Push.initializeNotificationServices()
         
         if #available(iOS 9.0, *) {
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as! UIApplicationShortcutItem?{
@@ -42,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 session.activate()
                 
                 if session.isPaired != true {
-                    print("Apple Watch not paired")
+                    print("Apple Watch not pahaired")
                 }
                 if session.isWatchAppInstalled != true {
                     print("Apple Watch paired but App not installed")
@@ -65,29 +83,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     @available(iOS 9.0, *)
-    func handleShortcutItem(_ shortcutIcon: UIApplicationShortcutItem) -> Bool{
-        var handled = false
+    func handleShortcutItem(_ shortcutIcon: UIApplicationShortcutItem) -> Void{
         
         if let shortcutType = ShortcutType.init(rawValue: shortcutIcon.type){
-            let rootNavViewController = window!.rootViewController as? UINavigationController
-            rootNavViewController?.popToRootViewController(animated: false)
-            
+            /*
+            * Thought I originally needed this to ensure we were always at the first window when we popped to certain
+            * indicies. I suppose this is not the case and the switch is all that is needed.
+            * let rootNavViewController = window!.rootViewController as? UINavigationController
+            * rootNavViewController?.popToRootViewController(animated: false)
+            */
             switch shortcutType{
             case .MealShortcut:
-                print("case acheived, present meals")
                 let tabBar = window?.rootViewController!.childViewControllers[0] as! MyTabBarController
                 tabBar.loadMealsTab()
-                handled = true
-            case .NotificationShortcute:
+                
+            /*
+            case .NotificationShortcut:
                 print("Here are the notifications!")
                 let tabBar = window?.rootViewController!.childViewControllers[0] as! MyTabBarController
                 tabBar.loadNotificationView()
-                handled = true
+            */
 
             }
         }
-        
-        return handled
     }
     
     @available(iOS 9.0, *)
@@ -114,7 +132,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             print("Looks like there was nothing saved for this week's menu. :(")
         }
     }
-    
+    /*
+     
+    Removed push notifications for this version
+     
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         UIApplication.shared.registerForRemoteNotifications()
     }
@@ -137,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print(error.localizedDescription)
     }
-
+    */
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

@@ -89,7 +89,7 @@ func customRefreshImageSpinner() {
 
 // MARK: Pull to Refresh
 func addPullToRefreshToTableView(target: AnyObject?, tableView: UITableView) {
-    refreshControl.addTarget(target, action: "handleRefreshForMeals", for: UIControlEvents.valueChanged)
+    refreshControl.addTarget(target, action: Selector(("handleRefreshForMeals")), for: UIControlEvents.valueChanged)
     tableView.addSubview(refreshControl)
 }
 
@@ -115,7 +115,7 @@ func genericErrorMessageAlertWithDismissButton(_ title: String, message: String)
 }
 
 func handleAllErrorCodesWithAlerts(_ error: NSError?) -> UIAlertController{
-    print(error?.code, terminator: "")
+    print(error!.code, terminator: "")
     if (error?.code == NSURLErrorNotConnectedToInternet){
         return genericErrorMessageAlertWithDismissButton("Uh Oh!", message: "Looks like you don't have signal!")
     }
