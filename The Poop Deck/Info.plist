@@ -24,28 +24,15 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>seandeaton.com</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>mealsShortcutIcon</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Launch Meals</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).mealshortcut</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>mealsShortcutIcon</string>
 		</dict>
 	</array>
 	<key>UILaunchStoryboardName</key>
