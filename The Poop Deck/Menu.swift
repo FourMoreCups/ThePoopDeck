@@ -97,10 +97,14 @@ class Menu {
                         let lunch = ((obj as AnyObject).object(forKey: "lunch")! as! String)
                         let dinner = (obj as AnyObject).object(forKey: "dinner")! as! String
                         let dateString = (obj as AnyObject).object(forKey: "dateString")! as! String
+                        print(theDays(dateString))
                         let dayOfWeek = (obj as AnyObject).object(forKey: "dayOfWeek")! as! String
                         let newMeal = Meal(breakfast: breakfast, lunch: lunch, dinner: dinner, dayOfWeek: dayOfWeek, dateString: dateString)
                         if theDays(newMeal.dateString) >= -1 {
                             self.arrayOfMeals.append(newMeal)
+                        }
+                        else{
+                            print("debug")
                         }
                     }
                 }

@@ -11,7 +11,7 @@ import WatchConnectivity
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate{
     /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
     @available(iOS 9.3, *)
     public func sessionDidDeactivate(_ session: WCSession) {
@@ -40,11 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        //check for shortcut item
         // Enable to prompt for notications.
         //Push.initializeNotificationServices()
         
+        //forceably reload the webpage. This prevents an issue with iOS using a cached response in lieu of the updates menu.
+        //let cache = URLCache.init(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
+        URLCache.shared.removeAllCachedResponses()
+        
+        /*
+         * Check if the applications started up with a shortcut (3D Touch).
+        */
         if #available(iOS 9.0, *) {
             if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as! UIApplicationShortcutItem?{
                 self.handleShortcutItem(shortcutItem)
@@ -53,6 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             // Fallback on earlier versions
         }
         
+        /*
+         * Check to see if the iPhone is paired to a watch and if so, start a session with it.
+         */
         if #available(iOS 9.0, *) {
             if WCSession.isSupported() {
                 let session = WCSession.default()
@@ -60,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 session.activate()
                 
                 if session.isPaired != true {
-                    print("Apple Watch not pahaired")
+                    print("Apple Watch not paired")
                 }
                 if session.isWatchAppInstalled != true {
                     print("Apple Watch paired but App not installed")
@@ -76,12 +84,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         return true
     }
     
+    /*
+     * Check if the applications started up with a shortcut (3D Touch).
+     */
     @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         print("shortcutLaunched")
         self.handleShortcutItem(shortcutItem)
     }
     
+    /*
+     * The function actually responsible for handling the shortcut.
+     */
     @available(iOS 9.0, *)
     func handleShortcutItem(_ shortcutIcon: UIApplicationShortcutItem) -> Void{
         
@@ -108,6 +122,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
     }
     
+    /*
+     * Receives a message from the watch asking for the dictionary of menu items.
+     * Sets a replyValue and gets the menu, casts to an array to get the first item.
+     * Sets each time's meal. Must cast as AnyObject and then recast on Apple Watch.
+     */
     @available(iOS 9.0, *)
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         var replyValue = Dictionary<String, AnyObject>()
@@ -118,12 +137,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 let currentWeekDay = message["currentWeekDay"] as! String
                 let menuDateToDisplayOnWatch = cachedMenu![currentWeekDay] as? NSArray
                 if menuDateToDisplayOnWatch != nil || menuDateToDisplayOnWatch!.count != 0 {
-                    let watchBreakfast = (menuDateToDisplayOnWatch![0] as AnyObject).object(forKey: "breakfast")
-                    let watchLunch = (menuDateToDisplayOnWatch![0] as AnyObject).object(forKey: "lunch")
-                    let watchDinner = (menuDateToDisplayOnWatch![0] as AnyObject).object(forKey: "dinner")
-                    replyValue["breakfast"] = watchBreakfast as AnyObject?
-                    replyValue["lunch"] = watchLunch as AnyObject?
-                    replyValue["dinner"] = watchDinner as AnyObject?
+                    replyValue["breakfast"] = ((menuDateToDisplayOnWatch![0] as AnyObject).object(forKey: "breakfast")) as AnyObject?
+                    replyValue["lunch"] = ((menuDateToDisplayOnWatch![0] as AnyObject).object(forKey: "lunch")) as AnyObject?
+                    replyValue["dinner"] = ((menuDateToDisplayOnWatch![0] as AnyObject).object(forKey: "dinner")) as AnyObject?
                     replyHandler(replyValue)
                 }
             }
@@ -181,8 +197,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
 

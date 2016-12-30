@@ -45,7 +45,7 @@ func showActivityIndicatory(_ uiView: UIView) {
     loadingView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
     loadingView.center = container.center
     loadingView.autoresizingMask = ([UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin])
-    loadingView.backgroundColor = UIColor(red: 50, green: 50, blue: 50, alpha: 0.2)
+    loadingView.backgroundColor = UIColor(red: 50/255, green: 50/255, blue: 50/255, alpha: 0.2)
     loadingView.clipsToBounds = true
     loadingView.layer.cornerRadius = 10
     

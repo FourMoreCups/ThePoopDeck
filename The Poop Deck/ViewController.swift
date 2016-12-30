@@ -15,8 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
     
     var arrayOfDates: [Day] = [Day]()
-    //var backgroundTaskIdentifier = UIBackgroundTaskIdentifier()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +22,8 @@ class ViewController: UIViewController {
         self.myTableView.backgroundColor = UIColor.clear
         
         self.setUpDays()
-        addImageAboveTableViewController(myTableViewController: myTableView)
+        //adds tarbucket above table. Doesn't currently play nice with different orientations because it's applied statically.
+        //addImageAboveTableViewController(myTableViewController: myTableView)
         
         myTableView.reloadData()
     }
@@ -58,15 +57,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /*
+     * Adds dates to an array which will populate the table view. 
+     * Ensure that you add the cells to the array of potentialCells.
+     * We have to check if the number of days left are greater than 0.
+    */
     func setUpDays(){
         let rdayCell = Day(dayStringTop: "R-Day", yyyyMMdd: "2015-06-29", imageName: "rdayCircle.png", isFootball: false, needsDisplay: true)
         let ringCell = Day(dayStringTop: "Ring Weekend", yyyyMMdd: "2016-08-26", imageName: "ringCircle.png", isFootball: false, needsDisplay: false)
-        //        var buffaloCell = Day(dayStringTop: "Fordham", yyyyMMdd: "2014-09-06", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
-        //        var wakeForestCell = Day(dayStringTop: "Wake Forest", yyyyMMdd: "2014-09-20", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
-        //        var ballStateCell = Day(dayStringTop: "Ball State", yyyyMMdd: "2014-10-04", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
-        //        var riceCell = Day(dayStringTop: "Rice", yyyyMMdd: "2014-10-11", imageName: "firstieRing.png", isFootball: true, needsDisplay: false)
-        //        var airForceCell = Day(dayStringTop: "Air Force", yyyyMMdd: "2014-11-01", imageName: "airForcePic.png", isFootball: true, needsDisplay: true)
-        //        var fordhamCell = Day(dayStringTop: "Fordham", yyyyMMdd: "2014-11-22", imageName: "fordham.png", isFootball: true, needsDisplay: true)
         let armyNavyCell = Day(dayStringTop: "Army Navy", yyyyMMdd: "2016-12-10", imageName: "armyNavyCircle.png",isFootball: false, needsDisplay: true)
         let christmasCell = Day(dayStringTop: "Christmas Leave", yyyyMMdd: "2016-12-17", imageName: "christmasCircle.png", isFootball: false, needsDisplay: true)
         let fiveCell = Day(dayStringTop: "500th Night", yyyyMMdd: "2017-01-14", imageName: "fiveCircle.png", isFootball: false, needsDisplay: true)
@@ -74,7 +72,6 @@ class ViewController: UIViewController {
         let hundredCell = Day(dayStringTop: "100th Night", yyyyMMdd: "2017-02-17", imageName: "hundredCircle.png", isFootball: false, needsDisplay: true)
         let springCell = Day(dayStringTop: "Spring Leave", yyyyMMdd: "2017-03-10", imageName: "springCircle.png", isFootball: false, needsDisplay: true)
         let graduationCell = Day(dayStringTop: "Graduation", yyyyMMdd: "2017-05-27", imageName: "gradCircle.png", isFootball: false, needsDisplay: true)
-        
         
         let potentialCells = [rdayCell, ringCell, armyNavyCell, christmasCell, fiveCell, yearlingCell, hundredCell, springCell, graduationCell]
         

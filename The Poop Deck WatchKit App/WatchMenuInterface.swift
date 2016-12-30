@@ -30,18 +30,23 @@ class WatchMenuInterfaceController: WKInterfaceController, WCSessionDelegate {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        //let currentDate = Date().weekdayName
-        let currentDate = Date().weekdayName
-        print(currentDate.lowercased())
-        //var restoredDict = NSUserDefaults.standardUserDefaults().dictionaryForKey("savedMenu")
         
+        let currentDate = Date().weekdayName.lowercased()
+        //print(currentDate)
+        
+        /*
+         * If we're on iOS 9 or higher, start a session with the iPhone that will send a message querying the current day.
+         * The iPhone will reply with the dictionary. We extract the strings as the invididual meal items.
+         * Because of the way my script parses the meals, there are two meal items. The watch face only
+         * has room for one item, so we seperate on the '&' and get the first item, which is displayed on the watch.
+        */
         if #available(iOS 9.0, *) {
             let session = WCSession.default()
             session.delegate = self
             session.activate()
             if session.isReachable{
                 print("reachable!")
-                session.sendMessage(["currentWeekDay": Date().weekdayName.lowercased()], replyHandler: { (response) -> Void in
+                session.sendMessage(["currentWeekDay": currentDate], replyHandler: { (response) -> Void in
                     if response["breakfast"] != nil && response["lunch"] != nil && response["dinner"] != nil {
                         self.watchMenuDataBase.mealDictionary["breakfast"] = (response["breakfast"] as? String)?.components(separatedBy: "&")[0]
                         self.watchMenuDataBase.mealDictionary["lunch"] = (response["lunch"] as? String)?.components(separatedBy: "&")[0]
